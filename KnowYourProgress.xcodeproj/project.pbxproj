@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B4463B51DA2EACE00685365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463B41DA2EACE00685365 /* AppDelegate.swift */; };
-		5B4463B71DA2EACE00685365 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463B61DA2EACE00685365 /* ViewController.swift */; };
+		5B4463B71DA2EACE00685365 /* welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463B61DA2EACE00685365 /* welcome.swift */; };
 		5B4463BA1DA2EACE00685365 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4463B81DA2EACE00685365 /* Main.storyboard */; };
 		5B4463BD1DA2EACE00685365 /* KnowYourProgress.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463BB1DA2EACE00685365 /* KnowYourProgress.xcdatamodeld */; };
 		5B4463BF1DA2EACE00685365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B4463BE1DA2EACE00685365 /* Assets.xcassets */; };
@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		5B4463B11DA2EACE00685365 /* KnowYourProgress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowYourProgress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4463B41DA2EACE00685365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5B4463B61DA2EACE00685365 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5B4463B61DA2EACE00685365 /* welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcome.swift; sourceTree = "<group>"; };
 		5B4463B91DA2EACE00685365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B4463BC1DA2EACE00685365 /* KnowYourProgress.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KnowYourProgress.xcdatamodel; sourceTree = "<group>"; };
 		5B4463BE1DA2EACE00685365 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				5B4463B41DA2EACE00685365 /* AppDelegate.swift */,
-				5B4463B61DA2EACE00685365 /* ViewController.swift */,
+				5B4463B61DA2EACE00685365 /* welcome.swift */,
 				5B4463B81DA2EACE00685365 /* Main.storyboard */,
 				5B4463BE1DA2EACE00685365 /* Assets.xcassets */,
 				5B4463C01DA2EACE00685365 /* LaunchScreen.storyboard */,
@@ -196,6 +196,7 @@
 				TargetAttributes = {
 					5B4463B01DA2EACE00685365 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 8MFHSU37AQ;
 						ProvisioningStyle = Automatic;
 					};
 					5B4463C71DA2EACE00685365 = {
@@ -262,7 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B4463B71DA2EACE00685365 /* ViewController.swift in Sources */,
+				5B4463B71DA2EACE00685365 /* welcome.swift in Sources */,
 				5B4463BD1DA2EACE00685365 /* KnowYourProgress.xcdatamodeld in Sources */,
 				5B4463B51DA2EACE00685365 /* AppDelegate.swift in Sources */,
 			);
@@ -414,6 +415,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8MFHSU37AQ;
 				INFOPLIST_FILE = KnowYourProgress/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = makeyourlifeeasierproducts.KnowYourProgress;
@@ -426,6 +428,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8MFHSU37AQ;
 				INFOPLIST_FILE = KnowYourProgress/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = makeyourlifeeasierproducts.KnowYourProgress;
