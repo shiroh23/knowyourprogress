@@ -28,7 +28,7 @@ class register: UIViewController {
     @IBAction func back(_ sender: UISwipeGestureRecognizer)
     {
         print("goingbackwards")
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController!.popViewController(animated: true)
     }
     
 }
