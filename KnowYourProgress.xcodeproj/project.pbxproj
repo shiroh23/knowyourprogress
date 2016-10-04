@@ -15,6 +15,9 @@
 		5B4463C21DA2EACE00685365 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4463C01DA2EACE00685365 /* LaunchScreen.storyboard */; };
 		5B4463CD1DA2EACE00685365 /* KnowYourProgressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463CC1DA2EACE00685365 /* KnowYourProgressTests.swift */; };
 		5B4463D81DA2EACE00685365 /* KnowYourProgressUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463D71DA2EACE00685365 /* KnowYourProgressUITests.swift */; };
+		5B4463E61DA2EFB000685365 /* 489812_Pannonia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B4463E51DA2EFB000685365 /* 489812_Pannonia.jpg */; };
+		5B4463EB1DA2FB5800685365 /* launchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463EA1DA2FB5800685365 /* launchScreen.swift */; };
+		5B4463ED1DA315A300685365 /* register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463EC1DA315A300685365 /* register.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		5B4463D31DA2EACE00685365 /* KnowYourProgressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KnowYourProgressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4463D71DA2EACE00685365 /* KnowYourProgressUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowYourProgressUITests.swift; sourceTree = "<group>"; };
 		5B4463D91DA2EACE00685365 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B4463E51DA2EFB000685365 /* 489812_Pannonia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 489812_Pannonia.jpg; path = ../../../Downloads/489812_Pannonia.jpg; sourceTree = "<group>"; };
+		5B4463EA1DA2FB5800685365 /* launchScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = launchScreen.swift; sourceTree = "<group>"; };
+		5B4463EC1DA315A300685365 /* register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = register.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 		5B4463A81DA2EACD00685365 = {
 			isa = PBXGroup;
 			children = (
+				5B4463E71DA2EFBA00685365 /* Pictures */,
 				5B4463B31DA2EACE00685365 /* KnowYourProgress */,
 				5B4463CB1DA2EACE00685365 /* KnowYourProgressTests */,
 				5B4463D61DA2EACE00685365 /* KnowYourProgressUITests */,
@@ -99,6 +106,8 @@
 		5B4463B31DA2EACE00685365 /* KnowYourProgress */ = {
 			isa = PBXGroup;
 			children = (
+				5B4463EC1DA315A300685365 /* register.swift */,
+				5B4463EA1DA2FB5800685365 /* launchScreen.swift */,
 				5B4463B41DA2EACE00685365 /* AppDelegate.swift */,
 				5B4463B61DA2EACE00685365 /* welcome.swift */,
 				5B4463B81DA2EACE00685365 /* Main.storyboard */,
@@ -126,6 +135,14 @@
 				5B4463D91DA2EACE00685365 /* Info.plist */,
 			);
 			path = KnowYourProgressUITests;
+			sourceTree = "<group>";
+		};
+		5B4463E71DA2EFBA00685365 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				5B4463E51DA2EFB000685365 /* 489812_Pannonia.jpg */,
+			);
+			name = Pictures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B4463C21DA2EACE00685365 /* LaunchScreen.storyboard in Resources */,
+				5B4463E61DA2EFB000685365 /* 489812_Pannonia.jpg in Resources */,
 				5B4463BF1DA2EACE00685365 /* Assets.xcassets in Resources */,
 				5B4463BA1DA2EACE00685365 /* Main.storyboard in Resources */,
 			);
@@ -263,9 +281,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B4463EB1DA2FB5800685365 /* launchScreen.swift in Sources */,
 				5B4463B71DA2EACE00685365 /* welcome.swift in Sources */,
 				5B4463BD1DA2EACE00685365 /* KnowYourProgress.xcdatamodeld in Sources */,
 				5B4463B51DA2EACE00685365 /* AppDelegate.swift in Sources */,
+				5B4463ED1DA315A300685365 /* register.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

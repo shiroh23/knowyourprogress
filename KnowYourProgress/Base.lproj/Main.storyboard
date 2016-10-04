@@ -1,14 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Imi-Ho-f6h">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Welcome-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcome" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="welcome" customModule="KnowYourProgress" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +18,205 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.050000000000000003" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="489812_Pannonia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ddg-1w-NYM">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="327" id="ID2-t6-eEV"/>
+                                    <constraint firstAttribute="width" constant="375" id="ScJ-Bc-xhB"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kérlek jelentkezz be,  vagy hozz létre új fiókot!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwf-D7-Q6p">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="CoU-NY-I9c"/>
+                                    <constraint firstAttribute="height" constant="55" id="pVd-st-nuo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qm7-1H-zlt">
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <state key="normal" title="Regisztráció"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoj-1C-Fcs">
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <state key="normal" title="Bejelentkezés"/>
+                                <connections>
+                                    <action selector="bejelentkezesWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W4R-3J-Eao"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="jelszó" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7yc-tm-FBS">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="7sX-kx-9Aa"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dzF-rv-fP0">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2qd-dL-Fum"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Üdvözöllek" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkG-pI-srC">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="MVI-dz-KqB"/>
+                                    <constraint firstAttribute="width" constant="115" id="bj3-Y9-Z6I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rwf-D7-Q6p" secondAttribute="bottom" constant="450" id="08t-Mc-g6Z"/>
+                            <constraint firstItem="7yc-tm-FBS" firstAttribute="top" secondItem="dzF-rv-fP0" secondAttribute="bottom" constant="8" symbolic="YES" id="4KH-Em-kVh"/>
+                            <constraint firstItem="Ddg-1w-NYM" firstAttribute="centerY" secondItem="7yc-tm-FBS" secondAttribute="centerY" constant="-4.5" id="CUE-V0-JeF"/>
+                            <constraint firstItem="dzF-rv-fP0" firstAttribute="leading" secondItem="7yc-tm-FBS" secondAttribute="leading" id="EIS-rL-yfG"/>
+                            <constraint firstItem="Ddg-1w-NYM" firstAttribute="top" secondItem="xkG-pI-srC" secondAttribute="bottom" constant="8" id="HUH-b7-pSM"/>
+                            <constraint firstItem="Ddg-1w-NYM" firstAttribute="centerX" secondItem="rwf-D7-Q6p" secondAttribute="centerX" id="Pez-sJ-mdk"/>
+                            <constraint firstItem="rwf-D7-Q6p" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="QOi-Jb-4XF"/>
+                            <constraint firstItem="rwf-D7-Q6p" firstAttribute="centerX" secondItem="xkG-pI-srC" secondAttribute="centerX" id="QWZ-a9-Chg"/>
+                            <constraint firstItem="qm7-1H-zlt" firstAttribute="top" secondItem="zoj-1C-Fcs" secondAttribute="bottom" constant="8" symbolic="YES" id="YNe-yX-y5r"/>
+                            <constraint firstItem="dzF-rv-fP0" firstAttribute="leading" secondItem="rwf-D7-Q6p" secondAttribute="leading" id="a8d-4G-Acl"/>
+                            <constraint firstItem="Ddg-1w-NYM" firstAttribute="centerX" secondItem="dzF-rv-fP0" secondAttribute="centerX" id="awW-jp-1RL"/>
+                            <constraint firstItem="rwf-D7-Q6p" firstAttribute="top" secondItem="xkG-pI-srC" secondAttribute="bottom" constant="8" id="hCM-4X-6LO"/>
+                            <constraint firstItem="Ddg-1w-NYM" firstAttribute="centerX" secondItem="7yc-tm-FBS" secondAttribute="centerX" id="iYU-rS-MeK"/>
+                            <constraint firstItem="Ddg-1w-NYM" firstAttribute="centerX" secondItem="qm7-1H-zlt" secondAttribute="centerX" id="mnj-tm-KVu"/>
+                            <constraint firstItem="Ddg-1w-NYM" firstAttribute="centerX" secondItem="zoj-1C-Fcs" secondAttribute="centerX" id="qrP-I5-Vlm"/>
+                            <constraint firstItem="zoj-1C-Fcs" firstAttribute="top" secondItem="7yc-tm-FBS" secondAttribute="bottom" constant="27" id="zsa-Du-acH"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="gSV-2s-cO9"/>
+                    <connections>
+                        <outlet property="emailField" destination="dzF-rv-fP0" id="BQf-Gt-0Ox"/>
+                        <outlet property="passwordField" destination="7yc-tm-FBS" id="Iou-Sf-TV7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="86" y="620"/>
+        </scene>
+        <!--Register-->
+        <scene sceneID="7bX-gB-C2N">
+            <objects>
+                <viewController storyboardIdentifier="register" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sCe-st-duu" customClass="register" customModule="KnowYourProgress" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nt7-nB-s3K"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZfJ-4I-IE1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Xm-fE-QNo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Dk3-Lj-7JT" appends="YES" id="8m0-Dx-oSt"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jN2-GR-IjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="Dk3-Lj-7JT">
+                    <connections>
+                        <action selector="back:" destination="sCe-st-duu" id="XP9-TP-IbV"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="812" y="619"/>
+        </scene>
+        <!--Launch Screen-->
+        <scene sceneID="zvn-j2-UyF">
+            <objects>
+                <viewController storyboardIdentifier="launchScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZfX-Lf-W2B" customClass="launchScreen" customModule="KnowYourProgress" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2t7-YH-RYW"/>
+                        <viewControllerLayoutGuide type="bottom" id="See-Hx-jVr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zjv-Yw-d6Y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pannon Egyetem Tárgygráf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHn-wN-VZ6">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="iJM-H9-eqS"/>
+                                    <constraint firstAttribute="height" constant="39" id="wTJ-8m-db4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="23"/>
+                                <color key="textColor" red="0.41214063179999999" green="0.39304654700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="489812_Pannonia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jDD-MI-kPg">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="hVH-Vd-12L"/>
+                                    <constraint firstAttribute="height" constant="327" id="wib-Mr-g4y"/>
+                                </constraints>
+                            </imageView>
+                            <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OIQ-Tg-14W">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="F2U-WD-TSE"/>
+                                    <constraint firstAttribute="height" constant="2" id="hI6-7q-WoG"/>
+                                </constraints>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Koppints a folytatáshoz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7CH-f4-v8t">
+                                <frame key="frameInset" minX="16" minY="607" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                                <color key="textColor" red="0.41214063179316673" green="0.39304654702242903" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="jDD-MI-kPg" firstAttribute="top" secondItem="QHn-wN-VZ6" secondAttribute="bottom" constant="8" symbolic="YES" id="1FV-Jg-rqE"/>
+                            <constraint firstItem="See-Hx-jVr" firstAttribute="top" secondItem="OIQ-Tg-14W" secondAttribute="bottom" constant="68" id="5MC-rK-mqj"/>
+                            <constraint firstItem="QHn-wN-VZ6" firstAttribute="centerX" secondItem="jDD-MI-kPg" secondAttribute="centerX" id="6to-gp-oE4"/>
+                            <constraint firstItem="OIQ-Tg-14W" firstAttribute="leading" secondItem="QHn-wN-VZ6" secondAttribute="leading" constant="-16" id="EAp-O8-Wrt"/>
+                            <constraint firstItem="QHn-wN-VZ6" firstAttribute="leading" secondItem="zjv-Yw-d6Y" secondAttribute="leadingMargin" id="hsw-iS-P5d"/>
+                            <constraint firstItem="QHn-wN-VZ6" firstAttribute="top" secondItem="2t7-YH-RYW" secondAttribute="bottom" constant="97" id="wkE-N7-O9X"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="GGp-vK-MGj" appends="YES" id="m1H-73-wKY"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="IHZ-XF-VBF"/>
+                    <connections>
+                        <outlet property="nextLbl" destination="7CH-f4-v8t" id="dNw-Jw-RQS"/>
+                        <outlet property="progressView" destination="OIQ-Tg-14W" id="vNH-WJ-oyJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AFS-ZA-3J9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="GGp-vK-MGj">
+                    <connections>
+                        <action selector="tapped:" destination="ZfX-Lf-W2B" id="N2B-TX-P8s"/>
+                        <outlet property="delegate" destination="ZfX-Lf-W2B" id="VhM-PE-vwp"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-668" y="620"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OTF-8T-Os3">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="Imi-Ho-f6h" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FZR-3T-1oj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ZfX-Lf-W2B" kind="relationship" relationship="rootViewController" id="pQc-3r-FVd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZXl-Ms-E20" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1414" y="621"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="489812_Pannonia.jpg" width="1500" height="1466"/>
+    </resources>
 </document>
