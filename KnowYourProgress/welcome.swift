@@ -24,7 +24,7 @@ class welcome: UIViewController, UITextFieldDelegate{
             
             try! realm.write() { // 2
                 
-                let defaultCategories = ["Birds", "Mammals", "Flora", "Reptiles", "Arachnids" ] // 3
+                let defaultCategories = ["Madarak", "Emlosok", "Flora", "Reptiles", "Arachnids" ] // 3
                 
                 for category in defaultCategories { // 4
                     let newCategory = database()
