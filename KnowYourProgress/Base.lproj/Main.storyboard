@@ -112,8 +112,20 @@
                     <view key="view" contentMode="scaleToFill" id="5Xm-fE-QNo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.05000000074505806" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="489812_Pannonia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Fki-Af-Hty">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="327" id="Ljj-ck-MrA"/>
+                                    <constraint firstAttribute="width" constant="375" id="ll8-IR-Vh4"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Fki-Af-Hty" firstAttribute="leading" secondItem="5Xm-fE-QNo" secondAttribute="leading" id="3c7-00-aPx"/>
+                            <constraint firstItem="Fki-Af-Hty" firstAttribute="centerY" secondItem="5Xm-fE-QNo" secondAttribute="centerY" id="LX4-Ki-g9F"/>
+                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Dk3-Lj-7JT" appends="YES" id="8m0-Dx-oSt"/>
                         </connections>

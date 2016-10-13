@@ -18,6 +18,11 @@
 		5B4463E61DA2EFB000685365 /* 489812_Pannonia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B4463E51DA2EFB000685365 /* 489812_Pannonia.jpg */; };
 		5B4463EB1DA2FB5800685365 /* launchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463EA1DA2FB5800685365 /* launchScreen.swift */; };
 		5B4463ED1DA315A300685365 /* register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463EC1DA315A300685365 /* register.swift */; };
+		5B4463F01DAD45E100685365 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4463EE1DAD45E000685365 /* Realm.framework */; };
+		5B4463F11DAD45E100685365 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4463EE1DAD45E000685365 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5B4463F21DAD45E100685365 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4463EF1DAD45E100685365 /* RealmSwift.framework */; };
+		5B4463F31DAD45E100685365 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4463EF1DAD45E100685365 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5B6D787B1DAE5675004BC0C9 /* database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D787A1DAE5675004BC0C9 /* database.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5B4463F41DAD45E100685365 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5B4463F31DAD45E100685365 /* RealmSwift.framework in Embed Frameworks */,
+				5B4463F11DAD45E100685365 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5B4463B11DA2EACE00685365 /* KnowYourProgress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowYourProgress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4463B41DA2EACE00685365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +75,9 @@
 		5B4463E51DA2EFB000685365 /* 489812_Pannonia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 489812_Pannonia.jpg; path = ../../../Downloads/489812_Pannonia.jpg; sourceTree = "<group>"; };
 		5B4463EA1DA2FB5800685365 /* launchScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = launchScreen.swift; sourceTree = "<group>"; };
 		5B4463EC1DA315A300685365 /* register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = register.swift; sourceTree = "<group>"; };
+		5B4463EE1DAD45E000685365 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		5B4463EF1DAD45E100685365 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		5B6D787A1DAE5675004BC0C9 /* database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = database.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B4463F21DAD45E100685365 /* RealmSwift.framework in Frameworks */,
+				5B4463F01DAD45E100685365 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +110,8 @@
 		5B4463A81DA2EACD00685365 = {
 			isa = PBXGroup;
 			children = (
+				5B4463EE1DAD45E000685365 /* Realm.framework */,
+				5B4463EF1DAD45E100685365 /* RealmSwift.framework */,
 				5B4463E71DA2EFBA00685365 /* Pictures */,
 				5B4463B31DA2EACE00685365 /* KnowYourProgress */,
 				5B4463CB1DA2EACE00685365 /* KnowYourProgressTests */,
@@ -111,6 +138,7 @@
 				5B4463B41DA2EACE00685365 /* AppDelegate.swift */,
 				5B4463B61DA2EACE00685365 /* welcome.swift */,
 				5B4463B81DA2EACE00685365 /* Main.storyboard */,
+				5B6D787A1DAE5675004BC0C9 /* database.swift */,
 				5B4463BE1DA2EACE00685365 /* Assets.xcassets */,
 				5B4463C01DA2EACE00685365 /* LaunchScreen.storyboard */,
 				5B4463C31DA2EACE00685365 /* Info.plist */,
@@ -155,6 +183,8 @@
 				5B4463AD1DA2EACE00685365 /* Sources */,
 				5B4463AE1DA2EACE00685365 /* Frameworks */,
 				5B4463AF1DA2EACE00685365 /* Resources */,
+				5B4463F41DAD45E100685365 /* Embed Frameworks */,
+				5B4463F51DAD47AE00685365 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -276,6 +306,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5B4463F51DAD47AE00685365 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5B4463AD1DA2EACE00685365 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -283,6 +329,7 @@
 			files = (
 				5B4463EB1DA2FB5800685365 /* launchScreen.swift in Sources */,
 				5B4463B71DA2EACE00685365 /* welcome.swift in Sources */,
+				5B6D787B1DAE5675004BC0C9 /* database.swift in Sources */,
 				5B4463BD1DA2EACE00685365 /* KnowYourProgress.xcdatamodeld in Sources */,
 				5B4463B51DA2EACE00685365 /* AppDelegate.swift in Sources */,
 				5B4463ED1DA315A300685365 /* register.swift in Sources */,
@@ -436,6 +483,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8MFHSU37AQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = KnowYourProgress/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = makeyourlifeeasierproducts.KnowYourProgress;
@@ -449,6 +500,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8MFHSU37AQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = KnowYourProgress/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = makeyourlifeeasierproducts.KnowYourProgress;
@@ -530,6 +585,7 @@
 				5B4463DE1DA2EACE00685365 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B4463DF1DA2EACE00685365 /* Build configuration list for PBXNativeTarget "KnowYourProgressTests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +594,7 @@
 				5B4463E11DA2EACE00685365 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B4463E21DA2EACE00685365 /* Build configuration list for PBXNativeTarget "KnowYourProgressUITests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +603,7 @@
 				5B4463E41DA2EACE00685365 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
