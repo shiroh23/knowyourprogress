@@ -20,6 +20,8 @@
 		5B4463ED1DA315A300685365 /* register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463EC1DA315A300685365 /* register.swift */; };
 		5BC2B0961DD4AB5D004562C2 /* mainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC2B0951DD4AB5D004562C2 /* mainScreen.swift */; };
 		5BC2B0981DD4ABD6004562C2 /* mernokinfoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC2B0971DD4ABD6004562C2 /* mernokinfoData.plist */; };
+		5BC2B09B1DD4BA49004562C2 /* proginfoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC2B09A1DD4BA49004562C2 /* proginfoData.plist */; };
+		5BC2B09D1DD4BA58004562C2 /* gazdinfoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC2B09C1DD4BA58004562C2 /* gazdinfoData.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		5B4463EC1DA315A300685365 /* register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = register.swift; sourceTree = "<group>"; };
 		5BC2B0951DD4AB5D004562C2 /* mainScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainScreen.swift; sourceTree = "<group>"; };
 		5BC2B0971DD4ABD6004562C2 /* mernokinfoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = mernokinfoData.plist; path = KnowYourProgress/mernokinfoData.plist; sourceTree = "<group>"; };
+		5BC2B09A1DD4BA49004562C2 /* proginfoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = proginfoData.plist; path = KnowYourProgress/proginfoData.plist; sourceTree = "<group>"; };
+		5BC2B09C1DD4BA58004562C2 /* gazdinfoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = gazdinfoData.plist; path = KnowYourProgress/gazdinfoData.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				5BC2B0971DD4ABD6004562C2 /* mernokinfoData.plist */,
+				5BC2B09C1DD4BA58004562C2 /* gazdinfoData.plist */,
+				5BC2B09A1DD4BA49004562C2 /* proginfoData.plist */,
 			);
 			name = datasource;
 			sourceTree = "<group>";
@@ -182,7 +188,7 @@
 				5B4463AD1DA2EACE00685365 /* Sources */,
 				5B4463AE1DA2EACE00685365 /* Frameworks */,
 				5B4463AF1DA2EACE00685365 /* Resources */,
-				5B4463F51DAD47AE00685365 /* ShellScript */,
+				5B4463F51DAD47AE00685365 /* Run Script */,
 				5B0C12D51DAFA38700B25C9D /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -283,9 +289,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B4463C21DA2EACE00685365 /* LaunchScreen.storyboard in Resources */,
+				5BC2B09D1DD4BA58004562C2 /* gazdinfoData.plist in Resources */,
 				5B4463E61DA2EFB000685365 /* 489812_Pannonia.jpg in Resources */,
 				5B4463BF1DA2EACE00685365 /* Assets.xcassets in Resources */,
 				5BC2B0981DD4ABD6004562C2 /* mernokinfoData.plist in Resources */,
+				5BC2B09B1DD4BA49004562C2 /* proginfoData.plist in Resources */,
 				5B4463BA1DA2EACE00685365 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,13 +315,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5B4463F51DAD47AE00685365 /* ShellScript */ = {
+		5B4463F51DAD47AE00685365 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
