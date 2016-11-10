@@ -7,44 +7,17 @@
 //
 
 import UIKit
-import RealmSwift
 
 class welcome: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
-    //var categories = []
-    let realm = try! Realm()
-    lazy var categories: Results<database> = { self.realm.objects(database.self) }()
-    
-    func populateDefaultCategories() {
-        
-        if categories.count == 0 { // 1
-            
-            try! realm.write() { // 2
-                
-                let defaultCategories = ["Madarak", "Emlosok", "Flora", "Reptiles", "Arachnids" ] // 3
-                
-                for category in defaultCategories { // 4
-                    let newCategory = database()
-                    newCategory.name = category
-                    self.realm.add(newCategory)
-                }
-            }
-            
-            categories = realm.objects(database.self) // 5
-        }
-    }
-    
     var emailAddress: String = ""
     var password: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateDefaultCategories()
-        
-        print(Realm.Configuration.defaultConfiguration.fileURL)
         
         emailField.delegate = self
         passwordField.delegate = self
@@ -113,10 +86,16 @@ class welcome: UIViewController, UITextFieldDelegate{
             //if everything's format is right...
             //save the data which has been typed to the textfields
             
-            self.openNewPage(name: "register")
+            self.openNewPage(name: "main")
         }
         
     }
+    
+    @IBAction func regisztracio(_ sender: Any)
+    {
+        self.openNewPage(name: "register")
+    }
+    
 
 }
 

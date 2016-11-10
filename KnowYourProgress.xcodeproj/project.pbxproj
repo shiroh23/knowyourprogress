@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B0C12D11DAFA38700B25C9D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0C12CF1DAFA38700B25C9D /* Realm.framework */; };
-		5B0C12D21DAFA38700B25C9D /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0C12CF1DAFA38700B25C9D /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5B0C12D31DAFA38700B25C9D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0C12D01DAFA38700B25C9D /* RealmSwift.framework */; };
-		5B0C12D41DAFA38700B25C9D /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0C12D01DAFA38700B25C9D /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5B0C12D71DAFA40400B25C9D /* database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0C12D61DAFA40400B25C9D /* database.swift */; };
 		5B4463B51DA2EACE00685365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463B41DA2EACE00685365 /* AppDelegate.swift */; };
 		5B4463B71DA2EACE00685365 /* welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463B61DA2EACE00685365 /* welcome.swift */; };
 		5B4463BA1DA2EACE00685365 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4463B81DA2EACE00685365 /* Main.storyboard */; };
@@ -23,6 +18,8 @@
 		5B4463E61DA2EFB000685365 /* 489812_Pannonia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B4463E51DA2EFB000685365 /* 489812_Pannonia.jpg */; };
 		5B4463EB1DA2FB5800685365 /* launchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463EA1DA2FB5800685365 /* launchScreen.swift */; };
 		5B4463ED1DA315A300685365 /* register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463EC1DA315A300685365 /* register.swift */; };
+		5BC2B0961DD4AB5D004562C2 /* mainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC2B0951DD4AB5D004562C2 /* mainScreen.swift */; };
+		5BC2B0981DD4ABD6004562C2 /* mernokinfoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC2B0971DD4ABD6004562C2 /* mernokinfoData.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +46,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5B0C12D41DAFA38700B25C9D /* RealmSwift.framework in Embed Frameworks */,
-				5B0C12D21DAFA38700B25C9D /* Realm.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,9 +53,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5B0C12CF1DAFA38700B25C9D /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		5B0C12D01DAFA38700B25C9D /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
-		5B0C12D61DAFA40400B25C9D /* database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = database.swift; sourceTree = "<group>"; };
 		5B4463B11DA2EACE00685365 /* KnowYourProgress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowYourProgress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4463B41DA2EACE00685365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B4463B61DA2EACE00685365 /* welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcome.swift; sourceTree = "<group>"; };
@@ -78,6 +70,8 @@
 		5B4463E51DA2EFB000685365 /* 489812_Pannonia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 489812_Pannonia.jpg; path = ../../../Downloads/489812_Pannonia.jpg; sourceTree = "<group>"; };
 		5B4463EA1DA2FB5800685365 /* launchScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = launchScreen.swift; sourceTree = "<group>"; };
 		5B4463EC1DA315A300685365 /* register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = register.swift; sourceTree = "<group>"; };
+		5BC2B0951DD4AB5D004562C2 /* mainScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainScreen.swift; sourceTree = "<group>"; };
+		5BC2B0971DD4ABD6004562C2 /* mernokinfoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = mernokinfoData.plist; path = KnowYourProgress/mernokinfoData.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B0C12D31DAFA38700B25C9D /* RealmSwift.framework in Frameworks */,
-				5B0C12D11DAFA38700B25C9D /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,8 +102,7 @@
 		5B4463A81DA2EACD00685365 = {
 			isa = PBXGroup;
 			children = (
-				5B0C12CF1DAFA38700B25C9D /* Realm.framework */,
-				5B0C12D01DAFA38700B25C9D /* RealmSwift.framework */,
+				5BC2B0991DD4AC4B004562C2 /* datasource */,
 				5B4463E71DA2EFBA00685365 /* Pictures */,
 				5B4463B31DA2EACE00685365 /* KnowYourProgress */,
 				5B4463CB1DA2EACE00685365 /* KnowYourProgressTests */,
@@ -135,10 +126,10 @@
 			children = (
 				5B4463EC1DA315A300685365 /* register.swift */,
 				5B4463EA1DA2FB5800685365 /* launchScreen.swift */,
+				5BC2B0951DD4AB5D004562C2 /* mainScreen.swift */,
 				5B4463B41DA2EACE00685365 /* AppDelegate.swift */,
 				5B4463B61DA2EACE00685365 /* welcome.swift */,
 				5B4463B81DA2EACE00685365 /* Main.storyboard */,
-				5B0C12D61DAFA40400B25C9D /* database.swift */,
 				5B4463BE1DA2EACE00685365 /* Assets.xcassets */,
 				5B4463C01DA2EACE00685365 /* LaunchScreen.storyboard */,
 				5B4463C31DA2EACE00685365 /* Info.plist */,
@@ -171,6 +162,14 @@
 				5B4463E51DA2EFB000685365 /* 489812_Pannonia.jpg */,
 			);
 			name = Pictures;
+			sourceTree = "<group>";
+		};
+		5BC2B0991DD4AC4B004562C2 /* datasource */ = {
+			isa = PBXGroup;
+			children = (
+				5BC2B0971DD4ABD6004562C2 /* mernokinfoData.plist */,
+			);
+			name = datasource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,7 +237,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Horváth Richárd";
 				TargetAttributes = {
 					5B4463B01DA2EACE00685365 = {
@@ -286,6 +285,7 @@
 				5B4463C21DA2EACE00685365 /* LaunchScreen.storyboard in Resources */,
 				5B4463E61DA2EFB000685365 /* 489812_Pannonia.jpg in Resources */,
 				5B4463BF1DA2EACE00685365 /* Assets.xcassets in Resources */,
+				5BC2B0981DD4ABD6004562C2 /* mernokinfoData.plist in Resources */,
 				5B4463BA1DA2EACE00685365 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,7 +318,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -331,8 +331,8 @@
 				5B4463B71DA2EACE00685365 /* welcome.swift in Sources */,
 				5B4463BD1DA2EACE00685365 /* KnowYourProgress.xcdatamodeld in Sources */,
 				5B4463B51DA2EACE00685365 /* AppDelegate.swift in Sources */,
+				5BC2B0961DD4AB5D004562C2 /* mainScreen.swift in Sources */,
 				5B4463ED1DA315A300685365 /* register.swift in Sources */,
-				5B0C12D71DAFA40400B25C9D /* database.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +405,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -454,6 +455,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
