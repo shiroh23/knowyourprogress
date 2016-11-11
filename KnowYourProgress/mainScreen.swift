@@ -11,6 +11,7 @@ import UIKit
 
 class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var felevLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var productArray = NSArray()
     var melyiket: Int = 0
@@ -23,13 +24,46 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         readPropertyList()
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.felevLbl.addGestureRecognizer(swipeRight)
+        
+        //extra funkció kitalálása, esetleg frissítés
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeDown.direction = UISwipeGestureRecognizerDirection.down
+        self.felevLbl.addGestureRecognizer(swipeDown)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.felevLbl.addGestureRecognizer(swipeLeft)
+        
+
+    }
+    
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                print("Swiped right")
+            case UISwipeGestureRecognizerDirection.down:
+                print("Swiped down")
+            case UISwipeGestureRecognizerDirection.left:
+                print("Swiped left")
+            case UISwipeGestureRecognizerDirection.up:
+                print("Swiped up")
+            default:
+                break
+            }
+        }
     }
     
     private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productArray.count
@@ -38,20 +72,20 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
         let row = indexPath.row
-        cell.textLabel?.text = getNev(pId: row).0
+        cell.textLabel?.text = getNev(pId: row)
         return cell
         
     }
  
-    func getNev(pId: Int) -> (String, String){
+    func getNev(pId: Int) -> String{
         var nev: String = ""
-        var kredit: String = ""
+        //var kredit: String = ""
         var rekord: Dictionary<String, AnyObject>
         rekord = productArray.object(at: pId) as! Dictionary<String, AnyObject>
         
         nev = rekord["nev"] as! String
-        kredit = rekord["kredit"] as! String
-        return (nev, kredit);
+        //kredit = rekord["kredit"] as! String
+        return nev;
     }
     
     /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
