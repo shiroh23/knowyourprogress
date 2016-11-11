@@ -10,15 +10,18 @@ import Foundation
 import UIKit
 import CoreData
 
-class register: UIViewController, UITextFieldDelegate {
+class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var jelszoField: UITextField!
     @IBOutlet weak var jelszo2Field: UITextField!
     @IBOutlet weak var felevField: UITextField!
     @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var szakvalasztoField: UITextField!
     
     var searchResults = [NSManagedObject]()
    
+    var pickOption = ["mérnökinformatikus", "programtervező informatikus", "gazdasági informatikus"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerBtn.isEnabled = false
@@ -26,6 +29,28 @@ class register: UIViewController, UITextFieldDelegate {
         jelszoField.delegate = self
         jelszo2Field.delegate = self
         felevField.delegate = self
+        
+        let pickerView = UIPickerView()
+        
+        pickerView.tag = 1
+        pickerView.delegate = self
+        szakvalasztoField.inputView = pickerView
+
+        let toolBar = UIToolbar()
+        toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.tintColor = UIColor.purple
+        toolBar.backgroundColor = UIColor.white
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: Selector(("donePressed:")))
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        
+        toolBar.setItems([flexSpace,flexSpace,flexSpace,doneButton], animated: true)
+
+        
+        szakvalasztoField.inputAccessoryView = toolBar
+
     }
     func openNewPage(name: String){
         let theDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -54,7 +79,7 @@ class register: UIViewController, UITextFieldDelegate {
         if ((textField.viewWithTag(1)) != nil)
         {
             jelszoField.becomeFirstResponder()
-            if (jelszoField.text != "" && jelszo2Field.text != "" && emailField.text != "" && felevField.text != "")
+            if (jelszoField.text != "" && jelszo2Field.text != "" && emailField.text != "" && felevField.text != "" && szakvalasztoField.text != "")
             {
                 registerBtn.isEnabled = true
             }
@@ -63,7 +88,7 @@ class register: UIViewController, UITextFieldDelegate {
         {
             jelszoField.resignFirstResponder()
             jelszo2Field.becomeFirstResponder()
-            if (emailField.text != "" && jelszo2Field.text != "" && jelszoField.text != "" && felevField.text != "")
+            if (emailField.text != "" && jelszo2Field.text != "" && jelszoField.text != "" && felevField.text != "" && szakvalasztoField.text != "")
             {
                 registerBtn.isEnabled = true
             }
@@ -71,16 +96,25 @@ class register: UIViewController, UITextFieldDelegate {
         else if (textField.viewWithTag(3) != nil)
         {
             jelszo2Field.resignFirstResponder()
-            felevField.becomeFirstResponder()
-            if (emailField.text != "" && jelszoField.text != "" && jelszo2Field.text != "" && felevField.text != "")
+            szakvalasztoField.becomeFirstResponder()
+            if (emailField.text != "" && jelszoField.text != "" && jelszo2Field.text != "" && felevField.text != "" && szakvalasztoField.text != "")
             {
                 registerBtn.isEnabled = true
             }
         }
         else if (textField.viewWithTag(4) != nil)
         {
+            szakvalasztoField.resignFirstResponder()
+            felevField.becomeFirstResponder()
+            if (emailField.text != "" && jelszoField.text != "" && jelszo2Field.text != "" && felevField.text != "" && szakvalasztoField.text != "")
+            {
+                registerBtn.isEnabled = true
+            }
+        }
+        else if (textField.viewWithTag(5) != nil)
+        {
             felevField.resignFirstResponder()
-            if (emailField.text != "" && jelszoField.text != "" && jelszo2Field.text != "" && felevField.text != "")
+            if (emailField.text != "" && jelszoField.text != "" && jelszo2Field.text != "" && felevField.text != "" && szakvalasztoField.text != "")
             {
                 registerBtn.isEnabled = true
             }
@@ -113,7 +147,7 @@ class register: UIViewController, UITextFieldDelegate {
         let emailRegEx: NSString = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         
-        if((emailField.text == "") || (jelszoField.text == "" || jelszo2Field.text == "") || felevField.text == ""){
+        if((emailField.text == "") || (jelszoField.text == "" || jelszo2Field.text == "") || felevField.text == "" || szakvalasztoField.text == ""){
             
             self.alert(msg1: "Minden mezőt ki kell töltened!")
             
@@ -123,7 +157,7 @@ class register: UIViewController, UITextFieldDelegate {
             self.alert(msg1: "Kérlek valós e-mail címet adj meg!")
             emailField.text = ""
             
-        } else if ((jelszoField.text != "") && jelszo2Field.text != "" && felevField.text != "" && !(emailField.text!.isEmpty) &&
+        } else if ((jelszoField.text != "") && jelszo2Field.text != "" && felevField.text != "" && szakvalasztoField.text != "" && !(emailField.text!.isEmpty) &&
             !(emailTest.evaluate(with: self.emailField.text) == false)) {
             if (jelszo2Field.text == jelszoField.text)
             {
@@ -143,7 +177,7 @@ class register: UIViewController, UITextFieldDelegate {
                     //adatmentés database-be
                     print("adatmentés")
                     let intFelev = Int(felevField.text!)
-                    self.saveUser(email: emailField.text!, jelszo: jelszoField.text!, felev: intFelev!)
+                    self.saveUser(email: emailField.text!, jelszo: jelszoField.text!, felev: intFelev!, szak: szakvalasztoField.text!)
                     alert2(msg1: "Sikeres regisztráció!")
                 }
                 else
@@ -166,7 +200,7 @@ class register: UIViewController, UITextFieldDelegate {
     }
     
     
-    func saveUser(email: String, jelszo: String, felev: Int)
+    func saveUser(email: String, jelszo: String, felev: Int, szak: String)
     {
         let context = getContext()
         let entity =  NSEntityDescription.entity(forEntityName: "User", in: context)
@@ -179,6 +213,7 @@ class register: UIViewController, UITextFieldDelegate {
         let elvegzett = felev - 1
         felhasznalo.setValue(elvegzett, forKey: "finishedSemester")
         felhasznalo.setValue(false, forKey: "logged")
+        felhasznalo.setValue(szak, forKey: "major")
         
         do
         {
@@ -224,6 +259,28 @@ class register: UIViewController, UITextFieldDelegate {
     @IBAction func back(_ sender: UISwipeGestureRecognizer)
     {
         self.navigationController!.popViewController(animated: true)
+    }
+    
+    func donePressed(sender: UIBarButtonItem)
+    {
+        szakvalasztoField.resignFirstResponder()
+        felevField.becomeFirstResponder()
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            return pickOption.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            return pickOption[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            szakvalasztoField.text = pickOption[row]
     }
     
 }

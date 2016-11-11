@@ -16,6 +16,7 @@ struct Felhasznalo
     var currSem: Int = 0
     var finiSem: Int = 0
     var password: String = ""
+    var szak: String = ""
 }
 
 class profileScreen: UIViewController {
@@ -23,6 +24,7 @@ class profileScreen: UIViewController {
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var passwordLbl: UILabel!
     @IBOutlet weak var currSemLbl: UILabel!
+    @IBOutlet weak var majorLbl: UILabel!
     
     var searchResults = [NSManagedObject]()
     var felh = Felhasznalo()
@@ -33,6 +35,7 @@ class profileScreen: UIViewController {
         emailLbl.text = felh.email
         passwordLbl.text = felh.password
         currSemLbl.text = String(felh.currSem)
+        majorLbl.text = felh.szak
     }
     
     func getUserData () {
@@ -54,6 +57,7 @@ class profileScreen: UIViewController {
                     felh.currSem = users.value(forKey: "currentSemester") as! Int
                     felh.finiSem = users.value(forKey: "finishedSemester") as! Int
                     felh.password = users.value(forKey: "password") as! String
+                    felh.szak = users.value(forKey: "major") as! String
                     break
                 }
             }
@@ -76,6 +80,10 @@ class profileScreen: UIViewController {
     @IBAction func passwordChange(_ sender: Any)
     {
         print("passwordChange")
+    }
+    @IBAction func majorChange(_ sender: Any)
+    {
+        print("majorChange")
     }
     
     @IBAction func doneAndUpdate(_ sender: Any)

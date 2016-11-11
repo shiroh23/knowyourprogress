@@ -1,55 +1,33 @@
 //
-//  mainScreen.swift
+//  mainScreenBefore.swift
 //  KnowYourProgress
 //
-//  Created by shiroh23 on 2016. 11. 10..
+//  Created by shiroh23 on 2016. 11. 11..
 //  Copyright © 2016. Horváth Richárd. All rights reserved.
 //
 
 import Foundation
 import UIKit
-import CoreData
 
-struct Felh
-{
-    var email: String = ""
-    var currSem: Int = 0
-    var finiSem: Int = 0
-    var password: String = ""
-    var szak: String = ""
-}
-
-class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var felevLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
     var productArray = NSArray()
-    var currentSubjects = [String]()
     var melyiket: Int = 0
-    var semesterSubjCount: Int = 0
-    var felh = Felh()
     
-    var searchResults = [NSManagedObject]()
-    
-    func readPropertyList(szak: String)
-    {
-        let plistPath:String? = Bundle.main.path(forResource: szak, ofType: "plist")!
+    func readPropertyList(){
+        
+        let plistPath:String? = Bundle.main.path(forResource: "gazdinfoData", ofType: "plist")!
+        
         productArray = NSArray(contentsOfFile: plistPath!)!
+        
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        self.getUserData()
-        print(felh)
-        
-        readPropertyList(szak: felh.szak)
-        
-        semesterSubjCount = self.targyCounter()
-        
-        felevLbl.text = "\(felh.currSem). félév"
+        readPropertyList()
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
@@ -64,7 +42,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.felevLbl.addGestureRecognizer(swipeLeft)
         
-
+        
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -89,68 +67,43 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return semesterSubjCount
+        return productArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
         let row = indexPath.row
-        //cell.textLabel?.text = getNev(pId: row)
-        cell.textLabel?.text = currentSubjects[row]
+        cell.textLabel?.text = getNev(pId: row)
         return cell
+        
     }
- 
+    
     func getNev(pId: Int) -> String{
         var nev: String = ""
-        
         var rekord: Dictionary<String, AnyObject>
         rekord = productArray.object(at: pId) as! Dictionary<String, AnyObject>
         
         nev = rekord["nev"] as! String
-        
         return nev;
     }
     
-    func targyCounter() -> Int
-    {
-        var count: Int = 0
-        var felev: String = ""
-        var nev: String = ""
-        var rekord: Dictionary<String, AnyObject>
-        
-        for i in (0..<productArray.count)
-        {
-            rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
-            felev = rekord["felev"] as! String
-            if (felev == String(felh.currSem))
-            {
-                nev = rekord["nev"] as! String
-                currentSubjects.append(nev)
-                print(currentSubjects.last!)
-                count += 1
-            }
-        }
-        
-        return count
-    }
-    
     /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        self.melyiket = indexPath.row
-        print("\(self.melyiket) na melyik lesz")
-        let newSubject = self.productArray.object(at: self.melyiket) as! Dictionary<String, AnyObject>
-        let nev: String = newSubject["nev"] as! String
-        let targykod: String = newSubject["targykod"] as! String
-        let kredit: String = newSubject["kredit"] as! String
-        let felev: String = newSubject["felev"] as! String
-        print("\(nev) es \(targykod) es \(kredit) es \(felev)")
-        let destinationVC = detailviewScreen()
-        destinationVC.targykod = "gagyi"
-        destinationVC.kredit = "fos"
-        destinationVC.nev = "ez egy csalas"
-        destinationVC.felev = "utalom"
-        self.present(destinationVC, animated: true, completion: nil)
-    }*/
+     {
+     self.melyiket = indexPath.row
+     print("\(self.melyiket) na melyik lesz")
+     let newSubject = self.productArray.object(at: self.melyiket) as! Dictionary<String, AnyObject>
+     let nev: String = newSubject["nev"] as! String
+     let targykod: String = newSubject["targykod"] as! String
+     let kredit: String = newSubject["kredit"] as! String
+     let felev: String = newSubject["felev"] as! String
+     print("\(nev) es \(targykod) es \(kredit) es \(felev)")
+     let destinationVC = detailviewScreen()
+     destinationVC.targykod = "gagyi"
+     destinationVC.kredit = "fos"
+     destinationVC.nev = "ez egy csalas"
+     destinationVC.felev = "utalom"
+     self.present(destinationVC, animated: true, completion: nil)
+     }*/
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -161,13 +114,13 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             destination.subject = newSubject
         }
     }
-
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let more = UITableViewRowAction(style: .normal, title: "More") { action, index in
             print("more button tapped")
             self.melyiket = indexPath.row
         }
-    
+        
         more.backgroundColor = UIColor.lightGray
         
         let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { action, index in
@@ -199,61 +152,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let vc = storyboard!.instantiateViewController(withIdentifier: name)
         navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    // MARK: CoreData cucc
-    
-    func getUserData ()
-    {
-        
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        var useableszak: String = ""
-        do
-        {
-            searchResults = try getContext().fetch(fetchRequest)
-            
-            //print ("találatok száma = \(searchResults.count)")
-            
-            for users in searchResults as [NSManagedObject]
-            {
-                if (users.value(forKey: "logged") as! Bool == true)
-                {
-                    //print("megtalalta")
-                    felh.email = users.value(forKey: "email") as! String
-                    felh.currSem = users.value(forKey: "currentSemester") as! Int
-                    felh.finiSem = users.value(forKey: "finishedSemester") as! Int
-                    felh.password = users.value(forKey: "password") as! String
-                    useableszak = users.value(forKey: "major") as! String
-                    
-                    switch useableszak {
-                    case "mérnökinformatikus":
-                        felh.szak = "mernokinfoData"
-                        break
-                    case "programtervező informatikus":
-                        felh.szak = "proginfoData"
-                        break
-                    case "gazdasági informatikus":
-                        felh.szak = "gazdinfoData"
-                        break
-                    default:
-                        felh.szak = ""
-                        break
-                    }
-                    
-                    break
-                }
-            }
-            
-        }
-        catch
-        {
-            print("Error with request: \(error)")
-        }
-        
-    }
-    func getContext () -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
     }
     
 }
