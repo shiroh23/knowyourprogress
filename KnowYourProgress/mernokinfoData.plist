@@ -1,471 +1,596 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Matematikai analízis II.</key>
-	<dict>
-		<key>félév</key>
-		<integer>2</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMIMAB244M</string>
-	</dict>
-	<key>Vállalkozói ismeretek</key>
-	<dict>
-		<key>tárgykód</key>
-		<string>VEGTGAB244V</string>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>félév</key>
-		<integer>3</integer>
-	</dict>
-	<key>Matematikai analízis I.</key>
-	<dict>
-		<key>félév</key>
-		<integer>1</integer>
-		<key>kredit</key>
-		<integer>6</integer>
-		<key>tárgykód</key>
-		<string>VEMIMAB146M</string>
-	</dict>
-	<key>Numerikus és szimulációs környezetek a mérnöki alkalmazásokban</key>
-	<dict>
-		<key>félév</key>
-		<integer>0</integer>
-		<key>kredit</key>
-		<integer>2</integer>
-		<key>tárgykód</key>
-		<string>VEMIVIB512N</string>
-	</dict>
-	<key>A digitális számítás elmélete</key>
-	<dict>
-		<key>félév</key>
-		<integer>2</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMISA3244D</string>
-	</dict>
-	<key>Java programozás</key>
-	<dict>
-		<key>félév</key>
-		<integer>3</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMIIR2254J</string>
-	</dict>
-	<key>Közgazdaságtan</key>
-	<array>
-		<string>1</string>
-		<string>4</string>
-		<string>VEMKGA1114A</string>
-	</array>
-	<key>Projekt labor</key>
-	<dict>
-		<key>félév</key>
-		<integer>5</integer>
-		<key>kredit</key>
-		<integer>6</integer>
-		<key>tárgykód</key>
-		<string>VEMISA3136P</string>
-	</dict>
-	<key>Informatikai biztonság</key>
-	<dict>
-		<key>félév</key>
-		<integer>5</integer>
-		<key>kredit</key>
-		<integer>6</integer>
-		<key>tárgykód</key>
-		<string>VEMIIR3356B</string>
-	</dict>
-	<key>Informatikai rendszerek konfigurálása és üzemeltetése</key>
-	<dict>
-		<key>félév</key>
-		<integer>5</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMIIR5354I</string>
-	</dict>
-	<key>Valószínűségszámítás és matematikai statisztika</key>
-	<dict>
-		<key>félév</key>
-		<integer>3</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMKMA1344B</string>
-	</dict>
-	<key>Honvédelmi alapismeretek</key>
-	<dict>
-		<key>félév</key>
-		<integer>0</integer>
-		<key>kredit</key>
-		<integer>3</integer>
-		<key>tárgykód</key>
-		<string>VEMTSV5300H</string>
-	</dict>
-	<key>Vállalati gazdaságtan</key>
-	<dict>
-		<key>félév</key>
-		<integer>2</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEGTGAB144A</string>
-	</dict>
-	<key>Testnevelés I.</key>
-	<dict>
-		<key>félév</key>
-		<integer>1</integer>
-		<key>kredit</key>
-		<integer>0</integer>
-		<key>tárgykód</key>
-		<string>VEPETO1122A</string>
-	</dict>
-	<key>Testnevelés II.</key>
-	<dict>
-		<key>félév</key>
-		<integer>2</integer>
-		<key>kredit</key>
-		<integer>0</integer>
-		<key>tárgykód</key>
-		<string>VEPETO2222A</string>
-	</dict>
-	<key>Testnevelés III.</key>
-	<dict>
-		<key>félév</key>
-		<integer>3</integer>
-		<key>kredit</key>
-		<integer>0</integer>
-		<key>tárgykód</key>
-		<string>VEPETO3122A</string>
-	</dict>
-	<key>Testnevelés IV.</key>
-	<dict>
-		<key>félév</key>
-		<integer>4</integer>
-		<key>kredit</key>
-		<integer>0</integer>
-		<key>tárgykód</key>
-		<string>VEPETO4222A</string>
-	</dict>
-	<key>Kutatás-fejlesztés</key>
-	<dict>
-		<key>félév</key>
-		<integer>4</integer>
-		<key>kredit</key>
-		<integer>2</integer>
-		<key>tárgykód</key>
-		<string>VEMIKNB312F</string>
-	</dict>
-	<key>Programozás II.</key>
-	<dict>
-		<key>félév</key>
-		<integer>2</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMISA2254B</string>
-	</dict>
-	<key>Digitális technika I.</key>
-	<dict>
-		<key>félév</key>
-		<integer>2</integer>
-		<key>kredit</key>
-		<integer>2</integer>
-		<key>tárgykód</key>
-		<string>VEMIVI1112D</string>
-	</dict>
-	<key>Számítógépes perifériák</key>
-	<dict>
-		<key>félév</key>
-		<integer>3</integer>
-		<key>kredit</key>
-		<integer>2</integer>
-		<key>tárgykód</key>
-		<string>VEMIKN1252P</string>
-	</dict>
-	<key>Korszerű programozási technikák</key>
-	<dict>
-		<key>félév</key>
-		<integer>3</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMISA2354K</string>
-	</dict>
-	<key>Szoftvertechnológia</key>
-	<dict>
-		<key>félév</key>
-		<integer>3</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMKSA3114S</string>
-	</dict>
-	<key>Digitális technika II.</key>
-	<dict>
-		<key>félév</key>
-		<integer>3</integer>
-		<key>kredit</key>
-		<integer>2</integer>
-		<key>tárgykód</key>
-		<string>VEMIVI2112D</string>
-	</dict>
-	<key>Adatstruktúrák és algoritmusok</key>
-	<dict>
-		<key>félév</key>
-		<integer>2</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMISA3144A</string>
-	</dict>
-	<key>Méréselmélet</key>
-	<dict>
-		<key>félév</key>
-		<integer>2</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMIVI2212M</string>
-	</dict>
-	<key>Digitális rendszerek és számítógép architektúrák</key>
-	<dict>
-		<key>félév</key>
-		<integer>4</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMKKN3214A</string>
-	</dict>
-	<key>Operációs rendszerek</key>
-	<dict>
-		<key>félév</key>
-		<integer>4</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMKSA3244O</string>
-	</dict>
-	<key>Adatbáziskezelő rendszerek elmélete (angol nyelven)</key>
-	<dict>
-		<key>félév</key>
-		<integer>3</integer>
-		<key>kredit</key>
-		<integer>2</integer>
-		<key>tárgykód</key>
-		<string>VEMISA3312A</string>
-	</dict>
-	<key>Mesterséges intelligencia</key>
-	<dict>
-		<key>félév</key>
-		<integer>4</integer>
-		<key>kredit</key>
-		<integer>2</integer>
-		<key>tárgykód</key>
-		<string>VEMISA3242M</string>
-	</dict>
-	<key>Információ és hírközléselmélet</key>
-	<dict>
-		<key>félév</key>
-		<integer>5</integer>
-		<key>kredit</key>
-		<integer>2</integer>
-		<key>tárgykód</key>
-		<string>VEMIIR3112I</string>
-	</dict>
-	<key>Számítógép-hálózatok II.</key>
-	<dict>
-		<key>félév</key>
-		<integer>5</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMIIR3354H</string>
-	</dict>
-	<key>Adatbáziskezelő rendszerek alkalmazása</key>
-	<dict>
-		<key>félév</key>
-		<integer>5</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMKSA5144A</string>
-	</dict>
-	<key>Gyártórendszerek modellezése</key>
-	<dict>
-		<key>félév</key>
-		<integer>5</integer>
-		<key>kredit</key>
-		<integer>3</integer>
-		<key>tárgykód</key>
-		<string>VEMISA3143G</string>
-	</dict>
-	<key>A rendszerfejlesztés korszerű módszerei</key>
-	<dict>
-		<key>félév</key>
-		<integer>6</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMISA3344R</string>
-	</dict>
-	<key>Mérnöki tervezés</key>
-	<dict>
-		<key>félév</key>
-		<integer>6</integer>
-		<key>kredit</key>
-		<integer>10</integer>
-		<key>tárgykód</key>
-		<string>VEMIINB33XT</string>
-	</dict>
-	<key>Szakdolgozat</key>
-	<dict>
-		<key>félév</key>
-		<integer>7</integer>
-		<key>kredit</key>
-		<integer>15</integer>
-		<key>tárgykód</key>
-		<string>VEMIINB33XS</string>
-	</dict>
-	<key>Elektromosságtan</key>
-	<dict>
-		<key>félév</key>
-		<integer>2</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMIVI2144E</string>
-	</dict>
-	<key>Lineáris algebra</key>
-	<dict>
-		<key>félév</key>
-		<integer>1</integer>
-		<key>kredit</key>
-		<integer>3</integer>
-		<key>tárgykód</key>
-		<string>VEMKMA1143V</string>
-	</dict>
-	<key>Az informatika logikai és algebrai alapjai</key>
-	<dict>
-		<key>félév</key>
-		<integer>1</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMIMA1344I</string>
-	</dict>
-	<key>Programozás alapjai</key>
-	<dict>
-		<key>félév</key>
-		<integer>1</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMISA1144A</string>
-	</dict>
-	<key>Programozás I.</key>
-	<dict>
-		<key>félév</key>
-		<integer>1</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMKSA2144B</string>
-	</dict>
-	<key>Bevezetés a számítástechnikába</key>
-	<dict>
-		<key>félév</key>
-		<integer>1</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMKVI2114I</string>
-	</dict>
-	<key>Diszkrét matematika</key>
-	<dict>
-		<key>félév</key>
-		<integer>2</integer>
-		<key>kredit</key>
-		<integer>3</integer>
-		<key>tárgykód</key>
-		<string>VETKMA1243D</string>
-	</dict>
-	<key>Fizika II.</key>
-	<dict>
-		<key>félév</key>
-		<integer>2</integer>
-		<key>kredit</key>
-		<integer>2</integer>
-		<key>tárgykód</key>
-		<string>VEMKFI1312B</string>
-	</dict>
-	<key>Elektronikus elemek és áramkörök laborgyakorlat</key>
-	<dict>
-		<key>félév</key>
-		<integer>3</integer>
-		<key>kredit</key>
-		<integer>2</integer>
-		<key>tárgykód</key>
-		<string>VEMIVIB132E</string>
-	</dict>
-	<key>Fizika I.</key>
-	<dict>
-		<key>félév</key>
-		<integer>3</integer>
-		<key>kredit</key>
-		<integer>2</integer>
-		<key>tárgykód</key>
-		<string>VEMKFI1312A</string>
-	</dict>
-	<key>Elektronikus elemek és áramkörök</key>
-	<dict>
-		<key>félév</key>
-		<integer>3</integer>
-		<key>kredit</key>
-		<integer>3</integer>
-		<key>tárgykód</key>
-		<string>VEMIVIB313E</string>
-	</dict>
-	<key>Irányításelmélet és technika I.</key>
-	<dict>
-		<key>félév</key>
-		<integer>4</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMKVI2244I</string>
-	</dict>
-	<key>Számítógép-hálózatok I.</key>
-	<dict>
-		<key>félév</key>
-		<integer>4</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMIIRB214S</string>
-	</dict>
-	<key>3D-s technológiák a játékfejlesztésben</key>
-	<dict>
-		<key>félév</key>
-		<integer>0</integer>
-		<key>kredit</key>
-		<integer>2</integer>
-		<key>tárgykód</key>
-		<string>VEMISVSA32J</string>
-	</dict>
-	<key>Játékfejlesztés alapjai</key>
-	<dict>
-		<key>félév</key>
-		<integer>0</integer>
-		<key>kredit</key>
-		<integer>4</integer>
-		<key>tárgykód</key>
-		<string>VEMIVIR354J</string>
-	</dict>
-</dict>
+<array>
+    <dict>
+        <key>nev</key>
+        <string>Vállalkozói ismeretek</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEGTGAB244V</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Matematikai analízis II.</string>
+        <key>felev</key>
+        <string>2</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMIMAB244M</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Matematikai analízis I.</string>
+        <key>felev</key>
+        <string>1</string>
+        <key>kredit</key>
+        <string>6</string>
+        <key>targykod</key>
+        <string>VEMIMAB146M</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Numerikus és szimulációs környezetek a mérnöki alkalmazásokban</string>
+        <key>felev</key>
+        <string>0</string>
+        <key>kredit</key>
+        <string>2</string>
+        <key>targykod</key>
+        <string>VEMIVIB512N</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>A digitális számítás elmélete</string>
+        <key>felev</key>
+        <string>2</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMISA3244D</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Java programozás</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMIIR2254J</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Közgazdaságtan</string>
+        <key>felev</key>
+        <string>1</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMKGA1114A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Projekt labor</string>
+        <key>felev</key>
+        <string>5</string>
+        <key>kredit</key>
+        <string>6</string>
+        <key>targykod</key>
+        <string>VEMISA3136P</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Informatikai biztonság</string>
+        <key>felev</key>
+        <string>5</string>
+        <key>kredit</key>
+        <string>6</string>
+        <key>targykod</key>
+        <string>VEMIIR3356B</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Informatikai rendszerek konfigurálása és üzemeltetése</string>
+        <key>felev</key>
+        <string>5</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMIIR5354I</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Valószín?ségszámítás és matematikai statisztika</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMKMA1344B</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Valószín?ségszámítás és matematikai statisztika</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMKMA1344B</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Honvédelmi alapismeretek</string>
+        <key>felev</key>
+        <string>0</string>
+        <key>kredit</key>
+        <string>3</string>
+        <key>targykod</key>
+        <string>VEMTSV5300H</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Vállalati gazdaságtan</string>
+        <key>felev</key>
+        <string>2</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEGTGAB144A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Angol nyelvi kollokviumi vizsga</string>
+        <key>felev</key>
+        <string>2</string>
+        <key>kredit</key>
+        <string>0</string>
+        <key>targykod</key>
+        <string>VEMKLE12X0A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Angol nyelvi záróvizsga</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>0</string>
+        <key>targykod</key>
+        <string>VEMKLE22X0A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Testnevelés I.</string>
+        <key>felev</key>
+        <string>1</string>
+        <key>kredit</key>
+        <string>0</string>
+        <key>targykod</key>
+        <string>VEPETO1122A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Testnevelés II.</string>
+        <key>felev</key>
+        <string>2</string>
+        <key>kredit</key>
+        <string>0</string>
+        <key>targykod</key>
+        <string>VEPETO2222A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Testnevelés III.</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>0</string>
+        <key>targykod</key>
+        <string>VEPETO3122A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Testnevelés IV.</string>
+        <key>felev</key>
+        <string>4</string>
+        <key>kredit</key>
+        <string>0</string>
+        <key>targykod</key>
+        <string>VEPETO4222A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Angol nyelv I. (4 óra)</string>
+        <key>felev</key>
+        <string>1</string>
+        <key>kredit</key>
+        <string>0</string>
+        <key>targykod</key>
+        <string>VEMKLE1120A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Angol nyelv II. (4 óra)</string>
+        <key>felev</key>
+        <string>2</string>
+        <key>kredit</key>
+        <string>0</string>
+        <key>targykod</key>
+        <string>VEMKLE1220A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Angol nyelv III. (4 óra)</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>0</string>
+        <key>targykod</key>
+        <string>VEMKLE2120A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Angol nyelv IV. (4 óra)</string>
+        <key>felev</key>
+        <string>4</string>
+        <key>kredit</key>
+        <string>0</string>
+        <key>targykod</key>
+        <string>VEMKLE2220A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Kutatás-fejlesztés</string>
+        <key>felev</key>
+        <string>4</string>
+        <key>kredit</key>
+        <string>2</string>
+        <key>targykod</key>
+        <string>VEMIKNB312F</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Programozás II.</string>
+        <key>felev</key>
+        <string>2</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMISA2254B</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Digitális technika I.</string>
+        <key>felev</key>
+        <string>2</string>
+        <key>kredit</key>
+        <string>2</string>
+        <key>targykod</key>
+        <string>VEMIVI1112D</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Számítógépes perifériák</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>2</string>
+        <key>targykod</key>
+        <string>VEMIKN1252P</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Korszer? programozási technikák</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMISA2354K</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Szoftvertechnológia</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMKSA3114S</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Digitális technika II.</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>2</string>
+        <key>targykod</key>
+        <string>VEMIVI2112D</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Adatstruktúrák és algoritmusok</string>
+        <key>felev</key>
+        <string>2</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMISA3144A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Méréselmélet</string>
+        <key>felev</key>
+        <string>4</string>
+        <key>kredit</key>
+        <string>2</string>
+        <key>targykod</key>
+        <string>VEMIVI2212M</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Digitális rendszerek és számítógép architektúrák</string>
+        <key>felev</key>
+        <string>4</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMKKN3214A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Operációs rendszerek</string>
+        <key>felev</key>
+        <string>4</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMKSA3244O</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Adatbáziskezel? rendszerek elmélete (angol nyelven)</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>2</string>
+        <key>targykod</key>
+        <string>VEMISA3312A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Mesterséges intelligencia</string>
+        <key>felev</key>
+        <string>4</string>
+        <key>kredit</key>
+        <string>2</string>
+        <key>targykod</key>
+        <string>VEMISA3242M</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Információ és hírközléselmélet</string>
+        <key>felev</key>
+        <string>5</string>
+        <key>kredit</key>
+        <string>2</string>
+        <key>targykod</key>
+        <string>VEMIIR3112I</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Számítógép-hálózatok II.</string>
+        <key>felev</key>
+        <string>5</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMIIR3354H</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Adatbáziskezel? rendszerek alkalmazása</string>
+        <key>felev</key>
+        <string>5</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMKSA5144A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Gyártórendszerek modellezése</string>
+        <key>felev</key>
+        <string>5</string>
+        <key>kredit</key>
+        <string>3</string>
+        <key>targykod</key>
+        <string>VEMISA3143G</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>A rendszerfejlesztés korszer? módszerei</string>
+        <key>felev</key>
+        <string>6</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMISA3344R</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Mérnöki tervezés</string>
+        <key>felev</key>
+        <string>6</string>
+        <key>kredit</key>
+        <string>10</string>
+        <key>targykod</key>
+        <string>VEMIINB33XT</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Szakdolgozat</string>
+        <key>felev</key>
+        <string>7</string>
+        <key>kredit</key>
+        <string>15</string>
+        <key>targykod</key>
+        <string>VEMIINB33XS</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Elektromosságtan</string>
+        <key>felev</key>
+        <string>2</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMIVI2144E</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Lineáris algebra</string>
+        <key>felev</key>
+        <string>1</string>
+        <key>kredit</key>
+        <string>3</string>
+        <key>targykod</key>
+        <string>VEMKMA1143V</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Az informatika logikai és algebrai alapjai</string>
+        <key>felev</key>
+        <string>1</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMIMA1344I</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Programozás alapjai</string>
+        <key>felev</key>
+        <string>1</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMISA1144A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Programozás I.</string>
+        <key>felev</key>
+        <string>1</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMKSA2144B</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Bevezetés a számítástechnikába</string>
+        <key>felev</key>
+        <string>1</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMKVI2114I</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Diszkrét matematika</string>
+        <key>felev</key>
+        <string>2</string>
+        <key>kredit</key>
+        <string>3</string>
+        <key>targykod</key>
+        <string>VETKMA1243D</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Fizika II.</string>
+        <key>felev</key>
+        <string>2</string>
+        <key>kredit</key>
+        <string>2</string>
+        <key>targykod</key>
+        <string>VEMKFI1312B</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Elektronikus elemek és áramkörök laborgyakorlat</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>2</string>
+        <key>targykod</key>
+        <string>VEMIVIB132E</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Fizika I.</string>
+        <key>felev</key>
+        <string>1</string>
+        <key>kredit</key>
+        <string>2</string>
+        <key>targykod</key>
+        <string>VEMKFI1312A</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Elektronikus elemek és áramkörök</string>
+        <key>felev</key>
+        <string>3</string>
+        <key>kredit</key>
+        <string>3</string>
+        <key>targykod</key>
+        <string>VEMIVIB313E</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Irányításelmélet és technika I.</string>
+        <key>felev</key>
+        <string>4</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMKVI2244I</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Számítógép-hálózatok I.</string>
+        <key>felev</key>
+        <string>4</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMIIRB214S</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>3D-s technológiák a játékfejlesztésben</string>
+        <key>felev</key>
+        <string>0</string>
+        <key>kredit</key>
+        <string>2</string>
+        <key>targykod</key>
+        <string>VEMISVSA32J</string>
+    </dict>
+    <dict>
+        <key>nev</key>
+        <string>Játékfejlesztés alapjai</string>
+        <key>felev</key>
+        <string>0</string>
+        <key>kredit</key>
+        <string>4</string>
+        <key>targykod</key>
+        <string>VEMIVIR354J</string>
+    </dict>
+</array>
 </plist>

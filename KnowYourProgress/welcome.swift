@@ -103,6 +103,7 @@ class welcome: UIViewController, UITextFieldDelegate{
             if (volt == true)
             {
                 //bejelentkezés ha minden stimmel
+                self.loginUser(email: emailAddress)
                 self.openNewPage(name: "main")
             }
             else
@@ -137,6 +138,36 @@ class welcome: UIViewController, UITextFieldDelegate{
         }
     }
     
+    func loginUser (email: String) {
+        
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        let context = getContext()
+        
+        do
+        {
+            searchResults = try getContext().fetch(fetchRequest)
+            
+            print ("update találatok száma = \(searchResults.count)")
+            
+            for felhasznalo in searchResults as [NSManagedObject]
+            {
+                if (felhasznalo.value(forKey: "email") as! String == email)
+                {
+                    felhasznalo.setValue(true, forKey: "logged")
+                    print("felhasznalo megtalalva")
+                    break
+                }
+            }
+            
+            try context.save()
+            print("updated!")
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+    }
+    
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
@@ -146,7 +177,6 @@ class welcome: UIViewController, UITextFieldDelegate{
     {
         self.openNewPage(name: "register")
     }
-    
 
 }
 

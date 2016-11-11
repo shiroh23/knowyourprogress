@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0AEF5D1DD61C7200018F09 /* profileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEF5C1DD61C7200018F09 /* profileScreen.swift */; };
 		5B4463B51DA2EACE00685365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463B41DA2EACE00685365 /* AppDelegate.swift */; };
 		5B4463B71DA2EACE00685365 /* welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463B61DA2EACE00685365 /* welcome.swift */; };
 		5B4463BD1DA2EACE00685365 /* KnowYourProgress.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463BB1DA2EACE00685365 /* KnowYourProgress.xcdatamodeld */; };
@@ -56,6 +57,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B0AEF5C1DD61C7200018F09 /* profileScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileScreen.swift; sourceTree = "<group>"; };
 		5B4463B11DA2EACE00685365 /* KnowYourProgress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowYourProgress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4463B41DA2EACE00685365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B4463B61DA2EACE00685365 /* welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcome.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				5B4463EC1DA315A300685365 /* register.swift */,
+				5B0AEF5C1DD61C7200018F09 /* profileScreen.swift */,
 				5B4463EA1DA2FB5800685365 /* launchScreen.swift */,
 				5BC2B0951DD4AB5D004562C2 /* mainScreen.swift */,
 				5B45093B1DD5157E00BC1486 /* detailviewScreen.swift */,
@@ -346,6 +349,7 @@
 				5B4463B51DA2EACE00685365 /* AppDelegate.swift in Sources */,
 				5BC2B0961DD4AB5D004562C2 /* mainScreen.swift in Sources */,
 				5B4463ED1DA315A300685365 /* register.swift in Sources */,
+				5B0AEF5D1DD61C7200018F09 /* profileScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

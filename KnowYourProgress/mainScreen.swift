@@ -33,7 +33,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.felevLbl.addGestureRecognizer(swipeRight)
         
-        //extra funkció kitalálása, esetleg frissítés
+        //profil adatlap megtekintése
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeDown.direction = UISwipeGestureRecognizerDirection.down
         self.felevLbl.addGestureRecognizer(swipeDown)
@@ -52,6 +52,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 print("Swiped right")
             case UISwipeGestureRecognizerDirection.down:
                 print("Swiped down")
+                self.openNewPage(name: "profile")
             case UISwipeGestureRecognizerDirection.left:
                 print("Swiped left")
             case UISwipeGestureRecognizerDirection.up:
@@ -79,12 +80,10 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
  
     func getNev(pId: Int) -> String{
         var nev: String = ""
-        //var kredit: String = ""
         var rekord: Dictionary<String, AnyObject>
         rekord = productArray.object(at: pId) as! Dictionary<String, AnyObject>
         
         nev = rekord["nev"] as! String
-        //kredit = rekord["kredit"] as! String
         return nev;
     }
     
@@ -114,7 +113,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             let newSubject = self.productArray.object(at: index!) as! Dictionary<String, AnyObject>
             destination.subject = newSubject
         }
-        
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

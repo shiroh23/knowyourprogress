@@ -178,6 +178,7 @@ class register: UIViewController, UITextFieldDelegate {
         felhasznalo.setValue(felev, forKey: "currentSemester")
         let elvegzett = felev - 1
         felhasznalo.setValue(elvegzett, forKey: "finishedSemester")
+        felhasznalo.setValue(false, forKey: "logged")
         
         do
         {
