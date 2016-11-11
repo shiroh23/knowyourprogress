@@ -19,6 +19,14 @@ struct Felh
     var szak: String = ""
 }
 
+struct Targy
+{
+    var nev: String = ""
+    var kredit: String = ""
+    var felev: String = ""
+    var targykod: String = ""
+}
+
 class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var felevLbl: UILabel!
@@ -157,8 +165,21 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if (segue.identifier == "segue") {
             let destination = segue.destination as! detailviewScreen
             let index = tableView.indexPathForSelectedRow?.row
-            let newSubject = self.productArray.object(at: index!) as! Dictionary<String, AnyObject>
-            destination.subject = newSubject
+            
+            let keresettTargy = self.currentSubjects[index!]
+            var targy: String = ""
+            var rekord: Dictionary<String, AnyObject>
+            
+            for i in (0..<productArray.count)
+            {
+                rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
+                targy = rekord["nev"] as! String
+                if (targy == keresettTargy)
+                {
+                    let newSubject = self.productArray.object(at: i) as! Dictionary<String, AnyObject>
+                    destination.subject = newSubject
+                }
+            }
         }
     }
 

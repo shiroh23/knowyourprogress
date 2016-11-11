@@ -8,17 +8,39 @@
 
 import Foundation
 import UIKit
+import CoreData
+
+struct Tantargy {
+    var nev: String = ""
+    var kredit: String = ""
+    var felev: String = ""
+    var targykod: String = ""
+}
 
 class detailviewScreen: UIViewController {
     
     @IBOutlet weak var subjectName: UILabel!
+    @IBOutlet weak var kreditLbl: UILabel!
+    @IBOutlet weak var felevLbl: UILabel!
+    @IBOutlet weak var targykodLbl: UILabel!
+    
     var subject: Dictionary<String, AnyObject> = [:]
+    var tantargy = Tantargy()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("megjöttünk")
+        tantargy.felev = subject["felev"] as! String
+        tantargy.kredit = subject["kredit"] as! String
+        tantargy.nev = subject["nev"] as! String
+        tantargy.targykod = subject["targykod"] as! String
       
-        subjectName.text = subject["nev"] as? String
+        subjectName.adjustsFontSizeToFitWidth = true
+        subjectName.minimumScaleFactor = 0.5
+        
+        subjectName.text = tantargy.nev
+        kreditLbl.text = tantargy.kredit
+        felevLbl.text = "A \(tantargy.felev). félévben csinálhatod a tárgyat:"
+        targykodLbl.text = tantargy.targykod
         
     }
     @IBAction func back(_ sender: Any)

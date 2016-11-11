@@ -44,7 +44,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qm7-1H-zlt">
                                 <rect key="frame" x="141" y="416" width="93" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <state key="normal" title="Regisztráció"/>
+                                <state key="normal" title="Regisztráció">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="regisztracio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CyT-KA-9Sl"/>
                                 </connections>
@@ -52,7 +54,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoj-1C-Fcs">
                                 <rect key="frame" x="129" y="372" width="117" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
-                                <state key="normal" title="Bejelentkezés"/>
+                                <state key="normal" title="Bejelentkezés">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="bejelentkezesWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W4R-3J-Eao"/>
                                 </connections>
@@ -177,7 +181,9 @@
                                     <constraint firstAttribute="width" constant="97" id="gfY-Qo-2ao"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <state key="normal" title="Regisztrálás"/>
+                                <state key="normal" title="Regisztrálás">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="register:" destination="sCe-st-duu" eventType="touchUpInside" id="51I-ln-xnM"/>
                                 </connections>
@@ -288,7 +294,7 @@
                             <label opaque="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. félév" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQ3-NO-90z">
                                 <rect key="frame" x="0.0" y="20" width="375" height="52"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
-                                <color key="textColor" red="0.41214063179999999" green="0.39304654700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -327,7 +333,7 @@
                             <label opaque="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. félév" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBg-s0-p3c">
                                 <rect key="frame" x="0.0" y="20" width="375" height="52"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
-                                <color key="textColor" red="0.41214063179999999" green="0.39304654700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2dT-5z-gIo">
@@ -391,7 +397,7 @@
                             <label opaque="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. félév" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3aD-YO-Mjq">
                                 <rect key="frame" x="0.0" y="20" width="375" height="52"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
-                                <color key="textColor" red="0.41214063179999999" green="0.39304654700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7sz-pN-bpA">
@@ -454,7 +460,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmF-ty-fUi">
                                 <rect key="frame" x="283" y="35" width="76" height="37"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="Kész"/>
+                                <state key="normal" title="Kész">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="doneAndUpdate:" destination="Qmb-wj-FOS" eventType="touchUpInside" id="0UA-hL-NgJ"/>
                                 </connections>
@@ -511,7 +519,7 @@
                                     <constraint firstAttribute="height" constant="23" id="Cz7-eZ-PPp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
-                                <color key="textColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jelszó" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNs-8A-hFM">
@@ -669,36 +677,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh4-L5-N1P">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tantárgy neve" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh4-L5-N1P">
                                 <rect key="frame" x="80" y="28" width="279" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="279" id="MWj-jc-ZGr"/>
+                                    <constraint firstAttribute="height" constant="45" id="tsy-WQ-PNu"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="23"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuc-d2-iR4">
-                                <rect key="frame" x="15" y="28" width="57" height="30"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.050000000000000003" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="489812_Pannonia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Vlt-Ur-znk">
+                                <rect key="frame" x="0.0" y="170" width="375" height="327"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ha teljesíted, ennyi kredit jár érte:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDs-Q1-4gL">
+                                <rect key="frame" x="16" y="141" width="256" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="&lt; Back"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mu-UJ-gNm">
+                                <rect key="frame" x="280" y="131" width="79" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A x. félévben csinálhatod a tárgyat:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxJ-LJ-EBs">
+                                <rect key="frame" x="56" y="197" width="263" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="tantargykod" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ea7-jt-gho">
+                                <rect key="frame" x="191" y="81" width="168" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuc-d2-iR4">
+                                <rect key="frame" x="0.0" y="35" width="65" height="30"/>
+                                <state key="normal" title="&lt; Vissza">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="back:" destination="2js-iP-gMj" eventType="touchUpInside" id="SG5-kO-wPL"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.050000000000000003" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="489812_Pannonia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Vlt-Ur-znk">
-                                <rect key="frame" x="7" y="170" width="375" height="327"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yh4-L5-N1P" firstAttribute="leading" secondItem="iuc-d2-iR4" secondAttribute="trailing" constant="15" id="08S-ZQ-5lH"/>
+                            <constraint firstItem="iuc-d2-iR4" firstAttribute="top" secondItem="yh4-L5-N1P" secondAttribute="top" constant="7" id="Cgj-rg-aZw"/>
+                            <constraint firstAttribute="trailing" secondItem="Vlt-Ur-znk" secondAttribute="trailing" id="LNY-kc-gy2"/>
+                            <constraint firstItem="Vlt-Ur-znk" firstAttribute="leading" secondItem="BZY-bh-mzN" secondAttribute="leading" id="Trh-vi-pRg"/>
+                            <constraint firstItem="Vlt-Ur-znk" firstAttribute="centerY" secondItem="BZY-bh-mzN" secondAttribute="centerY" id="X0W-bF-bvh"/>
+                            <constraint firstItem="Vlt-Ur-znk" firstAttribute="top" secondItem="yh4-L5-N1P" secondAttribute="bottom" constant="97" id="ccS-lv-tTQ"/>
+                            <constraint firstItem="yh4-L5-N1P" firstAttribute="top" secondItem="1lx-gl-TJ3" secondAttribute="bottom" constant="8" symbolic="YES" id="uBK-ir-39m"/>
+                            <constraint firstItem="yh4-L5-N1P" firstAttribute="trailing" secondItem="BZY-bh-mzN" secondAttribute="trailingMargin" id="xMr-wR-Gid"/>
+                            <constraint firstItem="iuc-d2-iR4" firstAttribute="leading" secondItem="BZY-bh-mzN" secondAttribute="leadingMargin" constant="-16" id="zae-Je-sob"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="O63-B1-X6c"/>
                     <connections>
+                        <outlet property="felevLbl" destination="fxJ-LJ-EBs" id="kly-AJ-SgL"/>
+                        <outlet property="kreditLbl" destination="0mu-UJ-gNm" id="cDT-JG-x2Y"/>
                         <outlet property="subjectName" destination="yh4-L5-N1P" id="SxZ-DL-t3h"/>
+                        <outlet property="targykodLbl" destination="Ea7-jt-gho" id="MmD-TK-15l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uuf-87-8IS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2422" y="620"/>
+            <point key="canvasLocation" x="2421.5999999999999" y="619.34032983508246"/>
         </scene>
         <!--Launch Screen-->
         <scene sceneID="zvn-j2-UyF">
@@ -719,7 +772,7 @@
                                     <constraint firstAttribute="height" constant="39" id="wTJ-8m-db4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="23"/>
-                                <color key="textColor" red="0.41214063179999999" green="0.39304654700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="489812_Pannonia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jDD-MI-kPg">
@@ -795,6 +848,6 @@
         <image name="489812_Pannonia.jpg" width="1500" height="1466"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HIb-gE-T5n"/>
+        <segue reference="xYw-op-H2n"/>
     </inferredMetricsTieBreakers>
 </document>
