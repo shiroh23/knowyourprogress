@@ -11,7 +11,9 @@ import UIKit
 
 class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
     var productArray = NSArray()
+    var melyiket: Int = 0
     
     func readPropertyList(){
 
@@ -23,37 +25,92 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         readPropertyList()
     }
     
-
-    //MARK: - Table View Data sources and Delegates
     private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productArray.count
     }
-    private func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Tantárgyak"
-    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
         let row = indexPath.row
-        cell.textLabel?.text = getNev(pId: row)
+        cell.textLabel?.text = getNev(pId: row).0
         return cell
         
     }
  
-    func getNev(pId: Int) -> String{
+    func getNev(pId: Int) -> (String, String){
         var nev: String = ""
+        var kredit: String = ""
         var rekord: Dictionary<String, AnyObject>
         rekord = productArray.object(at: pId) as! Dictionary<String, AnyObject>
         
         nev = rekord["nev"] as! String
+        kredit = rekord["kredit"] as! String
+        return (nev, kredit);
+    }
+    
+    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        self.melyiket = indexPath.row
+        print("\(self.melyiket) na melyik lesz")
+        let newSubject = self.productArray.object(at: self.melyiket) as! Dictionary<String, AnyObject>
+        let nev: String = newSubject["nev"] as! String
+        let targykod: String = newSubject["targykod"] as! String
+        let kredit: String = newSubject["kredit"] as! String
+        let felev: String = newSubject["felev"] as! String
+        print("\(nev) es \(targykod) es \(kredit) es \(felev)")
+        let destinationVC = detailviewScreen()
+        destinationVC.targykod = "gagyi"
+        destinationVC.kredit = "fos"
+        destinationVC.nev = "ez egy csalas"
+        destinationVC.felev = "utalom"
+        self.present(destinationVC, animated: true, completion: nil)
+    }*/
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        return nev;
+        if (segue.identifier == "segue") {
+            let destination = segue.destination as! detailviewScreen
+            let index = tableView.indexPathForSelectedRow?.row
+            let newSubject = self.productArray.object(at: index!) as! Dictionary<String, AnyObject>
+            destination.subject = newSubject
+        }
+        
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let more = UITableViewRowAction(style: .normal, title: "More") { action, index in
+            print("more button tapped")
+            self.melyiket = indexPath.row
+        }
+    
+        more.backgroundColor = UIColor.lightGray
+        
+        let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { action, index in
+            print("favorite button tapped")
+            self.melyiket = indexPath.row
+        }
+        favorite.backgroundColor = UIColor.orange
+        
+        let share = UITableViewRowAction(style: .normal, title: "Share") { action, index in
+            print("share button tapped")
+            self.melyiket = indexPath.row
+        }
+        share.backgroundColor = UIColor.blue
+        
+        return [share, favorite, more]
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     func openNewPage(name: String){

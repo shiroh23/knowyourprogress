@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class welcome: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    
+    var searchResults = [NSManagedObject]()
     
     var emailAddress: String = ""
     var password: String = ""
@@ -74,21 +77,69 @@ class welcome: UIViewController, UITextFieldDelegate{
             
         } else if (emailTest.evaluate(with: self.emailField.text) == false) {
             
-            //if the e-mail format isn't good
             self.alert(msg1: "Kérlek valós e-mail címet adj meg!")
             emailField.text = ""
             
         } else if ((passwordField.text != "") && !(emailField.text!.isEmpty) &&
             !(emailTest.evaluate(with: self.emailField.text) == false)) {
             
+            //ellenőrzés a CoreData-ban
+            var volt: Bool = false
             emailAddress = emailField.text!
             password = passwordField.text!
-            //if everything's format is right...
-            //save the data which has been typed to the textfields
+            self.getUsers()
             
-            self.openNewPage(name: "main")
+            for felh in searchResults as [NSManagedObject]
+            {
+                let e_mail=felh.value(forKey: "email") as! String
+                let jelszo=felh.value(forKey: "password") as! String
+                if (e_mail == emailField.text! && jelszo == passwordField.text!)
+                {
+                    volt = true
+                }
+            }
+            
+            
+            if (volt == true)
+            {
+                //bejelentkezés ha minden stimmel
+                self.openNewPage(name: "main")
+            }
+            else
+            {
+                //hibaüzenet ha nem stimmelnek az adatok
+                self.alert(msg1: "Nem található a felhasználó!")
+                emailField.text = ""
+                passwordField.text = ""
+            }
         }
         
+    }
+    
+    func getUsers () {
+        
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        
+        do
+        {
+            searchResults = try getContext().fetch(fetchRequest)
+            
+            print ("találatok száma = \(searchResults.count)")
+            
+            for felhasznalo in searchResults as [NSManagedObject]
+            {
+                print("\(felhasznalo.value(forKey: "email"))")
+            }
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+    }
+    
+    func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
     }
     
     @IBAction func regisztracio(_ sender: Any)

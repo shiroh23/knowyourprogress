@@ -8,12 +8,16 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class register: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var jelszoField: UITextField!
     @IBOutlet weak var jelszo2Field: UITextField!
+    @IBOutlet weak var felevField: UITextField!
     @IBOutlet weak var registerBtn: UIButton!
+    
+    var searchResults = [NSManagedObject]()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +25,7 @@ class register: UIViewController, UITextFieldDelegate {
         emailField.delegate = self
         jelszoField.delegate = self
         jelszo2Field.delegate = self
+        felevField.delegate = self
     }
     func openNewPage(name: String){
         let theDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -34,7 +39,7 @@ class register: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         self.view.endEditing(true)
-        if (emailField.text != "" && jelszo2Field.text != "" && jelszoField.text != "")
+        if (emailField.text != "" && jelszo2Field.text != "" && jelszoField.text != "" && felevField.text != "")
         {
             registerBtn.isEnabled = true
         }
@@ -49,7 +54,7 @@ class register: UIViewController, UITextFieldDelegate {
         if ((textField.viewWithTag(1)) != nil)
         {
             jelszoField.becomeFirstResponder()
-            if (jelszoField.text != "" && jelszo2Field.text != "" && emailField.text != "")
+            if (jelszoField.text != "" && jelszo2Field.text != "" && emailField.text != "" && felevField.text != "")
             {
                 registerBtn.isEnabled = true
             }
@@ -58,7 +63,7 @@ class register: UIViewController, UITextFieldDelegate {
         {
             jelszoField.resignFirstResponder()
             jelszo2Field.becomeFirstResponder()
-            if (emailField.text != "" && jelszo2Field.text != "" && jelszoField.text != "")
+            if (emailField.text != "" && jelszo2Field.text != "" && jelszoField.text != "" && felevField.text != "")
             {
                 registerBtn.isEnabled = true
             }
@@ -66,7 +71,16 @@ class register: UIViewController, UITextFieldDelegate {
         else if (textField.viewWithTag(3) != nil)
         {
             jelszo2Field.resignFirstResponder()
-            if (emailField.text != "" && jelszoField.text != "" && jelszo2Field.text != "")
+            felevField.becomeFirstResponder()
+            if (emailField.text != "" && jelszoField.text != "" && jelszo2Field.text != "" && felevField.text != "")
+            {
+                registerBtn.isEnabled = true
+            }
+        }
+        else if (textField.viewWithTag(4) != nil)
+        {
+            felevField.resignFirstResponder()
+            if (emailField.text != "" && jelszoField.text != "" && jelszo2Field.text != "" && felevField.text != "")
             {
                 registerBtn.isEnabled = true
             }
@@ -83,6 +97,15 @@ class register: UIViewController, UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    func alert2(msg1: String){
+        let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in self.someHandler() } ))
+        self.present(alert, animated: true, completion: nil)
+    }
+    func someHandler()
+    {
+        self.navigationController!.popViewController(animated: true)
+    }
     
     @IBAction func register(_ sender: Any)
     {
@@ -90,7 +113,7 @@ class register: UIViewController, UITextFieldDelegate {
         let emailRegEx: NSString = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         
-        if((emailField.text == "") || (jelszoField.text == "" || jelszo2Field.text == "")){
+        if((emailField.text == "") || (jelszoField.text == "" || jelszo2Field.text == "") || felevField.text == ""){
             
             self.alert(msg1: "Minden mezőt ki kell töltened!")
             
@@ -100,12 +123,35 @@ class register: UIViewController, UITextFieldDelegate {
             self.alert(msg1: "Kérlek valós e-mail címet adj meg!")
             emailField.text = ""
             
-        } else if ((jelszoField.text != "") && jelszo2Field.text != "" && !(emailField.text!.isEmpty) &&
+        } else if ((jelszoField.text != "") && jelszo2Field.text != "" && felevField.text != "" && !(emailField.text!.isEmpty) &&
             !(emailTest.evaluate(with: self.emailField.text) == false)) {
             if (jelszo2Field.text == jelszoField.text)
             {
-                //adatmentés databasebe
-                print("adatmentés")
+                var volt: Bool = false
+                //mentés előtt ellenőrizni kell, volt-e már ugyanilyen regisztrálva
+                self.getUsers()
+                for felh in searchResults as [NSManagedObject]
+                {
+                    let e_mail=felh.value(forKey: "email") as! String
+                    if (e_mail == emailField.text!)
+                    {
+                        volt = true
+                    }
+                }
+                if (volt == false)
+                {
+                    //adatmentés database-be
+                    print("adatmentés")
+                    let intFelev = Int(felevField.text!)
+                    self.saveUser(email: emailField.text!, jelszo: jelszoField.text!, felev: intFelev!)
+                    alert2(msg1: "Sikeres regisztráció!")
+                }
+                else
+                {
+                    //más email címmel való regisztráció
+                    alert(msg1: "Ezzel az e-mail címmel már regisztráltak!")
+                    emailField.text = ""
+                }
             }
             else
             {
@@ -120,6 +166,58 @@ class register: UIViewController, UITextFieldDelegate {
     }
     
     
+    func saveUser(email: String, jelszo: String, felev: Int)
+    {
+        let context = getContext()
+        let entity =  NSEntityDescription.entity(forEntityName: "User", in: context)
+        
+        let felhasznalo = NSManagedObject(entity: entity!, insertInto: context)
+        
+        felhasznalo.setValue(email, forKey: "email")
+        felhasznalo.setValue(jelszo, forKey: "password")
+        felhasznalo.setValue(felev, forKey: "currentSemester")
+        let elvegzett = felev - 1
+        felhasznalo.setValue(elvegzett, forKey: "finishedSemester")
+        
+        do
+        {
+            try context.save()
+            print("saved!")
+        } catch let error as NSError
+        {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+        catch
+        {
+            print("Error with: \(error)")
+        }
+    }
+    
+    func getUsers () {
+        
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        
+        do
+        {
+            searchResults = try getContext().fetch(fetchRequest)
+            
+            print ("találatok száma = \(searchResults.count)")
+            
+            for felhasznalo in searchResults as [NSManagedObject]
+            {
+                print("\(felhasznalo.value(forKey: "email"))")
+            }
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+    }
+    
+    func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
     
     
     @IBAction func back(_ sender: UISwipeGestureRecognizer)
