@@ -8,41 +8,62 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var felevLbl: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    var productArray = NSArray()
-    var melyiket: Int = 0
     
-    func readPropertyList(){
-        
-        let plistPath:String? = Bundle.main.path(forResource: "gazdinfoData", ofType: "plist")!
-        
+    @IBOutlet weak var tableView: UITableView!
+    
+    var productArray = NSArray()
+    var currentSubjects = [String]()
+    var melyiket: Int = 0
+    var semesterSubjCount: Int = 0
+    var felh = Felh()
+    var tanar = Oktato()
+    var index: IndexPath = []
+    
+    var searchResults = [NSManagedObject]()
+    var teacherResults = [NSManagedObject]()
+    
+    func readPropertyList(szak: String)
+    {
+        let plistPath:String? = Bundle.main.path(forResource: szak, ofType: "plist")!
         productArray = NSArray(contentsOfFile: plistPath!)!
-        
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        readPropertyList()
+        
+        self.getUserData()
+        print(felh)
+        
+        readPropertyList(szak: felh.szak)
+        
+        semesterSubjCount = self.targyCounter()
+        
+        felevBtn.setTitle("\(felh.currSem). félév", for: UIControlState.normal)
+        felevBtn.setTitle("\(felh.currSem). félév", for: UIControlState.selected)
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
-        self.felevLbl.addGestureRecognizer(swipeRight)
+        self.felevBtn.addGestureRecognizer(swipeRight)
         
         //profil adatlap megtekintése
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeDown.direction = UISwipeGestureRecognizerDirection.down
-        self.felevLbl.addGestureRecognizer(swipeDown)
+        self.felevBtn.addGestureRecognizer(swipeDown)
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
-        self.felevLbl.addGestureRecognizer(swipeLeft)
+        self.felevBtn.addGestureRecognizer(swipeLeft)
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.deselectRow(at: self.index, animated: true)
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -67,24 +88,49 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productArray.count
+        return semesterSubjCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
         let row = indexPath.row
-        cell.textLabel?.text = getNev(pId: row)
+        //cell.textLabel?.text = getNev(pId: row)
+        cell.textLabel?.text = currentSubjects[row]
         return cell
-        
     }
     
     func getNev(pId: Int) -> String{
         var nev: String = ""
+        
         var rekord: Dictionary<String, AnyObject>
         rekord = productArray.object(at: pId) as! Dictionary<String, AnyObject>
         
         nev = rekord["nev"] as! String
+        
         return nev;
+    }
+    
+    func targyCounter() -> Int
+    {
+        var count: Int = 0
+        var felev: String = ""
+        var nev: String = ""
+        var rekord: Dictionary<String, AnyObject>
+        
+        for i in (0..<productArray.count)
+        {
+            rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
+            felev = rekord["felev"] as! String
+            if (felev == String(felh.currSem))
+            {
+                nev = rekord["nev"] as! String
+                currentSubjects.append(nev)
+                print(currentSubjects.last!)
+                count += 1
+            }
+        }
+        
+        return count
     }
     
     /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
@@ -110,8 +156,33 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if (segue.identifier == "segue") {
             let destination = segue.destination as! detailviewScreen
             let index = tableView.indexPathForSelectedRow?.row
-            let newSubject = self.productArray.object(at: index!) as! Dictionary<String, AnyObject>
-            destination.subject = newSubject
+            self.index = tableView.indexPathForSelectedRow!
+            
+            let keresettTargy = self.currentSubjects[index!]
+            var targy: String = ""
+            var rekord: Dictionary<String, AnyObject>
+            
+            for i in (0..<productArray.count)
+            {
+                rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
+                targy = rekord["nev"] as! String
+                if (targy == keresettTargy)
+                {
+                    let newSubject = self.productArray.object(at: i) as! Dictionary<String, AnyObject>
+                    destination.subject = newSubject
+                    tanar = self.getTeachers(keresettTargy: keresettTargy)
+                    destination.tutor = tanar
+                    destination.path = self.index
+                }
+            }
+        }
+        else if (segue.identifier == "segueBefore")
+        {
+            
+        }
+        else if (segue.identifier == "segueAfter")
+        {
+            
         }
     }
     
@@ -152,6 +223,102 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let vc = storyboard!.instantiateViewController(withIdentifier: name)
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: CoreData felhasználói adatok kinyerése
+    
+    func getUserData ()
+    {
+        
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        var useableszak: String = ""
+        do
+        {
+            searchResults = try getContext().fetch(fetchRequest)
+            
+            //print ("találatok száma = \(searchResults.count)")
+            
+            for users in searchResults as [NSManagedObject]
+            {
+                if (users.value(forKey: "logged") as! Bool == true)
+                {
+                    //print("megtalalta")
+                    felh.email = users.value(forKey: "email") as! String
+                    felh.currSem = users.value(forKey: "currentSemester") as! Int
+                    felh.finiSem = users.value(forKey: "finishedSemester") as! Int
+                    felh.password = users.value(forKey: "password") as! String
+                    useableszak = users.value(forKey: "major") as! String
+                    
+                    switch useableszak {
+                    case "mérnökinformatikus":
+                        felh.szak = "mernokinfoData"
+                        break
+                    case "programtervező informatikus":
+                        felh.szak = "proginfoData"
+                        break
+                    case "gazdasági informatikus":
+                        felh.szak = "gazdinfoData"
+                        break
+                    default:
+                        felh.szak = ""
+                        break
+                    }
+                    
+                    break
+                }
+            }
+            
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        
+    }
+    func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+    
+    // MARK: CoreData tanárkereső
+    
+    func getTeachers (keresettTargy: String) -> Oktato {
+        
+        let fetchRequest: NSFetchRequest<Teacher> = Teacher.fetchRequest()
+        var tanarka = Oktato()
+        var talalt: Bool = false
+        
+        do
+        {
+            teacherResults = try getContext().fetch(fetchRequest)
+            
+            for teacher in teacherResults as [NSManagedObject]
+            {
+                tanarka.subject = (teacher.value(forKey: "subject") as! String)
+                
+                if (tanarka.subject == keresettTargy)
+                {
+                    tanarka.id = Int16(teacher.value(forKey: "id") as! Int)
+                    tanarka.review = Int16(teacher.value(forKey: "review") as! Int)
+                    tanarka.name = (teacher.value(forKey: "name") as! String)
+                    talalt = true
+                }
+            }
+            
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        if (talalt == true)
+        {
+            return tanarka
+        }
+        else
+        {
+            tanarka.name = "nincs"
+            return tanarka
+        }
     }
     
 }

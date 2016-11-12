@@ -19,15 +19,16 @@ struct Felh
     var szak: String = ""
 }
 
-struct Targy
+struct Oktato
 {
-    var nev: String = ""
-    var kredit: String = ""
-    var felev: String = ""
-    var targykod: String = ""
+    var name: String = ""
+    var subject: String = ""
+    var id: Int16 = 0
+    var review: Int16 = 0
 }
 
 class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
     
     @IBOutlet weak var felevLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -37,8 +38,11 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var melyiket: Int = 0
     var semesterSubjCount: Int = 0
     var felh = Felh()
+    var tanar = Oktato()
+    var index: IndexPath = []
     
     var searchResults = [NSManagedObject]()
+    var teacherResults = [NSManagedObject]()
     
     func readPropertyList(szak: String)
     {
@@ -59,20 +63,15 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         felevLbl.text = "\(felh.currSem). félév"
         
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.right
-        self.felevLbl.addGestureRecognizer(swipeRight)
-        
         //profil adatlap megtekintése
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeDown.direction = UISwipeGestureRecognizerDirection.down
         self.felevLbl.addGestureRecognizer(swipeDown)
-        
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
-        self.felevLbl.addGestureRecognizer(swipeLeft)
-        
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.deselectRow(at: self.index, animated: true)
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -165,6 +164,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if (segue.identifier == "segue") {
             let destination = segue.destination as! detailviewScreen
             let index = tableView.indexPathForSelectedRow?.row
+            self.index = tableView.indexPathForSelectedRow!
             
             let keresettTargy = self.currentSubjects[index!]
             var targy: String = ""
@@ -178,8 +178,19 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 {
                     let newSubject = self.productArray.object(at: i) as! Dictionary<String, AnyObject>
                     destination.subject = newSubject
+                    tanar = self.getTeachers(keresettTargy: keresettTargy)
+                    destination.tutor = tanar
+                    destination.path = self.index
                 }
             }
+        }
+        else if (segue.identifier == "segueBefore")
+        {
+            
+        }
+        else if (segue.identifier == "segueAfter")
+        {
+            
         }
     }
 
@@ -222,7 +233,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    // MARK: CoreData cucc
+    // MARK: CoreData felhasználói adatok kinyerése
     
     func getUserData ()
     {
@@ -275,6 +286,47 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
+    }
+    
+    // MARK: CoreData tanárkereső
+    
+    func getTeachers (keresettTargy: String) -> Oktato {
+        
+        let fetchRequest: NSFetchRequest<Teacher> = Teacher.fetchRequest()
+        var tanarka = Oktato()
+        var talalt: Bool = false
+        
+        do
+        {
+            teacherResults = try getContext().fetch(fetchRequest)
+            
+            for teacher in teacherResults as [NSManagedObject]
+            {
+                tanarka.subject = (teacher.value(forKey: "subject") as! String)
+                
+                if (tanarka.subject == keresettTargy)
+                {
+                    tanarka.id = Int16(teacher.value(forKey: "id") as! Int)
+                    tanarka.review = Int16(teacher.value(forKey: "review") as! Int)
+                    tanarka.name = (teacher.value(forKey: "name") as! String)
+                    talalt = true
+                }
+            }
+            
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        if (talalt == true)
+        {
+            return tanarka
+        }
+        else
+        {
+            tanarka.name = "nincs"
+            return tanarka
+        }
     }
     
 }
