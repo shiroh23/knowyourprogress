@@ -60,34 +60,12 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         felevLbl.adjustsFontSizeToFitWidth = true
         felevLbl.minimumScaleFactor = 0.5
         
-        //profil adatlap megtekintése
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeDown.direction = UISwipeGestureRecognizerDirection.down
-        self.felevLbl.addGestureRecognizer(swipeDown)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.deselectRow(at: self.index, animated: true)
     }
-    
-    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            switch swipeGesture.direction {
-            case UISwipeGestureRecognizerDirection.right:
-                print("Swiped right")
-            case UISwipeGestureRecognizerDirection.down:
-                print("Swiped down")
-                self.openNewPage(name: "profile")
-            case UISwipeGestureRecognizerDirection.left:
-                print("Swiped left")
-            case UISwipeGestureRecognizerDirection.up:
-                print("Swiped up")
-            default:
-                break
-            }
-        }
-    }
+
     
     private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -127,7 +105,6 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     tanar = self.getTeachers(keresettTargy: keresettTargy)
                     destination.tutor = tanar
                     destination.path = self.index
-                    //destination.completedBtn.isHidden = true
                 }
             }
         }

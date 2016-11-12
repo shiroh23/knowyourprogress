@@ -104,17 +104,7 @@
 	</dict>
 	<dict>
 		<key>nev</key>
-		<string>Valószín?ségszámítás és matematikai statisztika</string>
-		<key>felev</key>
-		<string>3</string>
-		<key>kredit</key>
-		<string>4</string>
-		<key>targykod</key>
-		<string>VEMKMA1344B</string>
-	</dict>
-	<dict>
-		<key>nev</key>
-		<string>Valószín?ségszámítás és matematikai statisztika</string>
+		<string>Valószínűségszámítás és matematikai statisztika</string>
 		<key>felev</key>
 		<string>3</string>
 		<key>kredit</key>

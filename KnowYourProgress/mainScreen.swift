@@ -187,7 +187,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     destination.subject = newSubject
                     tanar = self.getTeachers(keresettTargy: keresettTargy)
                     destination.tutor = tanar
-                    destination.fromWhere = "main"
                     destination.path = self.index
                 }
             }
@@ -418,7 +417,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func someHandler (index: IndexPath)
     {
         
-        self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows!, with: UITableViewRowAnimation.left)
+        self.tableView.reloadRows(at: [index], with: UITableViewRowAnimation.left)
         
     }
     

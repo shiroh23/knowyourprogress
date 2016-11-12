@@ -33,7 +33,6 @@ class detailviewScreen: UIViewController {
     var tutor = Oktato()
     var tantargy = Tantargy()
     var path = IndexPath()
-    var fromWhere: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
