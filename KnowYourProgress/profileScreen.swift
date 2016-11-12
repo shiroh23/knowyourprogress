@@ -28,6 +28,7 @@ class profileScreen: UIViewController {
     
     var searchResults = [NSManagedObject]()
     var finalResults = [NSManagedObject]()
+    var subjectResults = [NSManagedObject]()
     var felh = Felhasznalo()
     var ofelh = Felhasznalo()
     
@@ -120,6 +121,70 @@ class profileScreen: UIViewController {
     {
         //logged változó értékét visszalőni false-ra
         self.logoutAlert(msg1: "Biztos ki szeretnél jelentkezni?")
+    }
+    
+    @IBAction func deleteUser(_ sender: Any)
+    {
+        self.deleteAlert(msg1: "Biztos törölni szeretnéd a profilodat?")
+    }
+    
+    // MARK: CoreData User profil törlése
+    
+    func deleteUser (email: String) {
+        
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        let context = getContext()
+        
+        do
+        {
+            searchResults = try getContext().fetch(fetchRequest)
+            
+            for felhasznalo in searchResults as [NSManagedObject]
+            {
+                if (felhasznalo.value(forKey: "logged") as! Bool == true)
+                {
+                    self.deleteSubjects(email: email)
+                    context.delete(felhasznalo)
+                    break
+                }
+            }
+            
+            try context.save()
+            print("updated!")
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+    }
+    
+    // MARK: CoreData Userhez tartozott tárgyak törlése
+    
+    func deleteSubjects (email: String) {
+        
+        let fetchRequest: NSFetchRequest<DoneSubj> = DoneSubj.fetchRequest()
+        let context = getContext()
+        
+        do
+        {
+            subjectResults = try getContext().fetch(fetchRequest)
+            
+            for subject in subjectResults as [NSManagedObject]
+            {
+                if (subject.value(forKey: "userEmail") as! String == email)
+                {
+                    print("töröl")
+                    context.delete(subject)
+                }
+            }
+            
+            try context.save()
+            print("deleted all subject from user!")
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
     }
     
     // MARK: CoreData adatkinyerés a felhasználóhoz
@@ -374,6 +439,27 @@ class profileScreen: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in self.openNewPage(name: "welcome")
         } ))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteAlert(msg1: String){
+        let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Mégse", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Törlés", style: UIAlertActionStyle.destructive, handler: { action in self.deleteHandler()
+        } ))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func afterDeleteAlert(msg1: String){
+        let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in self.openNewPage(name: "welcome")
+        } ))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteHandler()
+    {
+        self.deleteUser(email: ofelh.email)
+        self.afterDeleteAlert(msg1: "Sikeres módosítás")
     }
 
     

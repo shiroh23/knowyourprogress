@@ -231,6 +231,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -426,9 +427,8 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func someHandler (index: IndexPath)
     {
-        
         self.tableView.reloadRows(at: [index], with: UITableViewRowAnimation.left)
-        
+        self.tableView.reloadData()
     }
     
 }

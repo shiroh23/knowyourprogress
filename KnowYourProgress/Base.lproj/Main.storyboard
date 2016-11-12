@@ -89,14 +89,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4o-x9-epJ">
-                                <rect key="frame" x="164" y="509" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="keepLoggedIN:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J6k-Gd-Lft"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -645,16 +637,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iN-XD-OIw">
-                                <rect key="frame" x="83" y="581" width="194" height="66"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="27"/>
-                                <state key="normal" title="Kijelentkezés">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="logOut:" destination="Qmb-wj-FOS" eventType="touchUpInside" id="vK5-M5-Sr9"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="szakod:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0W-sW-3lI">
                                 <rect key="frame" x="16" y="346" width="56" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
@@ -670,6 +652,29 @@
                                 <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpN-Cr-0m3">
+                                <rect key="frame" x="123" y="532" width="128" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="mhZ-Dp-KVp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <state key="normal" title="Profil törlése">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteUser:" destination="Qmb-wj-FOS" eventType="touchUpInside" id="Qqd-IJ-TR7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iN-XD-OIw">
+                                <rect key="frame" x="90" y="581" width="194" height="66"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="27"/>
+                                <state key="normal" title="Kijelentkezés">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="Qmb-wj-FOS" eventType="touchUpInside" id="vK5-M5-Sr9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -701,14 +706,17 @@
                             <constraint firstItem="iGp-BZ-kIp" firstAttribute="bottom" secondItem="I0X-UE-JLM" secondAttribute="bottom" id="Sug-1d-fuO"/>
                             <constraint firstItem="bFI-ap-Xei" firstAttribute="top" secondItem="EaK-76-YMQ" secondAttribute="bottom" constant="362" id="TUM-S1-fuj"/>
                             <constraint firstItem="4K9-f8-QtL" firstAttribute="centerY" secondItem="uMe-eg-hzc" secondAttribute="centerY" id="Tfq-1j-0So"/>
+                            <constraint firstItem="0iN-XD-OIw" firstAttribute="top" secondItem="FpN-Cr-0m3" secondAttribute="bottom" constant="19" id="UAh-Co-7UD"/>
+                            <constraint firstItem="FpN-Cr-0m3" firstAttribute="centerX" secondItem="0iN-XD-OIw" secondAttribute="centerX" id="UuR-RD-0tx"/>
                             <constraint firstItem="915-S8-Vtv" firstAttribute="trailing" secondItem="4MT-3b-iM7" secondAttribute="trailing" id="VB4-Pj-Kpc"/>
                             <constraint firstItem="ALJ-uz-ALW" firstAttribute="firstBaseline" secondItem="sAi-XZ-hmK" secondAttribute="baseline" id="WM2-J5-sZA"/>
+                            <constraint firstItem="FpN-Cr-0m3" firstAttribute="top" secondItem="4K9-f8-QtL" secondAttribute="bottom" constant="35" id="WWM-AY-aiM"/>
                             <constraint firstItem="TNs-8A-hFM" firstAttribute="top" secondItem="sAi-XZ-hmK" secondAttribute="top" id="bfV-ks-Tnb"/>
                             <constraint firstItem="TNs-8A-hFM" firstAttribute="leading" secondItem="sAi-XZ-hmK" secondAttribute="leading" id="buO-d4-hnr"/>
                             <constraint firstAttribute="bottom" secondItem="0iN-XD-OIw" secondAttribute="bottom" constant="20" symbolic="YES" id="d48-Ph-2vW"/>
                             <constraint firstItem="vOb-z9-0Qe" firstAttribute="trailing" secondItem="TNs-8A-hFM" secondAttribute="trailing" id="dAo-YK-9D3"/>
                             <constraint firstItem="T8I-Hk-9rG" firstAttribute="leading" secondItem="ALJ-uz-ALW" secondAttribute="leading" id="dkd-Bo-kDS"/>
-                            <constraint firstItem="0iN-XD-OIw" firstAttribute="leading" secondItem="uMe-eg-hzc" secondAttribute="leadingMargin" constant="67" id="e7O-zp-A02"/>
+                            <constraint firstItem="0iN-XD-OIw" firstAttribute="leading" secondItem="uMe-eg-hzc" secondAttribute="leadingMargin" constant="74" id="e7O-zp-A02"/>
                             <constraint firstItem="iGp-BZ-kIp" firstAttribute="leading" secondItem="sAi-XZ-hmK" secondAttribute="leading" id="eek-oT-Hv6"/>
                             <constraint firstItem="RPE-Df-TBX" firstAttribute="top" secondItem="3Mr-38-lOm" secondAttribute="bottom" constant="79" id="fO5-8z-ma9"/>
                             <constraint firstItem="915-S8-Vtv" firstAttribute="top" secondItem="4MT-3b-iM7" secondAttribute="top" id="g7d-1g-CJo"/>
@@ -719,7 +727,7 @@
                             <constraint firstAttribute="bottom" secondItem="4MT-3b-iM7" secondAttribute="bottom" constant="258" id="jc6-Zb-UYD"/>
                             <constraint firstItem="3Mr-38-lOm" firstAttribute="leading" secondItem="XJO-Ug-Rqg" secondAttribute="leading" id="lcL-WG-q8w"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3Mr-38-lOm" secondAttribute="trailing" constant="14" id="nHd-sn-J4G"/>
-                            <constraint firstItem="0iN-XD-OIw" firstAttribute="centerX" secondItem="3Mr-38-lOm" secondAttribute="centerX" id="o8o-wH-Qva"/>
+                            <constraint firstItem="0iN-XD-OIw" firstAttribute="centerX" secondItem="3Mr-38-lOm" secondAttribute="centerX" constant="6.5" id="o8o-wH-Qva"/>
                             <constraint firstItem="0iN-XD-OIw" firstAttribute="top" secondItem="4K9-f8-QtL" secondAttribute="bottom" constant="84" id="oVo-ye-s6B"/>
                             <constraint firstItem="Q0W-sW-3lI" firstAttribute="top" secondItem="I0X-UE-JLM" secondAttribute="bottom" constant="8" symbolic="YES" id="pWc-eW-DQL"/>
                             <constraint firstItem="4MT-3b-iM7" firstAttribute="trailing" secondItem="iGp-BZ-kIp" secondAttribute="trailing" id="pc5-Es-KSy"/>
@@ -744,7 +752,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cd6-G2-IsJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3162" y="634"/>
+            <point key="canvasLocation" x="3160.8000000000002" y="633.73313343328346"/>
         </scene>
         <!--Detailview Screen-->
         <scene sceneID="Dej-rV-RsO">
