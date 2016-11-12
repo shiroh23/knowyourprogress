@@ -138,6 +138,7 @@
 		5B4463B31DA2EACE00685365 /* KnowYourProgress */ = {
 			isa = PBXGroup;
 			children = (
+				5B4463B41DA2EACE00685365 /* AppDelegate.swift */,
 				5B4463EC1DA315A300685365 /* register.swift */,
 				5B0AEF5C1DD61C7200018F09 /* profileScreen.swift */,
 				5B4463EA1DA2FB5800685365 /* launchScreen.swift */,
@@ -146,9 +147,8 @@
 				5B0AEF601DD6477600018F09 /* mainScreenAfter.swift */,
 				5B45093B1DD5157E00BC1486 /* detailviewScreen.swift */,
 				5B0AEF621DD68F8800018F09 /* reviewScreen.swift */,
-				5B0AEF641DD6A09900018F09 /* Main.storyboard */,
-				5B4463B41DA2EACE00685365 /* AppDelegate.swift */,
 				5B4463B61DA2EACE00685365 /* welcome.swift */,
+				5B0AEF641DD6A09900018F09 /* Main.storyboard */,
 				5B4463BE1DA2EACE00685365 /* Assets.xcassets */,
 				5B4463C01DA2EACE00685365 /* LaunchScreen.storyboard */,
 				5B4463C31DA2EACE00685365 /* Info.plist */,

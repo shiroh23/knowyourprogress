@@ -161,7 +161,6 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     destination.subject = newSubject
                     tanar = self.getTeachers(keresettTargy: keresettTargy)
                     destination.tutor = tanar
-                    destination.fromWhere = "mainAfter"
                     destination.path = self.index
                 }
             }

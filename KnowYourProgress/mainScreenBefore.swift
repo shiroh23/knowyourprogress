@@ -126,8 +126,8 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     destination.subject = newSubject
                     tanar = self.getTeachers(keresettTargy: keresettTargy)
                     destination.tutor = tanar
-                    destination.fromWhere = "mainBefore"
                     destination.path = self.index
+                    //destination.completedBtn.isHidden = true
                 }
             }
         }
@@ -289,12 +289,12 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     nev = targy.value(forKey: "nev") as! String
                     finishedSubjects.append(nev)
                     /*
-                    doneSubj.felev = targy.value(forKey: "felev") as! String
-                    doneSubj.kredit = targy.value(forKey: "kredit") as! String
-                    doneSubj.name = targy.value(forKey: "nev") as! String
-                    doneSubj.targykod = targy.value(forKey: "targykod") as! String
-                    doneSubj.elvegzett = true
-                    self.elvegzettek.append(doneSubj)*/
+                     doneSubj.felev = targy.value(forKey: "felev") as! String
+                     doneSubj.kredit = targy.value(forKey: "kredit") as! String
+                     doneSubj.name = targy.value(forKey: "nev") as! String
+                     doneSubj.targykod = targy.value(forKey: "targykod") as! String
+                     doneSubj.elvegzett = true
+                     self.elvegzettek.append(doneSubj)*/
                     counter+=1
                 }
             }

@@ -28,7 +28,7 @@ class detailviewScreen: UIViewController {
     @IBOutlet weak var tanarErtekLbl: UILabel!
     @IBOutlet weak var completedBtn: UIButton!
     
-    
+    var teacherResults = [NSManagedObject]()
     var subject: Dictionary<String, AnyObject> = [:]
     var tutor = Oktato()
     var tantargy = Tantargy()
@@ -43,7 +43,7 @@ class detailviewScreen: UIViewController {
         tantargy.kredit = subject["kredit"] as! String
         tantargy.nev = subject["nev"] as! String
         tantargy.targykod = subject["targykod"] as! String
-      
+        
         subjectName.adjustsFontSizeToFitWidth = true
         subjectName.minimumScaleFactor = 0.5
         
@@ -100,23 +100,58 @@ class detailviewScreen: UIViewController {
             if (ertek > 0 && ertek <= 10)
             {
                 self.tutor.review = Int16(ertek)
+                self.updateTeacher(nev: self.tutor.name, ertek: self.tutor.review)
                 self.alert(msg1: "Sikeres értékelés")
-                self.completedBtn.isEnabled = false
+                self.completedBtn.isHidden = true
             }
             else
             {
                 self.alert(msg1: "1 és 10 között add meg az értéket!")
             }
         } ))
-
+        
         alert.addTextField { (textField) in
             textField.adjustsFontSizeToFitWidth = true
             textField.keyboardType = UIKeyboardType.numberPad
             textField.textAlignment = .center
             textField.placeholder = "adj meg egy szamot 1-10 között"
         }
-
+        
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: CoreData update teacher
+    
+    func updateTeacher (nev: String, ertek: Int16) {
+        
+        let fetchRequest: NSFetchRequest<Teacher> = Teacher.fetchRequest()
+        let context = getContext()
+        
+        do
+        {
+            teacherResults = try getContext().fetch(fetchRequest)
+            
+            for t in teacherResults as [NSManagedObject]
+            {
+                if (t.value(forKey: "name") as! String == nev)
+                {
+                    t.setValue(ertek, forKey: "review")
+                    break
+                }
+            }
+            
+            try context.save()
+            print("updated review!")
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+    }
+    
+    func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
     }
     
 }

@@ -34,6 +34,7 @@ class welcome: UIViewController, UITextFieldDelegate{
         emailField.text = ""
         passwordField.text = ""
         self.view.endEditing(true)
+        emailField.becomeFirstResponder()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool

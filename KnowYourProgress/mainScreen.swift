@@ -69,7 +69,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeDown.direction = UISwipeGestureRecognizerDirection.down
         self.felevLbl.addGestureRecognizer(swipeDown)
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,7 +108,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = currentSubjects[row]
         return cell
     }
- 
+    
     func getNev(pId: Int) -> String{
         var nev: String = ""
         
@@ -149,22 +149,22 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        self.melyiket = indexPath.row
-        print("\(self.melyiket) na melyik lesz")
-        let newSubject = self.productArray.object(at: self.melyiket) as! Dictionary<String, AnyObject>
-        let nev: String = newSubject["nev"] as! String
-        let targykod: String = newSubject["targykod"] as! String
-        let kredit: String = newSubject["kredit"] as! String
-        let felev: String = newSubject["felev"] as! String
-        print("\(nev) es \(targykod) es \(kredit) es \(felev)")
-        let destinationVC = detailviewScreen()
-        destinationVC.targykod = "gagyi"
-        destinationVC.kredit = "fos"
-        destinationVC.nev = "ez egy csalas"
-        destinationVC.felev = "utalom"
-        self.present(destinationVC, animated: true, completion: nil)
-    }*/
+     {
+     self.melyiket = indexPath.row
+     print("\(self.melyiket) na melyik lesz")
+     let newSubject = self.productArray.object(at: self.melyiket) as! Dictionary<String, AnyObject>
+     let nev: String = newSubject["nev"] as! String
+     let targykod: String = newSubject["targykod"] as! String
+     let kredit: String = newSubject["kredit"] as! String
+     let felev: String = newSubject["felev"] as! String
+     print("\(nev) es \(targykod) es \(kredit) es \(felev)")
+     let destinationVC = detailviewScreen()
+     destinationVC.targykod = "gagyi"
+     destinationVC.kredit = "fos"
+     destinationVC.nev = "ez egy csalas"
+     destinationVC.felev = "utalom"
+     self.present(destinationVC, animated: true, completion: nil)
+     }*/
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -201,7 +201,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
         }
     }
-
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let favorite = UITableViewRowAction(style: .normal, title: "Elvégezve") { action, index in
@@ -417,7 +417,9 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func someHandler (index: IndexPath)
     {
-        self.tableView.reloadRows(at: [index], with: UITableViewRowAnimation.left)
+        
+        self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows!, with: UITableViewRowAnimation.left)
+        
     }
     
 }

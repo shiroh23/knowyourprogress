@@ -97,6 +97,7 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
         {
             jelszo2Field.resignFirstResponder()
             szakvalasztoField.becomeFirstResponder()
+            szakvalasztoField.text = "mérnökinformatikus"
             if (emailField.text != "" && jelszoField.text != "" && jelszo2Field.text != "" && felevField.text != "" && szakvalasztoField.text != "")
             {
                 registerBtn.isEnabled = true
