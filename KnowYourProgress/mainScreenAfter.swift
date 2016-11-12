@@ -12,6 +12,7 @@ import CoreData
 
 class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var felevLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var productArray = NSArray()
@@ -42,26 +43,15 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         semesterSubjCount = self.targyCounter()
         
-        felevBtn.setTitle("\(felh.currSem). félév", for: UIControlState.normal)
-        felevBtn.setTitle("\(felh.currSem). félév", for: UIControlState.selected)
-        
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.right
-        self.felevBtn.addGestureRecognizer(swipeRight)
         
         //profil adatlap megtekintése
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeDown.direction = UISwipeGestureRecognizerDirection.down
-        self.felevBtn.addGestureRecognizer(swipeDown)
-        
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
-        self.felevBtn.addGestureRecognizer(swipeLeft)
-        
-        
+        self.felevLbl.addGestureRecognizer(swipeDown)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
         tableView.deselectRow(at: self.index, animated: true)
     }
     
@@ -124,7 +114,7 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
             {
                 nev = rekord["nev"] as! String
                 currentSubjects.append(nev)
-                print(currentSubjects.last!)
+                //print(currentSubjects.last!)
                 count += 1
             }
         }
@@ -176,10 +166,6 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
         }
         else if (segue.identifier == "segueBefore")
-        {
-            
-        }
-        else if (segue.identifier == "segueAfter")
         {
             
         }

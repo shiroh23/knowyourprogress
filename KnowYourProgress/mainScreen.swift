@@ -133,7 +133,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             {
                 nev = rekord["nev"] as! String
                 currentSubjects.append(nev)
-                print(currentSubjects.last!)
+                //print(currentSubjects.last!)
                 count += 1
             }
         }
@@ -184,37 +184,32 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 }
             }
         }
-        else if (segue.identifier == "segueBefore")
+        if (segue.identifier == "segueBefore")
         {
             
         }
-        else if (segue.identifier == "segueAfter")
+        if (segue.identifier == "segueAfter")
         {
             
         }
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let more = UITableViewRowAction(style: .normal, title: "More") { action, index in
-            print("more button tapped")
+        
+        let favorite = UITableViewRowAction(style: .normal, title: "Elvégezve") { action, index in
+            print("elvégezve button tapped")
+            self.melyiket = indexPath.row
+            self.saveSubject(index: self.melyiket)
+        }
+        favorite.backgroundColor = UIColor.green
+        
+        let share = UITableViewRowAction(style: .normal, title: "Elbukva") { action, index in
+            print("elbukva button tapped")
             self.melyiket = indexPath.row
         }
-    
-        more.backgroundColor = UIColor.lightGray
+        share.backgroundColor = UIColor.red
         
-        let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { action, index in
-            print("favorite button tapped")
-            self.melyiket = indexPath.row
-        }
-        favorite.backgroundColor = UIColor.orange
-        
-        let share = UITableViewRowAction(style: .normal, title: "Share") { action, index in
-            print("share button tapped")
-            self.melyiket = indexPath.row
-        }
-        share.backgroundColor = UIColor.blue
-        
-        return [share, favorite, more]
+        return [share, favorite]
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -326,6 +321,49 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         {
             tanarka.name = "nincs"
             return tanarka
+        }
+    }
+    
+    // MARK: CoreData tárgyelvégzése
+    
+    func saveSubject(index: Int)
+    {
+        let context = getContext()
+        let entity =  NSEntityDescription.entity(forEntityName: "DoneSubj", in: context)
+        
+        let doneSubj = NSManagedObject(entity: entity!, insertInto: context)
+        
+        let keresettTargy = self.currentSubjects[index]
+        var targyString: String = ""
+        var rekord: Dictionary<String, AnyObject>
+        
+        for i in (0..<productArray.count)
+        {
+            rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
+            targyString = rekord["nev"] as! String
+            if (targyString == keresettTargy)
+            {
+                let newSubject = self.productArray.object(at: i) as! Dictionary<String, AnyObject>
+                doneSubj.setValue(newSubject["nev"] as! String, forKey: "nev")
+                doneSubj.setValue(newSubject["kredit"] as! String, forKey: "kredit")
+                doneSubj.setValue(newSubject["felev"] as! String, forKey: "felev")
+                doneSubj.setValue(newSubject["targykod"] as! String, forKey: "targykod")
+                doneSubj.setValue(true, forKey: "elvegzett")
+                break
+            }
+        }
+        
+        do
+        {
+            try context.save()
+            print("targy elvegzese mentve!")
+        } catch let error as NSError
+        {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+        catch
+        {
+            print("Error with: \(error)")
         }
     }
     

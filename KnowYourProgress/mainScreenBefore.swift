@@ -10,21 +10,34 @@ import Foundation
 import UIKit
 import CoreData
 
+struct Elvegzett
+{
+    var name: String = ""
+    var targykod: String = ""
+    var kredit: String = ""
+    var felev: String = ""
+    var elvegzett: Bool = false
+}
+
 class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
+    @IBOutlet weak var felevLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var productArray = NSArray()
-    var currentSubjects = [String]()
+    var finishedSubjects = [String]()
     var melyiket: Int = 0
     var semesterSubjCount: Int = 0
+    var finishedSubjCount: Int = 0
     var felh = Felh()
     var tanar = Oktato()
+    var elvegzettek = [Elvegzett]()
     var index: IndexPath = []
     
     var searchResults = [NSManagedObject]()
     var teacherResults = [NSManagedObject]()
+    var doneSubjResults = [NSManagedObject]()
     
     func readPropertyList(szak: String)
     {
@@ -40,25 +53,13 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         print(felh)
         
         readPropertyList(szak: felh.szak)
-        
-        semesterSubjCount = self.targyCounter()
-        
-        felevBtn.setTitle("\(felh.currSem). félév", for: UIControlState.normal)
-        felevBtn.setTitle("\(felh.currSem). félév", for: UIControlState.selected)
-        
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.right
-        self.felevBtn.addGestureRecognizer(swipeRight)
+        self.finishedSubjCount = self.getDoneSubjData(email: felh.email)
+        //semesterSubjCount = self.targyCounter()
         
         //profil adatlap megtekintése
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeDown.direction = UISwipeGestureRecognizerDirection.down
-        self.felevBtn.addGestureRecognizer(swipeDown)
-        
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
-        self.felevBtn.addGestureRecognizer(swipeLeft)
-        
+        self.felevLbl.addGestureRecognizer(swipeDown)
         
     }
     
@@ -88,17 +89,19 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return semesterSubjCount
+        return finishedSubjCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
         let row = indexPath.row
         //cell.textLabel?.text = getNev(pId: row)
-        cell.textLabel?.text = currentSubjects[row]
+        //cell.textLabel?.text = finishedSubjects[row]
+        cell.textLabel?.text = elvegzettek[row].name
         return cell
     }
     
+    /*
     func getNev(pId: Int) -> String{
         var nev: String = ""
         
@@ -108,9 +111,9 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         nev = rekord["nev"] as! String
         
         return nev;
-    }
+    }*/
     
-    func targyCounter() -> Int
+    /*func targyCounter() -> Int
     {
         var count: Int = 0
         var felev: String = ""
@@ -123,15 +126,26 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
             felev = rekord["felev"] as! String
             if (felev == String(felh.currSem))
             {
-                nev = rekord["nev"] as! String
-                currentSubjects.append(nev)
-                print(currentSubjects.last!)
-                count += 1
+                if (felh.currSem > 1)
+                {
+                    for i in (0..<felh.currSem)
+                    {
+                        
+                    }
+                }
+                else
+                {
+                    nev = rekord["nev"] as! String
+                    finishedSubjects.append(nev)
+                    //print(currentSubjects.last!)
+                    count += 1
+                }
+                
             }
         }
         
         return count
-    }
+    }*/
     
     /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
      {
@@ -158,7 +172,7 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
             let index = tableView.indexPathForSelectedRow?.row
             self.index = tableView.indexPathForSelectedRow!
             
-            let keresettTargy = self.currentSubjects[index!]
+            let keresettTargy = self.finishedSubjects[index!]
             var targy: String = ""
             var rekord: Dictionary<String, AnyObject>
             
@@ -176,23 +190,13 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 }
             }
         }
-        else if (segue.identifier == "segueBefore")
-        {
-            
-        }
         else if (segue.identifier == "segueAfter")
         {
             
         }
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let more = UITableViewRowAction(style: .normal, title: "More") { action, index in
-            print("more button tapped")
-            self.melyiket = indexPath.row
-        }
-        
-        more.backgroundColor = UIColor.lightGray
+    private func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> UITableViewRowAction? {
         
         let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { action, index in
             print("favorite button tapped")
@@ -200,13 +204,7 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         favorite.backgroundColor = UIColor.orange
         
-        let share = UITableViewRowAction(style: .normal, title: "Share") { action, index in
-            print("share button tapped")
-            self.melyiket = indexPath.row
-        }
-        share.backgroundColor = UIColor.blue
-        
-        return [share, favorite, more]
+        return favorite
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -319,6 +317,48 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
             tanarka.name = "nincs"
             return tanarka
         }
+    }
+    
+    // MARK: CoreData elvégzett tárgykereső
+    
+    func getDoneSubjData (email: String) -> Int
+    {
+        
+        let fetchRequest: NSFetchRequest<DoneSubj> = DoneSubj.fetchRequest()
+        var useableEmail: String = ""
+        var isDone: Bool = false
+        var doneSubj = Elvegzett()
+        var counter: Int = 0
+        
+        do
+        {
+            doneSubjResults = try getContext().fetch(fetchRequest)
+            
+            print ("elvégzett tárgyak száma = \(doneSubjResults.count)")
+            
+            for targy in doneSubjResults as [NSManagedObject]
+            {
+                useableEmail = targy.value(forKey: "userEmail") as! String
+                isDone = targy.value(forKey: "elvegzett") as! Bool
+                if (useableEmail == email && isDone == true)
+                {
+                    print("megtalalta")
+                    doneSubj.felev = targy.value(forKey: "felev") as! String
+                    doneSubj.kredit = targy.value(forKey: "kredit") as! String
+                    doneSubj.name = targy.value(forKey: "nev") as! String
+                    doneSubj.targykod = targy.value(forKey: "targykod") as! String
+                    doneSubj.elvegzett = true
+                    elvegzettek.append(doneSubj)
+                    counter+=1
+                }
+            }
+            
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        return counter
     }
     
 }
