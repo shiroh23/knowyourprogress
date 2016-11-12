@@ -27,6 +27,7 @@ class profileScreen: UIViewController {
     @IBOutlet weak var majorLbl: UILabel!
     
     var searchResults = [NSManagedObject]()
+    var finalResults = [NSManagedObject]()
     var felh = Felhasznalo()
     var ofelh = Felhasznalo()
     
@@ -160,12 +161,13 @@ class profileScreen: UIViewController {
         
         do
         {
-            searchResults = try getContext().fetch(fetchRequest)
+            finalResults = try getContext().fetch(fetchRequest)
             
-            for felhasznalo in searchResults as [NSManagedObject]
+            for felhasznalo in finalResults as [NSManagedObject]
             {
-                if (felhasznalo.value(forKey: "email") as! String == email)
+                if (felhasznalo.value(forKey: "logged") as! Bool == true)
                 {
+                    print("itt most dolgok történnek")
                     felhasznalo.setValue(self.felh.email, forKey: "email")
                     felhasznalo.setValue(self.felh.currSem, forKey: "currentSemester")
                     felh.finiSem = felh.currSem-1
@@ -173,6 +175,7 @@ class profileScreen: UIViewController {
                     felhasznalo.setValue(self.felh.password, forKey: "password")
                     felhasznalo.setValue(self.felh.szak, forKey: "major")
                     felhasznalo.setValue(false, forKey: "logged")
+                    print("idáig történtek")
                     break
                 }
             }
@@ -368,7 +371,7 @@ class profileScreen: UIViewController {
     
     func finalafterAlert(msg1: String){
         let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Oké", style: UIAlertActionStyle.destructive, handler: { action in self.openNewPage(name: "welcome")
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in self.openNewPage(name: "welcome")
         } ))
         self.present(alert, animated: true, completion: nil)
     }

@@ -58,17 +58,27 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         self.getUserData()
         print(felh)
+        if (felh.email != "")
+        {
+            readPropertyList(szak: felh.szak)
         
-        readPropertyList(szak: felh.szak)
+            semesterSubjCount = self.targyCounter()
         
-        semesterSubjCount = self.targyCounter()
+            felevLbl.text = "\(felh.currSem). félév"
+            felevLbl.adjustsFontSizeToFitWidth = true
+            felevLbl.minimumScaleFactor = 0.5
         
-        felevLbl.text = "\(felh.currSem). félév"
-        
-        //profil adatlap megtekintése
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeDown.direction = UISwipeGestureRecognizerDirection.down
-        self.felevLbl.addGestureRecognizer(swipeDown)
+            //profil adatlap megtekintése
+            let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+            swipeDown.direction = UISwipeGestureRecognizerDirection.down
+            self.felevLbl.addGestureRecognizer(swipeDown)
+        }
+        else
+        {
+            felevLbl.text = "Nincs bejelentkezett felhasznalo"
+            felevLbl.adjustsFontSizeToFitWidth = true
+            felevLbl.minimumScaleFactor = 0.5
+        }
         
     }
     

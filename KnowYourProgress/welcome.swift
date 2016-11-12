@@ -173,6 +173,10 @@ class welcome: UIViewController, UITextFieldDelegate{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }
+    @IBAction func keepLoggedIN(_ sender: Any)
+    {
+        self.openNewPage(name: "main")
+    }
     
     @IBAction func regisztracio(_ sender: Any)
     {
