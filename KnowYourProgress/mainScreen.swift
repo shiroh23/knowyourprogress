@@ -40,9 +40,11 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var felh = Felh()
     var tanar = Oktato()
     var index: IndexPath = []
+    var alertIndex: IndexPath = []
     
     var searchResults = [NSManagedObject]()
     var teacherResults = [NSManagedObject]()
+    var subjResults = [NSManagedObject]()
     
     func readPropertyList(szak: String)
     {
@@ -123,15 +125,20 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         var count: Int = 0
         var felev: String = ""
         var nev: String = ""
+        var elvegzett: Bool = false
         var rekord: Dictionary<String, AnyObject>
         
         for i in (0..<productArray.count)
         {
             rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
             felev = rekord["felev"] as! String
-            if (felev == String(felh.currSem))
+            //itt keressük meg hogy el van e végezve a tárgy
+            
+            nev = rekord["nev"] as! String
+            elvegzett = self.getSubject(keresettTargy: nev)
+            
+            if (felev == String(felh.currSem) && elvegzett == false)
             {
-                nev = rekord["nev"] as! String
                 currentSubjects.append(nev)
                 //print(currentSubjects.last!)
                 count += 1
@@ -180,6 +187,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     destination.subject = newSubject
                     tanar = self.getTeachers(keresettTargy: keresettTargy)
                     destination.tutor = tanar
+                    destination.fromWhere = "main"
                     destination.path = self.index
                 }
             }
@@ -197,14 +205,15 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let favorite = UITableViewRowAction(style: .normal, title: "Elvégezve") { action, index in
-            print("elvégezve button tapped")
             self.melyiket = indexPath.row
             self.saveSubject(index: self.melyiket)
+            self.alertIndex = indexPath
+            self.alert(msg1: "Tárgy az elvégzettek közé téve!")
+            tableView.deselectRow(at: indexPath, animated: true)
         }
         favorite.backgroundColor = UIColor.green
         
         let share = UITableViewRowAction(style: .normal, title: "Elbukva") { action, index in
-            print("elbukva button tapped")
             self.melyiket = indexPath.row
         }
         share.backgroundColor = UIColor.red
@@ -349,6 +358,8 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 doneSubj.setValue(newSubject["felev"] as! String, forKey: "felev")
                 doneSubj.setValue(newSubject["targykod"] as! String, forKey: "targykod")
                 doneSubj.setValue(true, forKey: "elvegzett")
+                doneSubj.setValue(felh.email, forKey: "userEmail")
+                print("\(targyString) elvégezve!")
                 break
             }
         }
@@ -365,6 +376,48 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         {
             print("Error with: \(error)")
         }
+    }
+    
+    // MARK: CoreData egy tárgy kinyerése
+    
+    func getSubject (keresettTargy: String) -> Bool {
+        
+        let fetchRequest: NSFetchRequest<DoneSubj> = DoneSubj.fetchRequest()
+        var elvegzett: Bool = false
+        var keres: String = ""
+        
+        do
+        {
+            subjResults = try getContext().fetch(fetchRequest)
+            
+            for targy in subjResults as [NSManagedObject]
+            {
+                keres = targy.value(forKey: "nev") as! String
+                
+                if (keres == keresettTargy)
+                {
+                    elvegzett = targy.value(forKey: "elvegzett") as! Bool
+                    break
+                }
+            }
+            
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        return elvegzett
+    }
+    
+    func alert(msg1: String){
+        let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in self.someHandler(index: self.alertIndex) } ))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func someHandler (index: IndexPath)
+    {
+        self.tableView.reloadRows(at: [index], with: UITableViewRowAnimation.left)
     }
     
 }

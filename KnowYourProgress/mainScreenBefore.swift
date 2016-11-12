@@ -56,6 +56,10 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.finishedSubjCount = self.getDoneSubjData(email: felh.email)
         //semesterSubjCount = self.targyCounter()
         
+        felevLbl.text = "Az elvegzett felevek: \(felh.finiSem)"
+        felevLbl.adjustsFontSizeToFitWidth = true
+        felevLbl.minimumScaleFactor = 0.5
+        
         //profil adatlap megtekintése
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeDown.direction = UISwipeGestureRecognizerDirection.down
@@ -96,74 +100,10 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
         let row = indexPath.row
         //cell.textLabel?.text = getNev(pId: row)
-        //cell.textLabel?.text = finishedSubjects[row]
-        cell.textLabel?.text = elvegzettek[row].name
+        cell.textLabel?.text = finishedSubjects[row]
+        //cell.textLabel?.text = elvegzettek[row].name
         return cell
     }
-    
-    /*
-    func getNev(pId: Int) -> String{
-        var nev: String = ""
-        
-        var rekord: Dictionary<String, AnyObject>
-        rekord = productArray.object(at: pId) as! Dictionary<String, AnyObject>
-        
-        nev = rekord["nev"] as! String
-        
-        return nev;
-    }*/
-    
-    /*func targyCounter() -> Int
-    {
-        var count: Int = 0
-        var felev: String = ""
-        var nev: String = ""
-        var rekord: Dictionary<String, AnyObject>
-        
-        for i in (0..<productArray.count)
-        {
-            rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
-            felev = rekord["felev"] as! String
-            if (felev == String(felh.currSem))
-            {
-                if (felh.currSem > 1)
-                {
-                    for i in (0..<felh.currSem)
-                    {
-                        
-                    }
-                }
-                else
-                {
-                    nev = rekord["nev"] as! String
-                    finishedSubjects.append(nev)
-                    //print(currentSubjects.last!)
-                    count += 1
-                }
-                
-            }
-        }
-        
-        return count
-    }*/
-    
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-     {
-     self.melyiket = indexPath.row
-     print("\(self.melyiket) na melyik lesz")
-     let newSubject = self.productArray.object(at: self.melyiket) as! Dictionary<String, AnyObject>
-     let nev: String = newSubject["nev"] as! String
-     let targykod: String = newSubject["targykod"] as! String
-     let kredit: String = newSubject["kredit"] as! String
-     let felev: String = newSubject["felev"] as! String
-     print("\(nev) es \(targykod) es \(kredit) es \(felev)")
-     let destinationVC = detailviewScreen()
-     destinationVC.targykod = "gagyi"
-     destinationVC.kredit = "fos"
-     destinationVC.nev = "ez egy csalas"
-     destinationVC.felev = "utalom"
-     self.present(destinationVC, animated: true, completion: nil)
-     }*/
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -186,6 +126,7 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     destination.subject = newSubject
                     tanar = self.getTeachers(keresettTargy: keresettTargy)
                     destination.tutor = tanar
+                    destination.fromWhere = "mainBefore"
                     destination.path = self.index
                 }
             }
@@ -326,8 +267,9 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let fetchRequest: NSFetchRequest<DoneSubj> = DoneSubj.fetchRequest()
         var useableEmail: String = ""
+        var nev: String = ""
         var isDone: Bool = false
-        var doneSubj = Elvegzett()
+        //var doneSubj = Elvegzett()
         var counter: Int = 0
         
         do
@@ -340,19 +282,22 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
             {
                 useableEmail = targy.value(forKey: "userEmail") as! String
                 isDone = targy.value(forKey: "elvegzett") as! Bool
+                print ("\(isDone) = true és az email: \(useableEmail)")
                 if (useableEmail == email && isDone == true)
                 {
                     print("megtalalta")
+                    nev = targy.value(forKey: "nev") as! String
+                    finishedSubjects.append(nev)
+                    /*
                     doneSubj.felev = targy.value(forKey: "felev") as! String
                     doneSubj.kredit = targy.value(forKey: "kredit") as! String
                     doneSubj.name = targy.value(forKey: "nev") as! String
                     doneSubj.targykod = targy.value(forKey: "targykod") as! String
                     doneSubj.elvegzett = true
-                    elvegzettek.append(doneSubj)
+                    self.elvegzettek.append(doneSubj)*/
                     counter+=1
                 }
             }
-            
         }
         catch
         {

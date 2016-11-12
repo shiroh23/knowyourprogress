@@ -281,6 +281,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="2js-iP-gMj" kind="show" identifier="segue" id="cSB-Zf-HDF"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -453,6 +456,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="2js-iP-gMj" kind="show" identifier="segue" id="TOh-uV-aHm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1067,5 +1073,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="VJ0-bs-3ls"/>
+        <segue reference="TOh-uV-aHm"/>
     </inferredMetricsTieBreakers>
 </document>
