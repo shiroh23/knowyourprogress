@@ -35,10 +35,12 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var tanar = Oktato()
     var elvegzettek = [Elvegzett]()
     var index: IndexPath = []
+    var alertIndex: IndexPath = []
     
     var searchResults = [NSManagedObject]()
     var teacherResults = [NSManagedObject]()
     var doneSubjResults = [NSManagedObject]()
+    var todelSubjResults = [NSManagedObject]()
     
     func readPropertyList(szak: String)
     {
@@ -122,18 +124,25 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    private func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> UITableViewRowAction? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { action, index in
-            print("favorite button tapped")
+        let favorite = UITableViewRowAction(style: .normal, title: "Törlés") { action, index in
             self.melyiket = indexPath.row
+            print(self.finishedSubjects[indexPath.row])
+            self.deleteDoneSubjData(targynev: self.finishedSubjects[indexPath.row])
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.left)
+            //let count = self.getDoneSubjData(email: self.felh.email)
+            //print(count)
+            self.alert(msg1: "Tárgy visszakerült a teljesítendők közé")
         }
         favorite.backgroundColor = UIColor.orange
         
-        return favorite
+        return [favorite]
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -289,6 +298,45 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
             print("Error with request: \(error)")
         }
         return counter
+    }
+    
+    // MARK: CoreData tárgy megkeresése és törlése az elvégzettek közül
+    
+    func deleteDoneSubjData (targynev: String)
+    {
+        
+        let fetchRequest: NSFetchRequest<DoneSubj> = DoneSubj.fetchRequest()
+        var useableTargy: String = ""
+        var isDone: Bool = false
+        let context = getContext()
+        
+        do
+        {
+            todelSubjResults = try getContext().fetch(fetchRequest)
+            
+            for targy in todelSubjResults as [NSManagedObject]
+            {
+                useableTargy = targy.value(forKey: "nev") as! String
+                isDone = targy.value(forKey: "elvegzett") as! Bool
+                if (useableTargy == targynev && isDone == true)
+                {
+                    context.delete(targy)
+                    print("targy törölve")
+                    break
+                }
+            }
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+       
+    }
+    
+    func alert(msg1: String){
+        let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil ))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
