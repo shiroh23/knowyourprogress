@@ -38,6 +38,7 @@ class profileScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getUserData()
+        
         //biztonsági mentés, labelek visszaállításához
         ofelh.email = felh.email
         ofelh.currSem = felh.currSem
@@ -115,7 +116,7 @@ class profileScreen: UIViewController {
         }
         else
         {
-            self.navigationController!.popViewController(animated: true)
+            self.openNewPage(name: "main")
         }
     }
     @IBAction func logOut(_ sender: Any)

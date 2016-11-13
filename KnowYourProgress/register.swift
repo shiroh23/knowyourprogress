@@ -125,6 +125,10 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         registerBtn.isEnabled = false
+        if ((textField.viewWithTag(4)) != nil)
+        {
+            szakvalasztoField.text = "mérnökinformatikus"
+        }
     }
     
     func alert(msg1: String){

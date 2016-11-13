@@ -36,6 +36,9 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var elvegzettek = [Elvegzett]()
     var index: IndexPath = []
     var alertIndex: IndexPath = []
+    var felevValtas: Bool = false
+    var visszavonta: Bool = false
+    var maradtTargyCount: Int = 99
     
     var searchResults = [NSManagedObject]()
     var teacherResults = [NSManagedObject]()
@@ -120,7 +123,25 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         else if (segue.identifier == "segueAfter")
         {
+            var randomBool: Bool
+            let destination = segue.destination as! main
             
+            print("kapott maradtTargyCount: \(self.maradtTargyCount) visszavonta: \(self.visszavonta)")
+            if (self.visszavonta == true)
+            {
+                randomBool = false
+            }
+            else
+            {
+                randomBool = true
+            }
+            if (self.maradtTargyCount == 0 && randomBool == true)
+            {
+                self.felevValtas = true
+                print("ennyike maradt 0 gondolom: \(self.felevValtas)")
+            }
+            print("küldöm \(self.felevValtas)")
+            destination.felevValtas = self.felevValtas
         }
     }
     
@@ -134,6 +155,8 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
             self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.left)
             //let count = self.getDoneSubjData(email: self.felh.email)
             //print(count)
+            self.visszavonta = true
+            print("visszavontam")
             self.alert(msg1: "Tárgy visszakerült a teljesítendők közé")
         }
         favorite.backgroundColor = UIColor.orange
@@ -177,8 +200,8 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 {
                     //print("megtalalta")
                     felh.email = users.value(forKey: "email") as! String
-                    felh.currSem = users.value(forKey: "currentSemester") as! Int
-                    felh.finiSem = users.value(forKey: "finishedSemester") as! Int
+                    felh.currSem = users.value(forKey: "currentSemester") as! Int16
+                    felh.finiSem = users.value(forKey: "finishedSemester") as! Int16
                     felh.password = users.value(forKey: "password") as! String
                     useableszak = users.value(forKey: "major") as! String
                     

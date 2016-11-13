@@ -13,8 +13,8 @@ import CoreData
 struct Felh
 {
     var email: String = ""
-    var currSem: Int = 0
-    var finiSem: Int = 0
+    var currSem: Int16 = 0
+    var finiSem: Int16 = 0
     var password: String = ""
     var szak: String = ""
 }
@@ -42,6 +42,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var tanar = Oktato()
     var index: IndexPath = []
     var alertIndex: IndexPath = []
+    var felevValtas: Bool = false
     
     var searchResults = [NSManagedObject]()
     var teacherResults = [NSManagedObject]()
@@ -68,10 +69,20 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         print(felh)
         if (felh.email != "")
         {
+            if (self.felevValtas == true)
+            {
+                let count = self.targyCounter()
+                self.updateUserData()
+                self.felevValtas = false
+                print("felev valtas megtörtént")
+            }
+            
             readPropertyList(szak: felh.szak)
         
             semesterSubjCount = self.targyCounter()
         
+            
+            
             felevLbl.text = "\(felh.currSem). félév"
             felevLbl.adjustsFontSizeToFitWidth = true
             felevLbl.minimumScaleFactor = 0.5
@@ -84,6 +95,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             //időszakok megtekintése
             let pressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(main.handlePress))
             self.felevLbl.addGestureRecognizer(pressGestureRecognizer)
+                
         }
         else
         {
@@ -140,8 +152,10 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
         cell.backgroundColor = .clear
         let row = indexPath.row
-        //cell.textLabel?.text = getNev(pId: row)
-        cell.textLabel?.text = currentSubjects[row]
+        if (currentSubjects[row] != "")
+        {
+            cell.textLabel?.text = currentSubjects[row]
+        }
         return cell
     }
     
@@ -229,7 +243,17 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         if (segue.identifier == "segueBefore")
         {
-            
+            var maradtTargyCount = 0
+            for i in (0..<self.currentSubjects.count)
+            {
+                if (currentSubjects[i] != "")
+                {
+                    maradtTargyCount += 1
+                }
+            }
+            print("maradt targy counter küldés előtt: \(maradtTargyCount)")
+            let destination = segue.destination as! mainBefore
+            destination.maradtTargyCount = maradtTargyCount
         }
         if (segue.identifier == "segueAfter")
         {
@@ -243,8 +267,8 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             self.melyiket = indexPath.row
             self.saveSubject(index: self.melyiket)
             self.alertIndex = indexPath
+            self.alert(msg1: "Áthelyezve az elvégzett tárgyak közé!")
             tableView.deselectRow(at: indexPath, animated: true)
-            self.alert(msg1: "Tárgy az elvégzettek közé téve!")
         }
         favorite.backgroundColor = UIColor.green
         
@@ -292,8 +316,8 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 {
                     //print("megtalalta")
                     felh.email = users.value(forKey: "email") as! String
-                    felh.currSem = users.value(forKey: "currentSemester") as! Int
-                    felh.finiSem = users.value(forKey: "finishedSemester") as! Int
+                    felh.currSem = users.value(forKey: "currentSemester") as! Int16
+                    felh.finiSem = users.value(forKey: "finishedSemester") as! Int16
                     felh.password = users.value(forKey: "password") as! String
                     useableszak = users.value(forKey: "major") as! String
                     
@@ -321,8 +345,40 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         {
             print("Error with request: \(error)")
         }
+    }
+    
+    // MARK: CoreData user frissítés ha elvégezte az adott félévet
+    
+    func updateUserData ()
+    {
+        
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        
+        do
+        {
+            searchResults = try getContext().fetch(fetchRequest)
+            
+            for users in searchResults as [NSManagedObject]
+            {
+                if (users.value(forKey: "logged") as! Bool == true)
+                {
+                    felh.currSem = Int16(felh.currSem+1)
+                    felh.finiSem = Int16(felh.finiSem+1)
+                    print("megvan megvan")
+                    users.setValue(felh.currSem, forKey: "currentSemester")
+                    users.setValue(felh.finiSem, forKey: "finishedSemester")
+                    break
+                }
+            }
+            
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
         
     }
+    
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
@@ -379,6 +435,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let doneSubj = NSManagedObject(entity: entity!, insertInto: context)
         
         let keresettTargy = self.currentSubjects[index]
+        self.currentSubjects[index].removeAll()
         var targyString: String = ""
         var rekord: Dictionary<String, AnyObject>
         
@@ -436,7 +493,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     break
                 }
             }
-            
         }
         catch
         {
@@ -454,7 +510,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func someHandler (index: IndexPath)
     {
         self.tableView.reloadRows(at: [index], with: UITableViewRowAnimation.left)
-        self.tableView.reloadData()
     }
     
 }

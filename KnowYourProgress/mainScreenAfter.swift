@@ -181,8 +181,8 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 {
                     //print("megtalalta")
                     felh.email = users.value(forKey: "email") as! String
-                    felh.currSem = users.value(forKey: "currentSemester") as! Int
-                    felh.finiSem = users.value(forKey: "finishedSemester") as! Int
+                    felh.currSem = users.value(forKey: "currentSemester") as! Int16
+                    felh.finiSem = users.value(forKey: "finishedSemester") as! Int16
                     felh.password = users.value(forKey: "password") as! String
                     useableszak = users.value(forKey: "major") as! String
                     
