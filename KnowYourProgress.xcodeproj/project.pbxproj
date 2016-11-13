@@ -12,6 +12,7 @@
 		5B0AEF611DD6477600018F09 /* mainScreenAfter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEF601DD6477600018F09 /* mainScreenAfter.swift */; };
 		5B0AEF631DD68F8800018F09 /* reviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEF621DD68F8800018F09 /* reviewScreen.swift */; };
 		5B0AEF661DD6A09900018F09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B0AEF641DD6A09900018F09 /* Main.storyboard */; };
+		5B303D641DD7CC040029D931 /* periodsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B303D631DD7CC040029D931 /* periodsScreen.swift */; };
 		5B4463B51DA2EACE00685365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463B41DA2EACE00685365 /* AppDelegate.swift */; };
 		5B4463B71DA2EACE00685365 /* welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463B61DA2EACE00685365 /* welcome.swift */; };
 		5B4463BD1DA2EACE00685365 /* KnowYourProgress.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463BB1DA2EACE00685365 /* KnowYourProgress.xcdatamodeld */; };
@@ -65,6 +66,7 @@
 		5B0AEF601DD6477600018F09 /* mainScreenAfter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainScreenAfter.swift; sourceTree = "<group>"; };
 		5B0AEF621DD68F8800018F09 /* reviewScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reviewScreen.swift; sourceTree = "<group>"; };
 		5B0AEF651DD6A09900018F09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = KnowYourProgress/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5B303D631DD7CC040029D931 /* periodsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = periodsScreen.swift; sourceTree = "<group>"; };
 		5B4463B11DA2EACE00685365 /* KnowYourProgress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowYourProgress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4463B41DA2EACE00685365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B4463B61DA2EACE00685365 /* welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcome.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				5B0AEF5E1DD6476700018F09 /* mainScreenBefore.swift */,
 				5BC2B0951DD4AB5D004562C2 /* mainScreen.swift */,
 				5B0AEF601DD6477600018F09 /* mainScreenAfter.swift */,
+				5B303D631DD7CC040029D931 /* periodsScreen.swift */,
 				5B45093B1DD5157E00BC1486 /* detailviewScreen.swift */,
 				5B0AEF621DD68F8800018F09 /* reviewScreen.swift */,
 				5B4463B61DA2EACE00685365 /* welcome.swift */,
@@ -355,6 +358,7 @@
 				5B4463EB1DA2FB5800685365 /* launchScreen.swift in Sources */,
 				5B4463B71DA2EACE00685365 /* welcome.swift in Sources */,
 				5B4463BD1DA2EACE00685365 /* KnowYourProgress.xcdatamodeld in Sources */,
+				5B303D641DD7CC040029D931 /* periodsScreen.swift in Sources */,
 				5B4463B51DA2EACE00685365 /* AppDelegate.swift in Sources */,
 				5BC2B0961DD4AB5D004562C2 /* mainScreen.swift in Sources */,
 				5B0AEF5F1DD6476700018F09 /* mainScreenBefore.swift in Sources */,

@@ -754,6 +754,77 @@
             </objects>
             <point key="canvasLocation" x="3160.8000000000002" y="633.73313343328346"/>
         </scene>
+        <!--Periods Screen-->
+        <scene sceneID="bM6-Ee-Pr1">
+            <objects>
+                <viewController storyboardIdentifier="periods" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Uuh-gh-NWf" customClass="periodsScreen" customModule="KnowYourProgress" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E29-Ff-0Pm"/>
+                        <viewControllerLayoutGuide type="bottom" id="keB-Hb-6bd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IvQ-TH-10L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cd9-Ed-kly">
+                                <rect key="frame" x="0.0" y="35" width="65" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="sf6-Zu-oC7"/>
+                                </constraints>
+                                <state key="normal" title="&lt; Vissza">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="back:" destination="Uuh-gh-NWf" eventType="touchUpInside" id="LHO-7j-5FQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/17/1 tanév időszakjai" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5R-P2-ZQC">
+                                <rect key="frame" x="124" y="32" width="235" height="37"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oeW-9a-yMc">
+                                <rect key="frame" x="0.0" y="77" width="375" height="590"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="E7V-iE-B2X">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E7V-iE-B2X" id="aQ8-B4-3hD">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Uuh-gh-NWf" id="9Hn-G0-lKI"/>
+                                    <outlet property="delegate" destination="Uuh-gh-NWf" id="G4j-cY-eRk"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oeW-9a-yMc" firstAttribute="bottom" secondItem="keB-Hb-6bd" secondAttribute="top" id="AAj-iP-JDQ"/>
+                            <constraint firstItem="oeW-9a-yMc" firstAttribute="leading" secondItem="Cd9-Ed-kly" secondAttribute="leading" id="HjJ-J0-70J"/>
+                            <constraint firstItem="oeW-9a-yMc" firstAttribute="top" secondItem="G5R-P2-ZQC" secondAttribute="bottom" constant="8" symbolic="YES" id="LWc-py-C8f"/>
+                            <constraint firstItem="G5R-P2-ZQC" firstAttribute="leading" secondItem="Cd9-Ed-kly" secondAttribute="trailing" constant="59" id="O7S-65-Dhs"/>
+                            <constraint firstItem="Cd9-Ed-kly" firstAttribute="leading" secondItem="IvQ-TH-10L" secondAttribute="leading" id="W2k-Ie-92e"/>
+                            <constraint firstItem="oeW-9a-yMc" firstAttribute="top" secondItem="Cd9-Ed-kly" secondAttribute="bottom" constant="12" id="drl-BV-WtR"/>
+                            <constraint firstItem="G5R-P2-ZQC" firstAttribute="trailing" secondItem="IvQ-TH-10L" secondAttribute="trailingMargin" id="gL0-cf-1dt"/>
+                            <constraint firstItem="Cd9-Ed-kly" firstAttribute="centerY" secondItem="G5R-P2-ZQC" secondAttribute="centerY" id="iGX-oW-3Tw"/>
+                            <constraint firstAttribute="trailing" secondItem="oeW-9a-yMc" secondAttribute="trailing" id="jCL-w7-Pn0"/>
+                            <constraint firstItem="G5R-P2-ZQC" firstAttribute="top" secondItem="E29-Ff-0Pm" secondAttribute="bottom" constant="12" id="sk1-bQ-EeZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="oeW-9a-yMc" id="Ez8-HW-Vei"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UTF-ZG-iEu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3872.8000000000002" y="633.73313343328346"/>
+        </scene>
         <!--Detailview Screen-->
         <scene sceneID="Dej-rV-RsO">
             <objects>
@@ -1011,7 +1082,7 @@
         <image name="489812_Pannonia.jpg" width="1500" height="1466"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VJ0-bs-3ls"/>
+        <segue reference="tda-oK-5Ea"/>
         <segue reference="QNr-Jo-Ngc"/>
     </inferredMetricsTieBreakers>
 </document>

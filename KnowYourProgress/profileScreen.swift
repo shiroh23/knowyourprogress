@@ -44,6 +44,7 @@ class profileScreen: UIViewController {
         ofelh.finiSem = felh.finiSem
         ofelh.password = felh.password
         ofelh.szak = felh.szak
+        modosultak = false
         
         emailLbl.text = felh.email
         passwordLbl.text = felh.password

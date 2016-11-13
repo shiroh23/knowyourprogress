@@ -33,6 +33,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var felevLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    let backgroundImage = UIImage(named: "489812_Pannonia.jpg")
     var productArray = NSArray()
     var currentSubjects = [String]()
     var melyiket: Int = 0
@@ -56,6 +57,13 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     {
         super.viewDidLoad()
         
+        //background beállítása
+        let imageView = UIImageView(image: backgroundImage)
+        imageView.contentMode = .scaleAspectFit
+        imageView.alpha = 0.05
+        self.tableView.backgroundView = imageView
+        
+        
         self.getUserData()
         print(felh)
         if (felh.email != "")
@@ -72,6 +80,10 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
             swipeDown.direction = UISwipeGestureRecognizerDirection.down
             self.felevLbl.addGestureRecognizer(swipeDown)
+            
+            //időszakok megtekintése
+            let pressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(main.handlePress))
+            self.felevLbl.addGestureRecognizer(pressGestureRecognizer)
         }
         else
         {
@@ -82,9 +94,12 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
         tableView.deselectRow(at: self.index, animated: true)
     }
+    
+    // MARK: Gesture észlelők
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
@@ -104,6 +119,16 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    func handlePress(sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.began {
+            // handle start of pressing
+            self.openNewPage(name: "periods")
+        }
+        else if sender.state == UIGestureRecognizerState.ended {
+            // handle end of pressing
+        }
+    }
+    
     private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -113,6 +138,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
+        cell.backgroundColor = .clear
         let row = indexPath.row
         //cell.textLabel?.text = getNev(pId: row)
         cell.textLabel?.text = currentSubjects[row]
@@ -217,8 +243,8 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             self.melyiket = indexPath.row
             self.saveSubject(index: self.melyiket)
             self.alertIndex = indexPath
-            self.alert(msg1: "Tárgy az elvégzettek közé téve!")
             tableView.deselectRow(at: indexPath, animated: true)
+            self.alert(msg1: "Tárgy az elvégzettek közé téve!")
         }
         favorite.backgroundColor = UIColor.green
         

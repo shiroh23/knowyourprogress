@@ -15,6 +15,7 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var felevLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    let backgroundImage = UIImage(named: "489812_Pannonia.jpg")
     var productArray = NSArray()
     var allSubjects = [String]()
     var melyiket: Int = 0
@@ -37,6 +38,12 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        //background beállítása
+        let imageView = UIImageView(image: backgroundImage)
+        imageView.contentMode = .scaleAspectFit
+        imageView.alpha = 0.05
+        self.tableView.backgroundView = imageView
         
         self.getUserData()
         print(felh)
@@ -62,6 +69,7 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
+        cell.backgroundColor = .clear
         let row = indexPath.row
         cell.textLabel?.text = allSubjects[row]
         return cell

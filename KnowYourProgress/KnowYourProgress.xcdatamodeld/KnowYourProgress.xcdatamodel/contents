@@ -8,10 +8,11 @@
         <attribute name="targykod" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userEmail" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Periods" representedClassName="Periods" syncable="YES" codeGenerationType="class">
+    <entity name="Period" representedClassName="Period" syncable="YES" codeGenerationType="class">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="end" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Teacher" representedClassName="Teacher" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -28,9 +29,9 @@
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Periods" positionX="-189" positionY="-81" width="128" height="90"/>
+        <element name="DoneSubj" positionX="-198" positionY="-90" width="128" height="135"/>
+        <element name="Period" positionX="-189" positionY="-81" width="128" height="105"/>
         <element name="Teacher" positionX="-207" positionY="-99" width="128" height="105"/>
         <element name="User" positionX="-216" positionY="-141" width="128" height="135"/>
-        <element name="DoneSubj" positionX="-198" positionY="-90" width="128" height="135"/>
     </elements>
 </model>
