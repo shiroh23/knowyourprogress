@@ -109,6 +109,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool)
     {
         tableView.deselectRow(at: self.index, animated: true)
+        self.someHandler(index: self.index)
     }
     
     // MARK: Gesture észlelők

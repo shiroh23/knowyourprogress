@@ -31,7 +31,6 @@ class welcome: UIViewController, UITextFieldDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        emailField.text = ""
         passwordField.text = ""
         self.view.endEditing(true)
         emailField.becomeFirstResponder()
