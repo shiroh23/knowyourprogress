@@ -283,7 +283,7 @@ class profileScreen: UIViewController {
     
     func emailAlert(msg1: String){
         let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Mégse", style: UIAlertActionStyle.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Mégse", style: UIAlertActionStyle.destructive, handler: { action in self.modosultak = false}))
         alert.addAction(UIAlertAction(title: "Módosít", style: UIAlertActionStyle.destructive, handler: { action in
             let ertek: String = (alert.textFields?.first?.text)!
             print(ertek)
@@ -313,7 +313,7 @@ class profileScreen: UIViewController {
     
     func semesterAlert(msg1: String){
         let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Mégse", style: UIAlertActionStyle.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Mégse", style: UIAlertActionStyle.destructive, handler: { action in self.modosultak = false}))
         alert.addAction(UIAlertAction(title: "Módosít", style: UIAlertActionStyle.destructive, handler: { action in
             let ertek: Int16 = Int16((alert.textFields?.first?.text)!)!
             print(ertek)
@@ -341,7 +341,7 @@ class profileScreen: UIViewController {
     
     func passwordAlert(msg1: String){
         let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Mégse", style: UIAlertActionStyle.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Mégse", style: UIAlertActionStyle.destructive, handler: { action in self.modosultak = false}))
         alert.addAction(UIAlertAction(title: "Módosít", style: UIAlertActionStyle.destructive, handler: { action in
             let ertek: String = (alert.textFields?.first?.text)!
             let ertek2: String = (alert.textFields?.last?.text)!
@@ -379,7 +379,7 @@ class profileScreen: UIViewController {
 
     func majorAlert(msg1: String){
         let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Mégse", style: UIAlertActionStyle.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Mégse", style: UIAlertActionStyle.destructive, handler: { action in self.modosultak = false}))
         alert.addAction(UIAlertAction(title: "Módosít", style: UIAlertActionStyle.destructive, handler: { action in
             let ertek: Int = Int((alert.textFields?.first?.text)!)!
             print(ertek)
@@ -426,6 +426,7 @@ class profileScreen: UIViewController {
             self.currSemLbl.text = String(self.ofelh.currSem)
             self.majorLbl.text = self.ofelh.szak
             self.passwordLbl.text = self.ofelh.password
+            self.modosultak = false
         } ))
         self.present(alert, animated: true, completion: nil)
     }
