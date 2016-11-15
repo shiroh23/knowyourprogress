@@ -114,7 +114,7 @@
     </dict>
     <dict>
         <key>nev</key>
-        <string>Számítógép -architektúrák</string>
+        <string>Számítógép architektúrák</string>
         <key>felev</key>
         <string>2</string>
         <key>kredit</key>
@@ -174,7 +174,7 @@
     </dict>
     <dict>
         <key>nev</key>
-        <string>Számítógép-hálózatok I.</string>
+        <string>Számítógép hálózatok I.</string>
         <key>felev</key>
         <string>4</string>
         <key>kredit</key>
@@ -414,7 +414,7 @@
     </dict>
     <dict>
         <key>nev</key>
-        <string>Valószín?ségszámítás és matematikai statisztika</string>
+        <string>Valószínűségszámítás és matematikai statisztika</string>
         <key>felev</key>
         <string>3</string>
         <key>kredit</key>
@@ -444,7 +444,7 @@
     </dict>
     <dict>
         <key>nev</key>
-        <string>Adatbáziskezel? rendszerek elmélete (angol nyelven)</string>
+        <string>Adatbáziskezelő rendszerek elmélete (angol nyelven)</string>
         <key>felev</key>
         <string>3</string>
         <key>kredit</key>
@@ -474,7 +474,7 @@
     </dict>
     <dict>
         <key>nev</key>
-        <string>Korszer? programozási technikák</string>
+        <string>Korszerű programozási technikák</string>
         <key>felev</key>
         <string>3</string>
         <key>kredit</key>
@@ -494,7 +494,7 @@
     </dict>
     <dict>
         <key>nev</key>
-        <string>Számítógép-hálózatok II.</string>
+        <string>Számítógép hálózatok II.</string>
         <key>felev</key>
         <string>5</string>
         <key>kredit</key>
