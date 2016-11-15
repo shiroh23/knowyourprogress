@@ -1,8 +1,8 @@
 //
-//  detailviewScreen.swift
+//  detailviewafterScreen.swift
 //  KnowYourProgress
 //
-//  Created by shiroh23 on 2016. 11. 10..
+//  Created by shiroh23 on 2016. 11. 15..
 //  Copyright © 2016. Horváth Richárd. All rights reserved.
 //
 
@@ -10,15 +10,8 @@ import Foundation
 import UIKit
 import CoreData
 
-struct Tantargy {
-    var nev: String = ""
-    var kredit: String = ""
-    var felev: String = ""
-    var targykod: String = ""
-    var elvegzett: Bool = false
-}
 
-class detailviewScreen: UIViewController {
+class detailviewafterScreen: UIViewController {
     
     @IBOutlet weak var subjectName: UILabel!
     @IBOutlet weak var kreditLbl: UILabel!
@@ -70,7 +63,7 @@ class detailviewScreen: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if (segue.identifier == "segueback") {
-            let destination = segue.destination as! main
+            let destination = segue.destination as! mainAfter
             destination.index = path
         }
     }

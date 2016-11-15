@@ -24,6 +24,8 @@
 		5B4463EB1DA2FB5800685365 /* launchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463EA1DA2FB5800685365 /* launchScreen.swift */; };
 		5B4463ED1DA315A300685365 /* register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4463EC1DA315A300685365 /* register.swift */; };
 		5B45093C1DD5157E00BC1486 /* detailviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45093B1DD5157E00BC1486 /* detailviewScreen.swift */; };
+		5B72F7C11DDB693900BD4AC9 /* detailviewbeforeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72F7C01DDB693900BD4AC9 /* detailviewbeforeScreen.swift */; };
+		5B72F7C31DDB694A00BD4AC9 /* detailviewafterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72F7C21DDB694A00BD4AC9 /* detailviewafterScreen.swift */; };
 		5BC2B0961DD4AB5D004562C2 /* mainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC2B0951DD4AB5D004562C2 /* mainScreen.swift */; };
 		5BC2B0981DD4ABD6004562C2 /* mernokinfoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC2B0971DD4ABD6004562C2 /* mernokinfoData.plist */; };
 		5BC2B09B1DD4BA49004562C2 /* proginfoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC2B09A1DD4BA49004562C2 /* proginfoData.plist */; };
@@ -84,6 +86,8 @@
 		5B4463EA1DA2FB5800685365 /* launchScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = launchScreen.swift; sourceTree = "<group>"; };
 		5B4463EC1DA315A300685365 /* register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = register.swift; sourceTree = "<group>"; };
 		5B45093B1DD5157E00BC1486 /* detailviewScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailviewScreen.swift; sourceTree = "<group>"; };
+		5B72F7C01DDB693900BD4AC9 /* detailviewbeforeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailviewbeforeScreen.swift; sourceTree = "<group>"; };
+		5B72F7C21DDB694A00BD4AC9 /* detailviewafterScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailviewafterScreen.swift; sourceTree = "<group>"; };
 		5BC2B0951DD4AB5D004562C2 /* mainScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainScreen.swift; sourceTree = "<group>"; };
 		5BC2B0971DD4ABD6004562C2 /* mernokinfoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = mernokinfoData.plist; path = KnowYourProgress/mernokinfoData.plist; sourceTree = "<group>"; };
 		5BC2B09A1DD4BA49004562C2 /* proginfoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = proginfoData.plist; path = KnowYourProgress/proginfoData.plist; sourceTree = "<group>"; };
@@ -148,7 +152,9 @@
 				5BC2B0951DD4AB5D004562C2 /* mainScreen.swift */,
 				5B0AEF601DD6477600018F09 /* mainScreenAfter.swift */,
 				5B303D631DD7CC040029D931 /* periodsScreen.swift */,
+				5B72F7C01DDB693900BD4AC9 /* detailviewbeforeScreen.swift */,
 				5B45093B1DD5157E00BC1486 /* detailviewScreen.swift */,
+				5B72F7C21DDB694A00BD4AC9 /* detailviewafterScreen.swift */,
 				5B0AEF621DD68F8800018F09 /* reviewScreen.swift */,
 				5B4463B61DA2EACE00685365 /* welcome.swift */,
 				5B0AEF641DD6A09900018F09 /* Main.storyboard */,
@@ -359,10 +365,12 @@
 				5B4463B71DA2EACE00685365 /* welcome.swift in Sources */,
 				5B4463BD1DA2EACE00685365 /* KnowYourProgress.xcdatamodeld in Sources */,
 				5B303D641DD7CC040029D931 /* periodsScreen.swift in Sources */,
+				5B72F7C11DDB693900BD4AC9 /* detailviewbeforeScreen.swift in Sources */,
 				5B4463B51DA2EACE00685365 /* AppDelegate.swift in Sources */,
 				5BC2B0961DD4AB5D004562C2 /* mainScreen.swift in Sources */,
 				5B0AEF5F1DD6476700018F09 /* mainScreenBefore.swift in Sources */,
 				5B0AEF611DD6477600018F09 /* mainScreenAfter.swift in Sources */,
+				5B72F7C31DDB694A00BD4AC9 /* detailviewafterScreen.swift in Sources */,
 				5B4463ED1DA315A300685365 /* register.swift in Sources */,
 				5B0AEF5D1DD61C7200018F09 /* profileScreen.swift in Sources */,
 				5B0AEF631DD68F8800018F09 /* reviewScreen.swift in Sources */,

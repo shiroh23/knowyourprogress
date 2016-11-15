@@ -292,7 +292,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="2js-iP-gMj" kind="show" identifier="segue" id="9I3-gj-8ow"/>
+                                            <segue destination="vUU-5O-6TY" kind="show" identifier="segue" id="lQ3-4p-dig"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -341,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oV3-M4-4dO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1744.8" y="-50.824587706146929"/>
+            <point key="canvasLocation" x="1746" y="-171"/>
         </scene>
         <!--Main-->
         <scene sceneID="E8J-W1-gq0">
@@ -468,7 +468,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="2js-iP-gMj" kind="show" identifier="segue" id="QNr-Jo-Ngc"/>
+                                            <segue destination="BPu-Gz-3tv" kind="show" identifier="segue" id="o64-Ld-p1s"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -526,7 +526,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1744.8" y="1279.6101949025488"/>
+            <point key="canvasLocation" x="1745" y="1473"/>
         </scene>
         <!--Profile Screen-->
         <scene sceneID="APR-kY-qrA">
@@ -1121,12 +1121,337 @@
             </objects>
             <point key="canvasLocation" x="-272" y="621"/>
         </scene>
+        <!--Detailviewbefore Screen-->
+        <scene sceneID="sdH-U9-PQy">
+            <objects>
+                <viewController storyboardIdentifier="detailviewbefore" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vUU-5O-6TY" customClass="detailviewbeforeScreen" customModule="KnowYourProgress" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hmk-ec-QGo"/>
+                        <viewControllerLayoutGuide type="bottom" id="gNH-Ol-TZe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8jP-hf-aoP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tantárgy neve" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fc-Di-MTo">
+                                <rect key="frame" x="80" y="28" width="279" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="279" id="0j1-Wy-QIb"/>
+                                    <constraint firstAttribute="height" constant="45" id="fD1-Rc-wr4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="23"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="th7-cc-ikW">
+                                <rect key="frame" x="0.0" y="35" width="65" height="30"/>
+                                <state key="normal" title="&lt; Vissza">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="R38-8X-4ja" kind="show" identifier="segueback" id="pnZ-oh-Mai"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.05000000074505806" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="489812_Pannonia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Qkt-Za-9hD">
+                                <rect key="frame" x="0.0" y="170" width="375" height="327"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ha teljesíted, ennyi kredit jár érte:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoS-PB-Cbo">
+                                <rect key="frame" x="16" y="141" width="256" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59K-PP-f0i">
+                                <rect key="frame" x="280" y="131" width="79" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="UCY-Q1-5Bv"/>
+                                    <constraint firstAttribute="width" constant="79" id="rlL-6m-Oy1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A x. félévben csinálhatod a tárgyat:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cB-3I-zj2">
+                                <rect key="frame" x="56" y="197" width="263" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tantargykod" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKv-8k-KNf">
+                                <rect key="frame" x="191" y="81" width="168" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="168" id="Vsk-Ev-tms"/>
+                                    <constraint firstAttribute="height" constant="21" id="i1y-Sh-fcI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oktató tanár:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o24-qM-vXD">
+                                <rect key="frame" x="16" y="243" width="116" height="38"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="oktato neve" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dT-mH-RMA">
+                                <rect key="frame" x="140" y="243" width="219" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="219" id="81D-UR-hMY"/>
+                                    <constraint firstAttribute="height" constant="38" id="qXF-Od-8p4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Értékelése:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vS-jT-EZs">
+                                <rect key="frame" x="16" y="289" width="89" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="89" id="l5o-w6-kc3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFG-yr-sFf">
+                                <rect key="frame" x="228" y="298" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lra-mO-Maf">
+                                <rect key="frame" x="122" y="505" width="130" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Tanár értékelése">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishSubject:" destination="vUU-5O-6TY" eventType="touchUpInside" id="yFn-Ba-Uvi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2cB-3I-zj2" firstAttribute="top" secondItem="59K-PP-f0i" secondAttribute="bottom" constant="25" id="1Wl-y8-107"/>
+                            <constraint firstItem="5dT-mH-RMA" firstAttribute="top" secondItem="o24-qM-vXD" secondAttribute="top" id="41d-Ez-9Fz"/>
+                            <constraint firstItem="6vS-jT-EZs" firstAttribute="centerY" secondItem="bFG-yr-sFf" secondAttribute="centerY" id="59u-VM-fmi"/>
+                            <constraint firstItem="o24-qM-vXD" firstAttribute="leading" secondItem="8jP-hf-aoP" secondAttribute="leadingMargin" id="5mH-NY-EQF"/>
+                            <constraint firstItem="bFG-yr-sFf" firstAttribute="centerX" secondItem="5dT-mH-RMA" secondAttribute="centerX" id="6Pk-qD-54o"/>
+                            <constraint firstItem="QoS-PB-Cbo" firstAttribute="centerY" secondItem="59K-PP-f0i" secondAttribute="centerY" id="7HD-fe-wD1"/>
+                            <constraint firstItem="QoS-PB-Cbo" firstAttribute="leading" secondItem="o24-qM-vXD" secondAttribute="leading" id="7bH-no-YFh"/>
+                            <constraint firstItem="Qkt-Za-9hD" firstAttribute="top" secondItem="2Fc-Di-MTo" secondAttribute="bottom" constant="97" id="8rz-3C-vRw"/>
+                            <constraint firstItem="59K-PP-f0i" firstAttribute="top" secondItem="VKv-8k-KNf" secondAttribute="bottom" constant="29" id="9l8-lf-fOr"/>
+                            <constraint firstItem="2cB-3I-zj2" firstAttribute="leading" secondItem="8jP-hf-aoP" secondAttribute="leadingMargin" constant="40" id="B3j-hn-3KW"/>
+                            <constraint firstItem="gNH-Ol-TZe" firstAttribute="top" secondItem="5dT-mH-RMA" secondAttribute="bottom" constant="386" id="Ftn-HK-0l5"/>
+                            <constraint firstItem="59K-PP-f0i" firstAttribute="leading" secondItem="QoS-PB-Cbo" secondAttribute="trailing" constant="8" symbolic="YES" id="GIJ-qX-FM2"/>
+                            <constraint firstItem="6vS-jT-EZs" firstAttribute="leading" secondItem="o24-qM-vXD" secondAttribute="leading" id="LaX-tW-cf1"/>
+                            <constraint firstItem="Qkt-Za-9hD" firstAttribute="top" secondItem="QoS-PB-Cbo" secondAttribute="bottom" constant="8" symbolic="YES" id="N5M-mU-8uD"/>
+                            <constraint firstItem="2Fc-Di-MTo" firstAttribute="top" secondItem="Hmk-ec-QGo" secondAttribute="bottom" constant="8" symbolic="YES" id="Ta9-qb-8WL"/>
+                            <constraint firstItem="5dT-mH-RMA" firstAttribute="trailing" secondItem="VKv-8k-KNf" secondAttribute="trailing" id="V5i-rj-bPK"/>
+                            <constraint firstItem="5dT-mH-RMA" firstAttribute="baseline" secondItem="o24-qM-vXD" secondAttribute="baseline" id="WG2-JB-2NQ"/>
+                            <constraint firstItem="5dT-mH-RMA" firstAttribute="top" secondItem="2cB-3I-zj2" secondAttribute="bottom" constant="25" id="Y6u-HU-s4s"/>
+                            <constraint firstItem="Qkt-Za-9hD" firstAttribute="leading" secondItem="8jP-hf-aoP" secondAttribute="leading" id="YN5-V6-taJ"/>
+                            <constraint firstItem="2Fc-Di-MTo" firstAttribute="leading" secondItem="th7-cc-ikW" secondAttribute="trailing" constant="15" id="aH3-fn-Rud"/>
+                            <constraint firstItem="th7-cc-ikW" firstAttribute="leading" secondItem="8jP-hf-aoP" secondAttribute="leadingMargin" constant="-16" id="aTP-HZ-P2j"/>
+                            <constraint firstItem="5dT-mH-RMA" firstAttribute="leading" secondItem="o24-qM-vXD" secondAttribute="trailing" constant="8" symbolic="YES" id="ePC-IL-jdZ"/>
+                            <constraint firstItem="gNH-Ol-TZe" firstAttribute="top" secondItem="6vS-jT-EZs" secondAttribute="bottom" constant="340" id="faD-bh-dgv"/>
+                            <constraint firstItem="59K-PP-f0i" firstAttribute="trailing" secondItem="VKv-8k-KNf" secondAttribute="trailing" id="fjW-vm-myZ"/>
+                            <constraint firstItem="th7-cc-ikW" firstAttribute="top" secondItem="2Fc-Di-MTo" secondAttribute="top" constant="7" id="gz5-EH-LFf"/>
+                            <constraint firstItem="Qkt-Za-9hD" firstAttribute="centerY" secondItem="8jP-hf-aoP" secondAttribute="centerY" id="hQ9-6V-wLn"/>
+                            <constraint firstItem="VKv-8k-KNf" firstAttribute="top" secondItem="2Fc-Di-MTo" secondAttribute="bottom" constant="8" symbolic="YES" id="lGR-Y3-U68"/>
+                            <constraint firstItem="6vS-jT-EZs" firstAttribute="top" secondItem="o24-qM-vXD" secondAttribute="bottom" constant="8" symbolic="YES" id="ljo-R9-obA"/>
+                            <constraint firstItem="5dT-mH-RMA" firstAttribute="trailing" secondItem="2Fc-Di-MTo" secondAttribute="trailing" id="pkz-jq-znN"/>
+                            <constraint firstItem="bFG-yr-sFf" firstAttribute="top" secondItem="5dT-mH-RMA" secondAttribute="bottom" constant="17" id="rDC-Vc-fsW"/>
+                            <constraint firstItem="2Fc-Di-MTo" firstAttribute="trailing" secondItem="8jP-hf-aoP" secondAttribute="trailingMargin" id="rdh-L1-isa"/>
+                            <constraint firstItem="2cB-3I-zj2" firstAttribute="centerX" secondItem="Qkt-Za-9hD" secondAttribute="centerX" id="x0T-gq-6hH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bFG-yr-sFf" secondAttribute="trailing" constant="89" id="xHU-a5-Ung"/>
+                            <constraint firstAttribute="trailing" secondItem="Qkt-Za-9hD" secondAttribute="trailing" id="y3S-23-Cdm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="p63-Um-VJ2"/>
+                    <connections>
+                        <outlet property="completedBtn" destination="lra-mO-Maf" id="FpP-fF-tuq"/>
+                        <outlet property="felevLbl" destination="2cB-3I-zj2" id="aGW-E1-VXP"/>
+                        <outlet property="kreditLbl" destination="59K-PP-f0i" id="DG3-mv-Ljo"/>
+                        <outlet property="subjectName" destination="2Fc-Di-MTo" id="ygL-qx-mZD"/>
+                        <outlet property="tanarErtekLbl" destination="bFG-yr-sFf" id="gKq-9u-gk1"/>
+                        <outlet property="tanarNevLbl" destination="5dT-mH-RMA" id="0A4-CI-mb4"/>
+                        <outlet property="targykodLbl" destination="VKv-8k-KNf" id="Ldj-xT-ELW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PEd-PL-67G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2508" y="-171"/>
+        </scene>
+        <!--Detailviewafter Screen-->
+        <scene sceneID="ldF-5w-cHg">
+            <objects>
+                <viewController storyboardIdentifier="detailviewafter" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BPu-Gz-3tv" customClass="detailviewafterScreen" customModule="KnowYourProgress" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CK6-pE-btd"/>
+                        <viewControllerLayoutGuide type="bottom" id="kuN-2r-S6O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UBQ-0B-xif">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tantárgy neve" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dn5-OA-zpt">
+                                <rect key="frame" x="80" y="28" width="279" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="5Gj-Uq-T8O"/>
+                                    <constraint firstAttribute="width" constant="279" id="jqQ-ZI-u8C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="23"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CII-ar-a9O">
+                                <rect key="frame" x="0.0" y="35" width="65" height="30"/>
+                                <state key="normal" title="&lt; Vissza">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fm7-7t-ely" kind="show" identifier="segueback" id="0rJ-HV-nX0"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.05000000074505806" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="489812_Pannonia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="BcS-ST-5FA">
+                                <rect key="frame" x="0.0" y="170" width="375" height="327"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ha teljesíted, ennyi kredit jár érte:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMd-1M-4G3">
+                                <rect key="frame" x="16" y="141" width="256" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1p-N9-OMQ">
+                                <rect key="frame" x="280" y="131" width="79" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="79" id="11c-cA-1rA"/>
+                                    <constraint firstAttribute="height" constant="41" id="ew3-CE-IHT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A x. félévben csinálhatod a tárgyat:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snc-BY-Ldi">
+                                <rect key="frame" x="56" y="197" width="263" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tantargykod" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFa-QX-qfv">
+                                <rect key="frame" x="191" y="81" width="168" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="168" id="rQU-Ni-rf9"/>
+                                    <constraint firstAttribute="height" constant="21" id="tKg-E4-9uf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oktató tanár:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmf-NI-dm0">
+                                <rect key="frame" x="16" y="243" width="116" height="38"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="oktato neve" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="se1-fL-7lT">
+                                <rect key="frame" x="140" y="243" width="219" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="219" id="lUP-gK-r8v"/>
+                                    <constraint firstAttribute="height" constant="38" id="zKD-CJ-wbc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Értékelése:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r30-ed-hRT">
+                                <rect key="frame" x="16" y="289" width="89" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="89" id="4oC-IC-UZs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubc-Rf-n9B">
+                                <rect key="frame" x="228" y="298" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubu-C8-p3Q">
+                                <rect key="frame" x="122" y="505" width="130" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Tanár értékelése">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishSubject:" destination="BPu-Gz-3tv" eventType="touchUpInside" id="L1T-Xc-2AV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ubc-Rf-n9B" firstAttribute="top" secondItem="se1-fL-7lT" secondAttribute="bottom" constant="17" id="1Ss-10-1pM"/>
+                            <constraint firstItem="BcS-ST-5FA" firstAttribute="top" secondItem="dn5-OA-zpt" secondAttribute="bottom" constant="97" id="26b-JG-MhF"/>
+                            <constraint firstItem="se1-fL-7lT" firstAttribute="leading" secondItem="Mmf-NI-dm0" secondAttribute="trailing" constant="8" symbolic="YES" id="6uv-7c-c4C"/>
+                            <constraint firstItem="l1p-N9-OMQ" firstAttribute="leading" secondItem="fMd-1M-4G3" secondAttribute="trailing" constant="8" symbolic="YES" id="AWi-Wd-HeN"/>
+                            <constraint firstItem="se1-fL-7lT" firstAttribute="trailing" secondItem="JFa-QX-qfv" secondAttribute="trailing" id="BXq-VH-GJQ"/>
+                            <constraint firstItem="CII-ar-a9O" firstAttribute="top" secondItem="dn5-OA-zpt" secondAttribute="top" constant="7" id="By1-Eq-Wse"/>
+                            <constraint firstItem="snc-BY-Ldi" firstAttribute="top" secondItem="l1p-N9-OMQ" secondAttribute="bottom" constant="25" id="CTn-gx-XkP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ubc-Rf-n9B" secondAttribute="trailing" constant="89" id="CXn-0A-XY5"/>
+                            <constraint firstItem="fMd-1M-4G3" firstAttribute="leading" secondItem="Mmf-NI-dm0" secondAttribute="leading" id="DsV-Fd-Yi7"/>
+                            <constraint firstItem="r30-ed-hRT" firstAttribute="leading" secondItem="Mmf-NI-dm0" secondAttribute="leading" id="GXd-Uu-Bb0"/>
+                            <constraint firstItem="ubc-Rf-n9B" firstAttribute="centerX" secondItem="se1-fL-7lT" secondAttribute="centerX" id="HBT-Ay-GNa"/>
+                            <constraint firstItem="fMd-1M-4G3" firstAttribute="centerY" secondItem="l1p-N9-OMQ" secondAttribute="centerY" id="JVr-0c-HZS"/>
+                            <constraint firstItem="dn5-OA-zpt" firstAttribute="leading" secondItem="CII-ar-a9O" secondAttribute="trailing" constant="15" id="Jgj-5M-yFk"/>
+                            <constraint firstItem="snc-BY-Ldi" firstAttribute="leading" secondItem="UBQ-0B-xif" secondAttribute="leadingMargin" constant="40" id="Jmp-iT-08k"/>
+                            <constraint firstItem="se1-fL-7lT" firstAttribute="top" secondItem="Mmf-NI-dm0" secondAttribute="top" id="Jts-i1-ZY5"/>
+                            <constraint firstItem="Mmf-NI-dm0" firstAttribute="leading" secondItem="UBQ-0B-xif" secondAttribute="leadingMargin" id="L7p-ho-En9"/>
+                            <constraint firstItem="BcS-ST-5FA" firstAttribute="centerY" secondItem="UBQ-0B-xif" secondAttribute="centerY" id="NIW-RP-mLs"/>
+                            <constraint firstItem="JFa-QX-qfv" firstAttribute="top" secondItem="dn5-OA-zpt" secondAttribute="bottom" constant="8" symbolic="YES" id="Ola-Fr-uMU"/>
+                            <constraint firstAttribute="trailing" secondItem="BcS-ST-5FA" secondAttribute="trailing" id="RTf-OK-8Fx"/>
+                            <constraint firstItem="BcS-ST-5FA" firstAttribute="leading" secondItem="UBQ-0B-xif" secondAttribute="leading" id="SyI-bm-eWc"/>
+                            <constraint firstItem="dn5-OA-zpt" firstAttribute="trailing" secondItem="UBQ-0B-xif" secondAttribute="trailingMargin" id="Tez-Jm-7zg"/>
+                            <constraint firstItem="se1-fL-7lT" firstAttribute="top" secondItem="snc-BY-Ldi" secondAttribute="bottom" constant="25" id="To2-7H-0Ob"/>
+                            <constraint firstItem="CII-ar-a9O" firstAttribute="leading" secondItem="UBQ-0B-xif" secondAttribute="leadingMargin" constant="-16" id="WD7-6i-TcN"/>
+                            <constraint firstItem="snc-BY-Ldi" firstAttribute="centerX" secondItem="BcS-ST-5FA" secondAttribute="centerX" id="YSl-jx-HEp"/>
+                            <constraint firstItem="se1-fL-7lT" firstAttribute="trailing" secondItem="dn5-OA-zpt" secondAttribute="trailing" id="bEX-Ep-Ogp"/>
+                            <constraint firstItem="r30-ed-hRT" firstAttribute="top" secondItem="Mmf-NI-dm0" secondAttribute="bottom" constant="8" symbolic="YES" id="dh6-cF-chD"/>
+                            <constraint firstItem="kuN-2r-S6O" firstAttribute="top" secondItem="r30-ed-hRT" secondAttribute="bottom" constant="340" id="gYT-lB-sqf"/>
+                            <constraint firstItem="se1-fL-7lT" firstAttribute="baseline" secondItem="Mmf-NI-dm0" secondAttribute="baseline" id="i71-uI-AtQ"/>
+                            <constraint firstItem="BcS-ST-5FA" firstAttribute="top" secondItem="fMd-1M-4G3" secondAttribute="bottom" constant="8" symbolic="YES" id="j0v-7G-Hgr"/>
+                            <constraint firstItem="l1p-N9-OMQ" firstAttribute="trailing" secondItem="JFa-QX-qfv" secondAttribute="trailing" id="meA-M2-wCZ"/>
+                            <constraint firstItem="r30-ed-hRT" firstAttribute="centerY" secondItem="ubc-Rf-n9B" secondAttribute="centerY" id="t83-9F-hvD"/>
+                            <constraint firstItem="l1p-N9-OMQ" firstAttribute="top" secondItem="JFa-QX-qfv" secondAttribute="bottom" constant="29" id="vqq-K7-Xwj"/>
+                            <constraint firstItem="kuN-2r-S6O" firstAttribute="top" secondItem="se1-fL-7lT" secondAttribute="bottom" constant="386" id="zSu-IP-LNr"/>
+                            <constraint firstItem="dn5-OA-zpt" firstAttribute="top" secondItem="CK6-pE-btd" secondAttribute="bottom" constant="8" symbolic="YES" id="zx5-cr-IgQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="W2c-Lg-7iK"/>
+                    <connections>
+                        <outlet property="completedBtn" destination="ubu-C8-p3Q" id="s3r-yU-IHC"/>
+                        <outlet property="felevLbl" destination="snc-BY-Ldi" id="VYc-5m-gme"/>
+                        <outlet property="kreditLbl" destination="l1p-N9-OMQ" id="LBk-ok-CAK"/>
+                        <outlet property="subjectName" destination="dn5-OA-zpt" id="5HE-Wq-O8x"/>
+                        <outlet property="tanarErtekLbl" destination="ubc-Rf-n9B" id="wME-Ge-BNM"/>
+                        <outlet property="tanarNevLbl" destination="se1-fL-7lT" id="Vu8-NC-n6U"/>
+                        <outlet property="targykodLbl" destination="JFa-QX-qfv" id="R0L-Mv-Tuu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="as7-iF-Sxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2508" y="1473"/>
+        </scene>
     </scenes>
     <resources>
         <image name="489812_Pannonia.jpg" width="1500" height="1466"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="W8a-x9-YgI"/>
         <segue reference="VJ0-bs-3ls"/>
-        <segue reference="xYw-op-H2n"/>
+        <segue reference="pnZ-oh-Mai"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -105,7 +105,7 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if (segue.identifier == "segue") {
-            let destination = segue.destination as! detailviewScreen
+            let destination = segue.destination as! detailviewafterScreen
             let index = tableView.indexPathForSelectedRow?.row
             self.index = tableView.indexPathForSelectedRow!
             
