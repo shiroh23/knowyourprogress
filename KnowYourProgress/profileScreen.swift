@@ -51,20 +51,20 @@ class profileScreen: UIViewController {
         
         switch useableszak {
         case "mérnökinformatikus":
-            felh.szak = "mernokinfoData"
+            useableszak = "mernokinfoData"
             break
         case "programtervező informatikus":
-            felh.szak = "proginfoData"
+            useableszak = "proginfoData"
             break
         case "gazdasági informatikus":
-            felh.szak = "gazdinfoData"
+            useableszak = "gazdinfoData"
             break
         default:
-            felh.szak = ""
+            useableszak = ""
             break
         }
         
-        readPropertyList(szak: felh.szak)
+        readPropertyList(szak: useableszak)
         print ("szakok betöltve")
         
         self.doneSubjCredit = self.doneSubjects(email: felh.email)
@@ -90,7 +90,7 @@ class profileScreen: UIViewController {
         emailLbl.text = felh.email
         passwordLbl.text = felh.password
         currSemLbl.text = String(felh.currSem)
-        majorLbl.text = felh.szak
+        majorLbl.text = useableszak
     }
     
     func readPropertyList(szak: String)
@@ -280,7 +280,7 @@ class profileScreen: UIViewController {
             {
                 if (felhasznalo.value(forKey: "logged") as! Bool == true)
                 {
-                    print("itt most dolgok történnek")
+                    
                     felhasznalo.setValue(self.felh.email, forKey: "email")
                     felhasznalo.setValue(self.felh.currSem, forKey: "currentSemester")
                     felh.finiSem = felh.currSem-1
@@ -288,8 +288,33 @@ class profileScreen: UIViewController {
                     felhasznalo.setValue(self.felh.password, forKey: "password")
                     felhasznalo.setValue(self.felh.szak, forKey: "major")
                     felhasznalo.setValue(false, forKey: "logged")
-                    print("idáig történtek")
+                    
                     break
+                }
+            }
+            
+            for i in (ofelh.currSem..<felh.currSem)
+            {
+                print(i)
+                let felevNum: Int = Int(i)
+                
+                for j in (0..<productArray.count)
+                {
+                    var felev: String = ""
+                    var usablefelev: Int = 0
+                    var nev: String = ""
+                    
+                    var rekord: Dictionary<String, AnyObject>
+                    rekord = productArray.object(at: j) as! Dictionary<String, AnyObject>
+                    
+                    felev = rekord["felev"] as! String
+                    nev = rekord["nev"] as! String
+                    usablefelev = Int(felev)!
+                    
+                    if (felevNum == usablefelev)
+                    {
+                        self.saveSubjects(targynev: nev, email: felh.email)
+                    }
                 }
             }
             
@@ -299,6 +324,58 @@ class profileScreen: UIViewController {
         catch
         {
             print("Error with request: \(error)")
+        }
+    }
+    
+    
+    // MARK: CoreData tárgyak mentése ha változott a szemeszter
+    
+    func saveSubjects(targynev: String, email: String)
+    {
+        let duplicate = duplicateSubject(nev: targynev)
+        if (duplicate == false) {
+        let context = getContext()
+        let entity =  NSEntityDescription.entity(forEntityName: "DoneSubj", in: context)
+        
+        let doneSubj = NSManagedObject(entity: entity!, insertInto: context)
+        
+        var targyString: String = ""
+        var rekord: Dictionary<String, AnyObject>
+        
+        for i in (0..<productArray.count)
+        {
+            rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
+            targyString = rekord["nev"] as! String
+            if (targyString == targynev)
+            {
+                let newSubject = self.productArray.object(at: i) as! Dictionary<String, AnyObject>
+                doneSubj.setValue(newSubject["nev"] as! String, forKey: "nev")
+                doneSubj.setValue(newSubject["kredit"] as! String, forKey: "kredit")
+                doneSubj.setValue(newSubject["felev"] as! String, forKey: "felev")
+                doneSubj.setValue(newSubject["targykod"] as! String, forKey: "targykod")
+                doneSubj.setValue(true, forKey: "elvegzett")
+                doneSubj.setValue(email, forKey: "userEmail")
+                print("\(rekord["nev"]) tárgy mentve az emailhez: \(email)")
+                break
+            }
+        }
+        
+        do
+        {
+            try context.save()
+            print("\(targyString) hozzáadva a CoreDatahoz!")
+        } catch let error as NSError
+        {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+        catch
+        {
+            print("Error with: \(error)")
+        }
+        }
+        else
+        {
+            print("mar szerepel nem adom hozza")
         }
     }
     
@@ -325,6 +402,33 @@ class profileScreen: UIViewController {
             }
             
             try context.save()
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        return ertek
+    }
+    
+    // MARK: CoreData tárgy létezésének vizsgálata
+    
+    func duplicateSubject(nev: String) -> Bool {
+        
+        let fetchRequest: NSFetchRequest<DoneSubj> = DoneSubj.fetchRequest()
+        var ertek: Bool = false
+        
+        do
+        {
+            doneSubjResults = try getContext().fetch(fetchRequest)
+            
+            for subject in doneSubjResults as [NSManagedObject]
+            {
+                if (subject.value(forKey: "nev") as! String == nev)
+                {
+                    ertek = true
+                    break
+                }
+            }
         }
         catch
         {
@@ -538,6 +642,7 @@ class profileScreen: UIViewController {
     
     func finalHandler()
     {
+        //ha szemesztert váltott, itt rakjuk bele az alapértelmezést az adatbázisba
         self.updateUser(email: self.oldEmail)
         self.finalafterAlert(msg1: "Sikeres módosítás")
     }

@@ -33,7 +33,6 @@ class welcome: UIViewController, UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         passwordField.text = ""
         self.view.endEditing(true)
-        emailField.becomeFirstResponder()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
@@ -110,7 +109,6 @@ class welcome: UIViewController, UITextFieldDelegate{
             {
                 //hibaüzenet ha nem stimmelnek az adatok
                 self.alert(msg1: "Nem található a felhasználó!")
-                emailField.text = ""
                 passwordField.text = ""
             }
         }

@@ -52,6 +52,8 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
 
         
         szakvalasztoField.inputAccessoryView = toolBar
+        
+        emailField.becomeFirstResponder()
 
     }
     func openNewPage(name: String){
@@ -301,7 +303,6 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
                 doneSubj.setValue(newSubject["targykod"] as! String, forKey: "targykod")
                 doneSubj.setValue(true, forKey: "elvegzett")
                 doneSubj.setValue(email, forKey: "userEmail")
-                
                 break
             }
         }
