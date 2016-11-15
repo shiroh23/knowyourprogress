@@ -25,20 +25,60 @@ class profileScreen: UIViewController {
     @IBOutlet weak var passwordLbl: UILabel!
     @IBOutlet weak var currSemLbl: UILabel!
     @IBOutlet weak var majorLbl: UILabel!
+    @IBOutlet weak var sliderLbl: UILabel!
+    @IBOutlet weak var slider: UISlider!
+ 
     
+    var productArray = NSArray()
     var searchResults = [NSManagedObject]()
     var finalResults = [NSManagedObject]()
     var subjectResults = [NSManagedObject]()
+    var doneSubjResults = [NSManagedObject]()
+    var doneSubjCredit: Int = 0
+    var maxSubjCredit: Int = 0
     var felh = Felhasznalo()
     var ofelh = Felhasznalo()
     
     var oldEmail: String = ""
     var modosultak: Bool = false
+    var useableszak: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getUserData()
         
+        useableszak = self.felh.szak
+        
+        switch useableszak {
+        case "mérnökinformatikus":
+            felh.szak = "mernokinfoData"
+            break
+        case "programtervező informatikus":
+            felh.szak = "proginfoData"
+            break
+        case "gazdasági informatikus":
+            felh.szak = "gazdinfoData"
+            break
+        default:
+            felh.szak = ""
+            break
+        }
+        
+        readPropertyList(szak: felh.szak)
+        print ("szakok betöltve")
+        
+        self.doneSubjCredit = self.doneSubjects(email: felh.email)
+        print("tárgyak okék")
+        self.maxSubjCredit = self.getMaximumCredit()
+        print("kreditek okék")
+        slider.isUserInteractionEnabled = false
+        print("slider set")
+        slider.maximumValue = Float(self.maxSubjCredit)
+        print("slider set")
+        slider.value = Float(self.doneSubjCredit)
+        print("slider set")
+        sliderLbl.text = String("\(self.doneSubjCredit)%")
+        print("slider set")
         //biztonsági mentés, labelek visszaállításához
         ofelh.email = felh.email
         ofelh.currSem = felh.currSem
@@ -51,6 +91,12 @@ class profileScreen: UIViewController {
         passwordLbl.text = felh.password
         currSemLbl.text = String(felh.currSem)
         majorLbl.text = felh.szak
+    }
+    
+    func readPropertyList(szak: String)
+    {
+        let plistPath:String? = Bundle.main.path(forResource: szak, ofType: "plist")!
+        productArray = NSArray(contentsOfFile: plistPath!)!
     }
     
     func getUserData () {
@@ -256,9 +302,68 @@ class profileScreen: UIViewController {
         }
     }
     
+    // MARK: CoreData teljesítettek lekérdezése
+    
+    func doneSubjects (email: String) -> Int {
+        
+        let fetchRequest: NSFetchRequest<DoneSubj> = DoneSubj.fetchRequest()
+        let context = getContext()
+        var ertek: Int = 0
+        
+        do
+        {
+            doneSubjResults = try getContext().fetch(fetchRequest)
+            
+            for subject in doneSubjResults as [NSManagedObject]
+            {
+                if (subject.value(forKey: "userEmail") as! String == email)
+                {
+                    let ertek2: String = subject.value(forKey: "kredit") as! String
+                    let ertek3: Int = Int(ertek2)!
+                    ertek += ertek3
+                }
+            }
+            
+            try context.save()
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        return ertek
+    }
+    
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
+    }
+    
+    func getMaximumCredit() -> Int
+    {
+        var osszKredit: Int = 0
+        
+        for i in (0..<productArray.count)
+        {
+            var rekord: Dictionary<String, AnyObject>
+            var kreditString: String = ""
+            var kredit: Int = 0
+            rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
+        
+            kreditString = rekord["kredit"] as! String
+            print(kreditString)
+            if (kreditString == "0")
+            {
+                kredit = 0
+            }
+            else
+            {
+                kredit = Int(kreditString)!
+            }
+            print("konvertálás után a kredit \(kredit)")
+            osszKredit += kredit
+            
+        }
+        return osszKredit
     }
     
     // MARK: AlertView-k az adatok bekérésére
@@ -464,7 +569,6 @@ class profileScreen: UIViewController {
         self.deleteUser(email: ofelh.email)
         self.afterDeleteAlert(msg1: "Sikeres módosítás")
     }
-
     
     func openNewPage(name: String){
         let theDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
