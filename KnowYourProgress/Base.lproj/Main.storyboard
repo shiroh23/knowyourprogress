@@ -432,6 +432,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="beforeBtn" destination="09o-9e-vyS" id="I28-hp-vOb"/>
                         <outlet property="felevLbl" destination="zWC-bB-OyB" id="yji-Uf-XO7"/>
                         <outlet property="tableView" destination="2dT-5z-gIo" id="JLC-rb-2bc"/>
                     </connections>
@@ -511,10 +512,19 @@
                     </view>
                     <connections>
                         <outlet property="felevLbl" destination="3aD-YO-Mjq" id="VtL-uZ-Z2z"/>
+                        <outlet property="searchDisplayController" destination="rlr-Vi-qdH" id="UUh-bh-kbr"/>
                         <outlet property="tableView" destination="7sz-pN-bpA" id="554-7A-pjG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LmO-RR-L4v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="rlr-Vi-qdH">
+                    <connections>
+                        <outlet property="delegate" destination="7sz-pN-bpA" id="eO2-4y-X9T"/>
+                        <outlet property="searchContentsController" destination="fm7-7t-ely" id="fnK-a6-bOv"/>
+                        <outlet property="searchResultsDataSource" destination="7sz-pN-bpA" id="uqu-di-Srh"/>
+                        <outlet property="searchResultsDelegate" destination="7sz-pN-bpA" id="I4k-ak-hG8"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1744.8" y="1279.6101949025488"/>
         </scene>
@@ -1116,7 +1126,7 @@
         <image name="489812_Pannonia.jpg" width="1500" height="1466"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tda-oK-5Ea"/>
-        <segue reference="QNr-Jo-Ngc"/>
+        <segue reference="VJ0-bs-3ls"/>
+        <segue reference="xYw-op-H2n"/>
     </inferredMetricsTieBreakers>
 </document>

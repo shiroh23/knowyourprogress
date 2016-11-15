@@ -29,7 +29,7 @@ struct Oktato
 
 class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
+    @IBOutlet weak var beforeBtn: UIButton!
     @IBOutlet weak var felevLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
@@ -43,10 +43,12 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var index: IndexPath = []
     var alertIndex: IndexPath = []
     var felevValtas: Bool = false
+    var gombLetiltva: Bool = false
     
     var searchResults = [NSManagedObject]()
     var teacherResults = [NSManagedObject]()
     var subjResults = [NSManagedObject]()
+    var doneSubjRes = [NSManagedObject]()
     
     func readPropertyList(szak: String)
     {
@@ -64,11 +66,22 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         imageView.alpha = 0.05
         self.tableView.backgroundView = imageView
         
-        
         self.getUserData()
         print(felh)
         if (felh.email != "")
         {
+            gombLetiltva = self.getDoneSubjects(email: felh.email)
+            if (gombLetiltva == true)
+            {
+                beforeBtn.isHidden = true
+                beforeBtn.isEnabled = false
+            }
+            else
+            {
+                beforeBtn.isEnabled = true
+                beforeBtn.isHidden = false
+            }
+            
             if (self.felevValtas == true)
             {
                 let count = self.targyCounter()
@@ -502,15 +515,63 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return elvegzett
     }
     
+    // MARK: CoreData tárgyak kinyerése
+    
+    func getDoneSubjects(email: String) -> Bool {
+        
+        let fetchRequest: NSFetchRequest<DoneSubj> = DoneSubj.fetchRequest()
+        var keres: String = ""
+        var counter: Int = 0
+        
+        do
+        {
+            doneSubjRes = try getContext().fetch(fetchRequest)
+            
+            for targy in doneSubjRes as [NSManagedObject]
+            {
+                keres = targy.value(forKey: "userEmail") as! String
+                
+                if (keres == email)
+                {
+                    counter += 1
+                }
+            }
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        if (counter == 0)
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+    
     func alert(msg1: String){
         let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in self.someHandler(index: self.alertIndex) } ))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in self.someHandler(index: self.alertIndex) } ))
         self.present(alert, animated: true, completion: nil)
     }
     
     func someHandler (index: IndexPath)
     {
         self.tableView.reloadRows(at: [index], with: UITableViewRowAnimation.left)
+        gombLetiltva = self.getDoneSubjects(email: felh.email)
+        if (gombLetiltva == true)
+        {
+            beforeBtn.isHidden = true
+            beforeBtn.isEnabled = false
+        }
+        else
+        {
+            beforeBtn.isEnabled = true
+            beforeBtn.isHidden = false
+        }
+        self.tableView.reloadData()
     }
     
 }

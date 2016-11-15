@@ -19,6 +19,8 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
     @IBOutlet weak var szakvalasztoField: UITextField!
     
     var searchResults = [NSManagedObject]()
+    var productArray = NSArray()
+    var useableszak: String = ""
    
     var pickOption = ["mérnökinformatikus", "programtervező informatikus", "gazdasági informatikus"]
     
@@ -212,6 +214,23 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
         
         let felhasznalo = NSManagedObject(entity: entity!, insertInto: context)
         
+        switch szak {
+        case "mérnökinformatikus":
+            useableszak = "mernokinfoData"
+            break
+        case "programtervező informatikus":
+            useableszak = "proginfoData"
+            break
+        case "gazdasági informatikus":
+            useableszak = "gazdinfoData"
+            break
+        default:
+            useableszak = ""
+            break
+        }
+        
+        self.readPropertyList(szak: useableszak)
+        
         felhasznalo.setValue(email, forKey: "email")
         felhasznalo.setValue(jelszo, forKey: "password")
         felhasznalo.setValue(felev, forKey: "currentSemester")
@@ -220,10 +239,35 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
         felhasznalo.setValue(false, forKey: "logged")
         felhasznalo.setValue(szak, forKey: "major")
         
+        for i in (1..<felev)
+        {
+            print(i)
+            let felevNum: Int = i
+            
+            for j in (0..<productArray.count)
+            {
+                var felev: String = ""
+                var usablefelev: Int = 0
+                var nev: String = ""
+                
+                var rekord: Dictionary<String, AnyObject>
+                rekord = productArray.object(at: j) as! Dictionary<String, AnyObject>
+            
+                felev = rekord["felev"] as! String
+                nev = rekord["nev"] as! String
+                usablefelev = Int(felev)!
+                
+                if (felevNum == usablefelev)
+                {
+                    self.saveSubjects(targynev: nev, email: email)
+                }
+            }
+        }
+        
         do
         {
             try context.save()
-            print("saved!")
+            print("mentve baszki!!")
         } catch let error as NSError
         {
             print("Could not save \(error), \(error.userInfo)")
@@ -233,6 +277,49 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
             print("Error with: \(error)")
         }
     }
+    
+    func saveSubjects(targynev: String, email: String)
+    {
+        let context = getContext()
+        let entity =  NSEntityDescription.entity(forEntityName: "DoneSubj", in: context)
+        
+        let doneSubj = NSManagedObject(entity: entity!, insertInto: context)
+        
+        var targyString: String = ""
+        var rekord: Dictionary<String, AnyObject>
+        
+        for i in (0..<productArray.count)
+        {
+            rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
+            targyString = rekord["nev"] as! String
+            if (targyString == targynev)
+            {
+                let newSubject = self.productArray.object(at: i) as! Dictionary<String, AnyObject>
+                doneSubj.setValue(newSubject["nev"] as! String, forKey: "nev")
+                doneSubj.setValue(newSubject["kredit"] as! String, forKey: "kredit")
+                doneSubj.setValue(newSubject["felev"] as! String, forKey: "felev")
+                doneSubj.setValue(newSubject["targykod"] as! String, forKey: "targykod")
+                doneSubj.setValue(true, forKey: "elvegzett")
+                doneSubj.setValue(email, forKey: "userEmail")
+                
+                break
+            }
+        }
+        
+        do
+        {
+            try context.save()
+            print("\(targyString) hozzáadva a CoreDatahoz!")
+        } catch let error as NSError
+        {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+        catch
+        {
+            print("Error with: \(error)")
+        }
+    }
+    
     
     func getUsers () {
         
@@ -258,6 +345,12 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
+    }
+    
+    func readPropertyList(szak: String)
+    {
+        let plistPath:String? = Bundle.main.path(forResource: szak, ofType: "plist")!
+        productArray = NSArray(contentsOfFile: plistPath!)!
     }
     
     
