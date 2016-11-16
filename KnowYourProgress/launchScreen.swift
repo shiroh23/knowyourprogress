@@ -38,6 +38,7 @@ class launchScreen: UIViewController {
     
     var teacherResults = [NSManagedObject]()
     var periodResults = [NSManagedObject]()
+    var searchResults = [NSManagedObject]()
     let IDs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
     let Names = ["Teiermayer Attila","Medvegy Tibor","Görbe Péter","Dr. Pituk Mihály","Dr. Simon Gyula","Dr. Heckl István","Dr. Leitold Adrien Ilona","Dr. Hartung Ferenc","Székelyné Kovács Katalin","Hegyháti Máté","Dr. Pituk Mihály","Harmat István","Dr. Hartung Ferenc","Dr. Vassányi István","Piglerné dr. Lakner Rozália","Dr. Mihálykóné dr. Orbán Éva","Dr. Vassányi István","Dulai Tibor","Katonáné dr. Tömördi Katalin","Dr. Süle Zoltán","Dr. Simon Gyula","Dr. Vörösházi Zsolt","Dr. Bertók Ákos Botond"]
     let review = 0
@@ -149,6 +150,31 @@ class launchScreen: UIViewController {
         catch
         {
             print("Error with: \(error)")
+        }
+    }
+    
+    // MARK: CoreData bennmaradt felhasználók kijelentkeztetése
+    
+    func logoutUser () {
+        
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        let context = getContext()
+        
+        do
+        {
+            searchResults = try getContext().fetch(fetchRequest)
+            
+            for felhasznalo in searchResults as [NSManagedObject]
+            {
+                felhasznalo.setValue(false, forKey: "logged")
+            }
+            
+            try context.save()
+            print("updated!")
+        }
+        catch
+        {
+            print("Error with request: \(error)")
         }
     }
     

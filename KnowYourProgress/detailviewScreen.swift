@@ -37,11 +37,23 @@ class detailviewScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        completedBtn.isEnabled = true
+        
         tantargy.felev = subject["felev"] as! String
         tantargy.kredit = subject["kredit"] as! String
         tantargy.nev = subject["nev"] as! String
         tantargy.targykod = subject["targykod"] as! String
+        
+        let van: Bool = self.isthereaTeacher(nev: tutor.name)
+        if (van == true)
+        {
+            completedBtn.isEnabled = true
+            completedBtn.isHidden = false
+        }
+        else
+        {
+            completedBtn.isEnabled = false
+            completedBtn.isHidden = true
+        }
         
         subjectName.adjustsFontSizeToFitWidth = true
         subjectName.minimumScaleFactor = 0.5
@@ -61,7 +73,6 @@ class detailviewScreen: UIViewController {
     
     @IBAction func finishSubject(_ sender: Any)
     {
-        //hozzáadás a teljesített tárgyakhoz
         //megkérdezni a felhasználót hogy értékeli e az oktatót
         self.alert2(msg1: "Szeretnéd értékelni az oktatót?")
     }
@@ -145,6 +156,31 @@ class detailviewScreen: UIViewController {
         catch
         {
             print("Error with request: \(error)")
+        }
+    }
+    
+    // MARK: annak ellenőrzése, hogy van e a tárgyhoz tanár rendelve
+    
+    func isthereaTeacher(nev: String) -> Bool {
+        
+        var van: Bool = false
+        
+        if (nev == "nincs")
+        {
+            van = false
+        }
+        else
+        {
+            van = true
+        }
+        
+        if (van == true)
+        {
+            return true
+        }
+        else
+        {
+            return false
         }
     }
     

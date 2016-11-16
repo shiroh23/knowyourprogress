@@ -17,6 +17,7 @@ struct Felhasznalo
     var finiSem: Int16 = 0
     var password: String = ""
     var szak: String = ""
+    var szabVal: Double = 0
 }
 
 class profileScreen: UIViewController {
@@ -27,6 +28,8 @@ class profileScreen: UIViewController {
     @IBOutlet weak var majorLbl: UILabel!
     @IBOutlet weak var sliderLbl: UILabel!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var szabValLbl: UILabel!
+    @IBOutlet weak var lepteto: UIStepper!
  
     
     var productArray = NSArray()
@@ -36,6 +39,8 @@ class profileScreen: UIViewController {
     var doneSubjResults = [NSManagedObject]()
     var doneSubjCredit: Int = 0
     var maxSubjCredit: Int = 0
+    var useableCreditinfo: Float = 0.0
+    var szabValCredits: Double = 0
     var felh = Felhasznalo()
     var ofelh = Felhasznalo()
     
@@ -46,6 +51,11 @@ class profileScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getUserData()
+        
+        lepteto.wraps = false
+        lepteto.autorepeat = true
+        lepteto.maximumValue = 50
+        lepteto.value = felh.szabVal
         
         useableszak = self.felh.szak
         
@@ -65,32 +75,35 @@ class profileScreen: UIViewController {
         }
         
         readPropertyList(szak: useableszak)
-        print ("szakok betöltve")
         
         self.doneSubjCredit = self.doneSubjects(email: felh.email)
-        print("tárgyak okék")
         self.maxSubjCredit = self.getMaximumCredit()
-        print("kreditek okék")
+        self.useableCreditinfo = Float(doneSubjCredit)/Float(maxSubjCredit)
+        self.useableCreditinfo *= 100
+        self.useableCreditinfo = round(self.useableCreditinfo*1000)/1000
+        
         slider.isUserInteractionEnabled = false
-        print("slider set")
+       
         slider.maximumValue = Float(self.maxSubjCredit)
-        print("slider set")
+
         slider.value = Float(self.doneSubjCredit)
-        print("slider set")
-        sliderLbl.text = String("\(self.doneSubjCredit)%")
-        print("slider set")
+
+        sliderLbl.text = String("\(self.doneSubjCredit) kredit - \(self.useableCreditinfo)%")
+
         //biztonsági mentés, labelek visszaállításához
         ofelh.email = felh.email
         ofelh.currSem = felh.currSem
         ofelh.finiSem = felh.finiSem
         ofelh.password = felh.password
         ofelh.szak = felh.szak
+        ofelh.szabVal = felh.szabVal
         modosultak = false
         
         emailLbl.text = felh.email
         passwordLbl.text = felh.password
         currSemLbl.text = String(felh.currSem)
-        majorLbl.text = useableszak
+        majorLbl.text = felh.szak
+        szabValLbl.text = Int(felh.szabVal).description
     }
     
     func readPropertyList(szak: String)
@@ -119,6 +132,7 @@ class profileScreen: UIViewController {
                     felh.finiSem = users.value(forKey: "finishedSemester") as! Int16
                     felh.password = users.value(forKey: "password") as! String
                     felh.szak = users.value(forKey: "major") as! String
+                    felh.szabVal = users.value(forKey: "szabVal") as! Double
                     break
                 }
             }
@@ -130,11 +144,12 @@ class profileScreen: UIViewController {
         }
 
     }
+    /*
     @IBAction func emailChange(_ sender: Any)
     {
         print("emailchange")
         self.emailAlert(msg1: "Add meg az új e-mail címed!")
-    }
+    }*/
     @IBAction func semesterChange(_ sender: Any)
     {
         print("semesterChange")
@@ -288,6 +303,7 @@ class profileScreen: UIViewController {
                     felhasznalo.setValue(self.felh.password, forKey: "password")
                     felhasznalo.setValue(self.felh.szak, forKey: "major")
                     felhasznalo.setValue(false, forKey: "logged")
+                    felhasznalo.setValue(self.szabValCredits, forKey: "szabVal")
                     
                     break
                 }
@@ -674,6 +690,16 @@ class profileScreen: UIViewController {
         self.deleteUser(email: ofelh.email)
         self.afterDeleteAlert(msg1: "Sikeres módosítás")
     }
+    
+    // MARK: UIStepper akciója
+    
+    @IBAction func stepperValueChanged(_ sender: UIStepper)
+    {
+        self.szabValLbl.text = Int(sender.value).description
+        self.szabValCredits = sender.value
+        self.modosultak = true
+    }
+    
     
     func openNewPage(name: String){
         let theDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate

@@ -240,6 +240,7 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
         felhasznalo.setValue(elvegzett, forKey: "finishedSemester")
         felhasznalo.setValue(false, forKey: "logged")
         felhasznalo.setValue(szak, forKey: "major")
+        felhasznalo.setValue(0, forKey: "szabVal")
         
         for i in (1..<felev)
         {
