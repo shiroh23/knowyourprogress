@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class Date {
+class Datum {
     
     class func from(year:Int, month:Int, day:Int) -> NSDate {
         let c = NSDateComponents()

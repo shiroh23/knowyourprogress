@@ -27,7 +27,9 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
     <key>NSCameraUsageDescription</key>
-    <string>Megbolondul tole a telefon</string>
+    <string>Megbolondultoleatelefon</string>
+    <key>NSCalendarsUsageDescription</key>
+    <string>Kérlek adj hozzáférést a naptárakhoz, hogy be tudjam írni neked a választott időszakot</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

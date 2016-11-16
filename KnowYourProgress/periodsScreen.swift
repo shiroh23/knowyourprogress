@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import EventKit
 
 struct idszak
 {
@@ -16,6 +17,14 @@ struct idszak
     var desc: String = ""
     var start: String = ""
     var end: String = ""
+}
+
+struct idszak2
+{
+    var id: Int16 = 0
+    var desc: String = ""
+    var start: Date = Date()
+    var end: Date = Date()
 }
 
 class periodsScreen: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -27,7 +36,6 @@ class periodsScreen: UIViewController, UITableViewDataSource, UITableViewDelegat
     var currentPeriods = [String]()
     var periodcount: Int = 0
     var index: IndexPath = []
-    //var toolBtn = UIBarButtonItem(title: "Naptárba mentés", style: .plain, target: self, action: #selector(someSelector))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,20 +52,65 @@ class periodsScreen: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.deselectRow(at: self.index, animated: true)
-        //super.viewWillAppear(animated);
-        //self.navigationController?.setToolbarHidden(false, animated: animated)
-        //self.navigationController?.toolbar.setItems([toolBtn], animated: true)
     }
-    /*
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated);
-        self.navigationController?.setToolbarHidden(true, animated: animated)
+
+    // MARK: Naptárba exportálás
+    
+    func addEventToCalendar(completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
+        let eventStore = EKEventStore()
+        
+        var kezdoIdo = idszak2()
+        var vegeIdo = idszak2()
+        
+        for period in periodResults as [NSManagedObject]
+        {
+            if (period.value(forKey: "id") as! Int16 == Int16(self.index.row))
+            {
+                kezdoIdo.id = period.value(forKey: "id") as! Int16
+                vegeIdo.id = period.value(forKey: "id") as! Int16
+                kezdoIdo.desc = period.value(forKey: "desc") as! String
+                vegeIdo.desc = period.value(forKey: "desc") as! String
+                let start = period.value(forKey: "start")
+                let end = period.value(forKey: "end")
+                kezdoIdo.start = Datum.parse(dateStr: start as! String, format: "yyyy.MM.dd") as Date
+                kezdoIdo.end = Datum.parse(dateStr: start as! String, format: "yyyy.MM.dd") as Date
+                vegeIdo.start = Datum.parse(dateStr: end as! String, format: "yyyy.MM.dd") as Date
+                vegeIdo.end = Datum.parse(dateStr: end as! String, format: "yyyy.MM.dd") as Date
+                break
+            }
+        }
+        
+        eventStore.requestAccess(to: .event, completion: { (granted, error) in
+            if (granted) && (error == nil) {
+                let event = EKEvent(eventStore: eventStore)
+                let event2 = EKEvent(eventStore: eventStore)
+                
+                event.title = kezdoIdo.desc
+                event.startDate = kezdoIdo.start
+                event.endDate = kezdoIdo.end
+                event.notes = "Itt kezdődik az időszak"
+                event.calendar = eventStore.defaultCalendarForNewEvents
+                
+                event2.title = vegeIdo.desc
+                event2.startDate = vegeIdo.start
+                event2.endDate = vegeIdo.end
+                event2.notes = "Eddig tart az időszak"
+                event2.calendar = eventStore.defaultCalendarForNewEvents
+                
+                do {
+                    try eventStore.save(event, span: .thisEvent)
+                    try eventStore.save(event2, span: .thisEvent)
+                } catch let e as NSError {
+                    completion?(false, e)
+                    return
+                }
+                completion?(true, nil)
+            } else {
+                completion?(false, error as NSError?)
+            }
+        })
     }
     
-    func someSelector ()
-    {
-        
-    }*/
     
     // MARK: TableView beállítása
     
@@ -77,7 +130,6 @@ class periodsScreen: UIViewController, UITableViewDataSource, UITableViewDelegat
         cell?.backgroundColor = .clear
         let row = indexPath.row
         cell?.textLabel?.text = currentPeriods[row]
-        cell!.detailTextLabel?.text = "2016,30,30"
         return cell!
     }
     
@@ -86,7 +138,7 @@ class periodsScreen: UIViewController, UITableViewDataSource, UITableViewDelegat
         self.index = indexPath
         let idoszak = self.getPeriod(id: Int16(indexPath.row)+1)
         tableView.deselectRow(at: indexPath, animated: true)
-        self.alert(msg1: "A kiválasztott időszak \(idoszak.start)-tól \(idoszak.end)-ig tart")
+        self.alert(msg1: "A kiválasztott időszak \(idoszak.start)-tól \(idoszak.end)-ig tart\nExportálod a naptárba?")
      }
     
     // MARK: CoreData időszakok kigyűjtése
@@ -173,7 +225,7 @@ class periodsScreen: UIViewController, UITableViewDataSource, UITableViewDelegat
     {
         let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        
+        alert.addAction(UIAlertAction(title: "Exportálás", style: UIAlertActionStyle.default, handler: { action in self.addEventToCalendar()}))
         self.present(alert, animated: true, completion: nil)
     }
     

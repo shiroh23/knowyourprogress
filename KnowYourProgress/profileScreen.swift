@@ -651,6 +651,7 @@ class profileScreen: UIViewController {
             self.currSemLbl.text = String(self.ofelh.currSem)
             self.majorLbl.text = self.ofelh.szak
             self.passwordLbl.text = self.ofelh.password
+            self.szabValLbl.text = Int(self.ofelh.szabVal).description
             self.modosultak = false
         } ))
         self.present(alert, animated: true, completion: nil)
