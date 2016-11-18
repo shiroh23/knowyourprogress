@@ -76,7 +76,7 @@ class detailviewScreen: UIViewController {
             tantargy.nev = subject["nev"] as! String
             tantargy.targykod = subject["targykod"] as! String
             
-            talaltElofeltetelek = self.elofeltetlek(keresettTargy: tantargy.nev)
+            talaltElofeltetelek = self.elofeltetelek(keresettTargy: tantargy.nev)
             if (talaltElofeltetelek.count != 0)
             {
                 textView.insertText("A tárgy előfeltételei:\n\n")
@@ -236,7 +236,7 @@ class detailviewScreen: UIViewController {
     
     // MARK: Előfeltételek kiírása
     
-    func elofeltetlek(keresettTargy: String) -> [String]
+    func elofeltetelek(keresettTargy: String) -> [String]
     {
         var lista = [String]()
         

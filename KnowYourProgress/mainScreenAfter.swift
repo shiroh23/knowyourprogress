@@ -17,22 +17,34 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let backgroundImage = UIImage(named: "489812_Pannonia.jpg")
     var productArray = NSArray()
+    var preConsArray = NSArray()
     var allSubjects = [String]()
+    var talaltElofeltetelek = [String]()
     var melyiket: Int = 0
     var semesterSubjCount: Int = 0
     var felh = Felh()
     var tanar = Oktato()
     var index: IndexPath = []
     var alertIndex: IndexPath = []
+    var useableszak: String = ""
     
     var searchResults = [NSManagedObject]()
     var teacherResults = [NSManagedObject]()
+    var doneSubjResults = [NSManagedObject]()
     var subjResults = [NSManagedObject]()
+    var lostSubjResults = [NSManagedObject]()
+    var loadSubjResults = [NSManagedObject]()
     
     func readPropertyList(szak: String)
     {
         let plistPath:String? = Bundle.main.path(forResource: szak, ofType: "plist")!
         productArray = NSArray(contentsOfFile: plistPath!)!
+    }
+    
+    func readPreConsPropertyList(szak: String)
+    {
+        let plistPath:String? = Bundle.main.path(forResource: szak, ofType: "plist")!
+        preConsArray = NSArray(contentsOfFile: plistPath!)!
     }
     
     override func viewDidLoad()
@@ -51,6 +63,23 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
         readPropertyList(szak: felh.szak)
         
         semesterSubjCount = self.targyCounter()
+        
+        switch felh.szak {
+        case "mernokinfoData":
+            useableszak = "mernokinfoPreCons"
+            break
+        case "proginfoData":
+            useableszak = "proginfoPreCons"
+            break
+        case "gazdinfoData":
+            useableszak = "gazdinfoPreCons"
+            break
+        default:
+            useableszak = ""
+            break
+        }
+        
+        readPreConsPropertyList(szak: useableszak)
         
         felevLbl.text = "Összes félév"
         
@@ -82,6 +111,8 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
         var felev: String = ""
         var nev: String = ""
         var elvegzett: Bool = false
+        var elbukott: Bool = false
+        var elozetesben: Bool = true
         var rekord: Dictionary<String, AnyObject>
         
         for i in (0..<productArray.count)
@@ -91,8 +122,10 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
             nev = rekord["nev"] as! String
             elvegzett = self.getSubject(keresettTargy: nev)
+            elbukott = self.getLostSubject(keresettTargy: nev)
+            elozetesben = self.getLoadSubject(keresettTargy: nev)
             
-            if (felev != String(felh.currSem) && elvegzett == false)
+            if ( (felev != String(felh.currSem) && elvegzett == false && elozetesben == false) || elbukott == true && elozetesben == false)
             {
                 allSubjects.append(nev)
                 count += 1
@@ -139,7 +172,9 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let favorite = UITableViewRowAction(style: .normal, title: "Felvétel") { action, index in
             self.melyiket = indexPath.row
             self.alertIndex = indexPath
+            self.removeLostSubject(keresettTargy: self.allSubjects[self.melyiket])
             self.alert(msg1: "Tárgy felvéve!")
+            
             tableView.deselectRow(at: indexPath, animated: true)
         }
         favorite.backgroundColor = UIColor.green
@@ -289,6 +324,223 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
             print("Error with request: \(error)")
         }
         return elvegzett
+    }
+    
+    // MARK: CoreData egy bukott tárgy kinyerése
+    
+    func getLostSubject (keresettTargy: String) -> Bool {
+        
+        let fetchRequest: NSFetchRequest<LostSubj> = LostSubj.fetchRequest()
+        var elbukott: Bool = false
+        var keres: String = ""
+        
+        do
+        {
+            lostSubjResults = try getContext().fetch(fetchRequest)
+            
+            for targy in lostSubjResults as [NSManagedObject]
+            {
+                keres = targy.value(forKey: "nev") as! String
+                
+                if (keres == keresettTargy)
+                {
+                    elbukott = true
+                    break
+                }
+            }
+            
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        return elbukott
+    }
+    
+    // MARK: CoreData előrehozott tárgy vizsgálata
+    
+    func getLoadSubject (keresettTargy: String) -> Bool {
+        
+        let fetchRequest: NSFetchRequest<LoadSubj> = LoadSubj.fetchRequest()
+        var elbukott: Bool = false
+        var keres: String = ""
+        
+        do
+        {
+            loadSubjResults = try getContext().fetch(fetchRequest)
+            
+            for targy in loadSubjResults as [NSManagedObject]
+            {
+                keres = targy.value(forKey: "nev") as! String
+                
+                if (keres == keresettTargy)
+                {
+                    elbukott = true
+                    break
+                }
+            }
+            
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        return elbukott
+    }
+    
+    // MARK: CoreData elbukott tárgy adott félévhez adása illetve nem elbukott tárgy adott félévhez adása
+    
+    func removeLostSubject (keresettTargy: String)
+    {
+        
+        // előfeltételek teljesítése után lehetséges csak a tárgyfelvétel
+        var felveheto: Bool = false
+        
+        self.talaltElofeltetelek = self.elofeltetelek(keresettTargy: keresettTargy)
+        if (talaltElofeltetelek.count != 0)
+        {
+            for i in (0..<talaltElofeltetelek.count)
+            {
+                print("az elofeltetel: \(talaltElofeltetelek[i])")
+                felveheto = self.getDoneSubjData(keresettTargy: self.talaltElofeltetelek[i])
+                print("felveheto: \(felveheto)")
+            }
+        }
+        else
+        {
+            felveheto = true
+        }
+        
+        if (felveheto == true)
+        {
+        var rekord: Dictionary<String, AnyObject>
+        var nev: String = ""
+        
+        for i in (0..<productArray.count)
+        {
+            rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
+            
+            nev = rekord["nev"] as! String
+            
+            if (nev == keresettTargy)
+            {
+                let context = getContext()
+                let entity =  NSEntityDescription.entity(forEntityName: "LoadSubj", in: context)
+                
+                let loadSubj = NSManagedObject(entity: entity!, insertInto: context)
+                
+                loadSubj.setValue(rekord["nev"] as! String, forKey: "nev")
+                loadSubj.setValue(rekord["felev"] as! String, forKey: "felev")
+                loadSubj.setValue(rekord["kredit"] as! String, forKey: "kredit")
+                loadSubj.setValue(rekord["targykod"] as! String, forKey: "targykod")
+                loadSubj.setValue(false, forKey: "elvegzett")
+                loadSubj.setValue(self.felh.email, forKey: "userEmail")
+                
+                do
+                {
+                    try context.save()
+                    print("\(rekord["nev"] as! String) hozzáadva a jelenlegi felevhez")
+                } catch let error as NSError
+                {
+                    print("Could not save \(error), \(error.userInfo)")
+                }
+                
+                break
+            }
+        }
+        
+        
+       
+        let fetchRequest: NSFetchRequest<LostSubj> = LostSubj.fetchRequest()
+        let context = getContext()
+        do
+        {
+            lostSubjResults = try getContext().fetch(fetchRequest)
+            
+            for subject in lostSubjResults as [NSManagedObject]
+            {
+                if (subject.value(forKey: "nev") as! String == keresettTargy)
+                {
+                    print("törölve")
+                    context.delete(subject)
+                    break
+                }
+            }
+            
+            try context.save()
+            print("törölve a bukottaktól!")
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        }
+        else
+        {
+            self.alert(msg1: "Előzetes tárgykövetelmény nem teljesül")
+        }
+        
+    }
+    
+    // MARK: CoreData előfeltételek keresése az elvégzettek között
+    
+    func getDoneSubjData (keresettTargy: String) -> Bool
+    {
+        
+        let fetchRequest: NSFetchRequest<DoneSubj> = DoneSubj.fetchRequest()
+        var keresendo: String = ""
+        var isDone: Bool = false
+        
+        do
+        {
+            doneSubjResults = try getContext().fetch(fetchRequest)
+            
+            for targy in doneSubjResults as [NSManagedObject]
+            {
+                keresendo = targy.value(forKey: "nev") as! String
+                
+                if (keresendo == keresettTargy)
+                {
+                    print("megtalalta")
+                    isDone = true
+                    break
+                }
+            }
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        return isDone
+    }
+    
+    // MARK: Előfeltételek keresése
+    
+    func elofeltetelek(keresettTargy: String) -> [String]
+    {
+        var lista = [String]()
+        
+        var rekord: Dictionary<String, AnyObject>
+        
+        for i in (0..<preConsArray.count)
+        {
+            rekord = preConsArray.object(at: i) as! Dictionary<String, AnyObject>
+            let nev = rekord["nev"] as! String
+            
+            if (nev == keresettTargy)
+            {
+                for k in (1...3)
+                {
+                    let elo = rekord["elofeltetel\(k)"] as? String
+                    if (elo != nil)
+                    {
+                        lista.append(elo!)
+                    }
+                }
+            }
+        }
+        print("elofeltetelek elemei \(lista)")
+        return lista
     }
     
     func alert(msg1: String){

@@ -49,6 +49,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var teacherResults = [NSManagedObject]()
     var subjResults = [NSManagedObject]()
     var doneSubjRes = [NSManagedObject]()
+    var loadSubjResults = [NSManagedObject]()
     
     func readPropertyList(szak: String)
     {
@@ -85,6 +86,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             if (self.felevValtas == true)
             {
                 let count = self.targyCounter()
+                print(count)
                 self.updateUserData()
                 self.felevValtas = false
                 print("felev valtas megtörtént")
@@ -190,6 +192,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         var felev: String = ""
         var nev: String = ""
         var elvegzett: Bool = false
+        var felvett: Bool = false
         var rekord: Dictionary<String, AnyObject>
         
         for i in (0..<productArray.count)
@@ -200,8 +203,9 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
             nev = rekord["nev"] as! String
             elvegzett = self.getSubject(keresettTargy: nev)
+            felvett = self.getLoadSubject(keresettTargy: nev)
             
-            if (felev == String(felh.currSem) && elvegzett == false)
+            if ( (felev == String(felh.currSem) && elvegzett == false) || felvett == true)
             {
                 currentSubjects.append(nev)
                 //print(currentSubjects.last!)
@@ -289,6 +293,10 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let share = UITableViewRowAction(style: .normal, title: "Elbukva") { action, index in
             self.melyiket = indexPath.row
+            self.saveLostSubject(index: self.melyiket)
+            self.alertIndex = indexPath
+            self.alert2(msg1: "Áthelyezve az összes maradék tárgy közé!")
+            tableView.deselectRow(at: indexPath, animated: true)
         }
         share.backgroundColor = UIColor.red
         
@@ -484,6 +492,100 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         {
             print("Error with: \(error)")
         }
+        
+        let fetchRequest: NSFetchRequest<LoadSubj> = LoadSubj.fetchRequest()
+        do
+        {
+            loadSubjResults = try getContext().fetch(fetchRequest)
+            
+            for subject in loadSubjResults as [NSManagedObject]
+            {
+                if (subject.value(forKey: "nev") as! String == keresettTargy)
+                {
+                    print("törölve")
+                    context.delete(subject)
+                    break
+                }
+            }
+            
+            try context.save()
+            print("törölve a loadedből!")
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        
+    }
+    
+    // MARK: CoreData elbukott tárgy felvétele
+    
+    func saveLostSubject(index: Int)
+    {
+        let context = getContext()
+        let entity =  NSEntityDescription.entity(forEntityName: "LostSubj", in: context)
+        
+        let lostSubj = NSManagedObject(entity: entity!, insertInto: context)
+        
+        let keresettTargy = self.currentSubjects[index]
+        self.currentSubjects[index].removeAll()
+        var targyString: String = ""
+        var rekord: Dictionary<String, AnyObject>
+        
+        for i in (0..<productArray.count)
+        {
+            rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
+            targyString = rekord["nev"] as! String
+            if (targyString == keresettTargy)
+            {
+                let newSubject = self.productArray.object(at: i) as! Dictionary<String, AnyObject>
+                lostSubj.setValue(newSubject["nev"] as! String, forKey: "nev")
+                lostSubj.setValue(newSubject["kredit"] as! String, forKey: "kredit")
+                lostSubj.setValue(newSubject["felev"] as! String, forKey: "felev")
+                lostSubj.setValue(newSubject["targykod"] as! String, forKey: "targykod")
+                lostSubj.setValue(false, forKey: "elvegzett")
+                lostSubj.setValue(felh.email, forKey: "userEmail")
+                print("\(targyString) elbukva!")
+                break
+            }
+        }
+        
+        do
+        {
+            try context.save()
+            print("targy elbukása mentve!")
+        } catch let error as NSError
+        {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+        catch
+        {
+            print("Error with: \(error)")
+        }
+        
+        let fetchRequest: NSFetchRequest<LoadSubj> = LoadSubj.fetchRequest()
+        do
+        {
+            loadSubjResults = try getContext().fetch(fetchRequest)
+            
+            for subject in loadSubjResults as [NSManagedObject]
+            {
+                if (subject.value(forKey: "nev") as! String == keresettTargy)
+                {
+                    print("törölve")
+                    context.delete(subject)
+                    break
+                }
+            }
+            
+            try context.save()
+            print("törölve a loadedből!")
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        
     }
     
     // MARK: CoreData egy tárgy kinyerése
@@ -514,6 +616,45 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             print("Error with request: \(error)")
         }
         return elvegzett
+    }
+    
+    // MARK: CoreData előzetesen felvett tárgyak, bukottak újrafelvétele
+    
+    func getLoadSubject (keresettTargy: String) -> Bool
+    {
+        
+        let fetchRequest: NSFetchRequest<LoadSubj> = LoadSubj.fetchRequest()
+        var felvett: Bool = false
+        var keres: String = ""
+        
+        do
+        {
+            loadSubjResults = try getContext().fetch(fetchRequest)
+            
+            for targy in loadSubjResults as [NSManagedObject]
+            {
+                keres = targy.value(forKey: "nev") as! String
+                let email = targy.value(forKey: "userEmail") as! String
+                if (keres == keresettTargy && self.felh.email == email)
+                {
+                    print("megvagy load subject")
+                    felvett = true
+                    break
+                }
+            }
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+       if (felvett == true)
+       {
+        return true
+        }
+        else
+       {
+        return false
+        }
     }
     
     // MARK: CoreData tárgyak kinyerése
@@ -555,6 +696,14 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func alert(msg1: String){
         let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in self.someHandler(index: self.alertIndex) } ))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func alert2(msg1: String){
+        let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in self.tableView.reloadData()
+            self.tableView.reloadRows(at: [self.alertIndex], with: UITableViewRowAnimation.left)
+        }))
         self.present(alert, animated: true, completion: nil)
     }
     
