@@ -20,32 +20,84 @@ class detailviewafterScreen: UIViewController {
     @IBOutlet weak var tanarNevLbl: UILabel!
     @IBOutlet weak var tanarErtekLbl: UILabel!
     @IBOutlet weak var completedBtn: UIButton!
+    @IBOutlet weak var textView: UITextView!
     
     var teacherResults = [NSManagedObject]()
     var subject: Dictionary<String, AnyObject> = [:]
+    var productArray = NSArray()
+    var talaltElofeltetelek = [String]()
     var tutor = Oktato()
+    var felh = Felhasznalo()
     var tantargy = Tantargy()
     var path = IndexPath()
+    var useableszak: String = ""
+    
+    func readPropertyList(szak: String)
+    {
+        let plistPath:String? = Bundle.main.path(forResource: szak, ofType: "plist")!
+        productArray = NSArray(contentsOfFile: plistPath!)!
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        tantargy.felev = subject["felev"] as! String
-        tantargy.kredit = subject["kredit"] as! String
-        tantargy.nev = subject["nev"] as! String
-        tantargy.targykod = subject["targykod"] as! String
         
         let van: Bool = self.isthereaTeacher(nev: tutor.name)
-        if (van == true)
+        if (van == true && tutor.review == 0)
         {
             completedBtn.isEnabled = true
             completedBtn.isHidden = false
+            switch felh.szak {
+            case "mernokinfoData":
+                useableszak = "mernokinfoPreCons"
+                break
+            case "proginfoData":
+                useableszak = "proginfoPreCons"
+                break
+            case "gazdinfoData":
+                useableszak = "gazdinfoPreCons"
+                break
+            default:
+                useableszak = ""
+                break
+            }
+            print(useableszak)
+            readPropertyList(szak: useableszak)
+            
+            tantargy.felev = subject["felev"] as! String
+            tantargy.kredit = subject["kredit"] as! String
+            tantargy.nev = subject["nev"] as! String
+            tantargy.targykod = subject["targykod"] as! String
+            
+            talaltElofeltetelek = self.elofeltetlek(keresettTargy: tantargy.nev)
+            if (talaltElofeltetelek.count != 0)
+            {
+                textView.insertText("A tárgy előfeltételei:\n\n")
+                
+                for i in (0..<talaltElofeltetelek.count)
+                {
+                    print(talaltElofeltetelek[i])
+                    textView.insertText(talaltElofeltetelek[i])
+                    textView.insertText("\n\n")
+                }
+            }
+            else
+            {
+                textView.insertText("A tárgynak nincsen előfeltétele")
+                textView.insertText("\n\n")
+            }
         }
         else
         {
             completedBtn.isEnabled = false
             completedBtn.isHidden = true
+            textView.isHidden = true
+            
+            tantargy.felev = subject["felev"] as! String
+            tantargy.kredit = subject["kredit"] as! String
+            tantargy.nev = subject["nev"] as! String
+            tantargy.targykod = subject["targykod"] as! String
         }
         
         subjectName.adjustsFontSizeToFitWidth = true
@@ -139,7 +191,6 @@ class detailviewafterScreen: UIViewController {
                 if (t.value(forKey: "name") as! String == nev)
                 {
                     t.setValue(ertek, forKey: "review")
-                    break
                 }
             }
             
@@ -175,6 +226,35 @@ class detailviewafterScreen: UIViewController {
         {
             return false
         }
+    }
+    
+    // MARK: Előfeltételek kiírása
+    
+    func elofeltetlek(keresettTargy: String) -> [String]
+    {
+        var lista = [String]()
+        
+        var rekord: Dictionary<String, AnyObject>
+        
+        for i in (0..<productArray.count)
+        {
+            rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
+            let nev = rekord["nev"] as! String
+            
+            if (nev == keresettTargy)
+            {
+                for k in (1...3)
+                {
+                    let elo = rekord["elofeltetel\(k)"] as? String
+                    if (elo != nil)
+                    {
+                        lista.append(elo!)
+                    }
+                }
+            }
+        }
+        print(lista.count)
+        return lista
     }
     
     func getContext () -> NSManagedObjectContext {

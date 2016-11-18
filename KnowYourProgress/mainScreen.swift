@@ -252,6 +252,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     tanar = self.getTeachers(keresettTargy: keresettTargy)
                     destination.tutor = tanar
                     destination.path = self.index
+                    destination.felh.szak = self.felh.szak
                 }
             }
         }

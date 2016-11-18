@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Mérnöki tervezés</string>
+		<key>nev</key>
+		<string>Szakdolgozat</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Projekt labor</string>
+		<key>nev</key>
+		<string>Mérnöki tervezés</string>
+	</dict>
+	<dict>
+		<key>elofeltetel2</key>
+		<string>Szoftvertechnológia</string>
+		<key>elofeltetel1</key>
+		<string>Korszerű programozási technikák</string>
+		<key>nev</key>
+		<string>A rendszerfejlesztés korszerű módszerei</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Operációs rendszerek</string>
+		<key>nev</key>
+		<string>Informatikai rendszerek konfigurálása és üzemeltetése</string>
+	</dict>
+	<dict>
+		<key>elofeltetel2</key>
+		<string>Korszerű programozási technikák</string>
+		<key>elofeltetel1</key>
+		<string>Adatstruktúrák és algoritmusok</string>
+		<key>nev</key>
+		<string>Gyártórendszerek modellezése</string>
+	</dict>
+	<dict>
+		<key>elofeltetel2</key>
+		<string>Számítógép-hálózatok I.</string>
+		<key>elofeltetel1</key>
+		<string>Operációs rendszerek</string>
+		<key>nev</key>
+		<string>Informatikai biztonság</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Adatbáziskezelő rendszerek elmélete (angol nyelven)</string>
+		<key>nev</key>
+		<string>Adatbáziskezelő rendszerek alkalmazása</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Számítógép-hálózatok I.</string>
+		<key>nev</key>
+		<string>Számítógép-hálózatok II.</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Valószínűségszámítás és matematikai statisztika</string>
+		<key>nev</key>
+		<string>Információ és hírközléselmélet</string>
+	</dict>
+	<dict>
+		<key>elofeltetel3</key>
+		<string>Adatbázis-kezelő rendszerek elmélete (angol nyelven)</string>
+		<key>elofeltetel2</key>
+		<string>Szoftvertechnológia</string>
+		<key>elofeltetel1</key>
+		<string>Korszerű programozási technikák</string>
+		<key>nev</key>
+		<string>Projekt labor</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>75 kredit</string>
+		<key>nev</key>
+		<string>Kutatás-fejlesztés</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Az informatika logikai és algebrai alapjai</string>
+		<key>nev</key>
+		<string>Mesterséges intelligencia alapjai</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Programozás I.</string>
+		<key>nev</key>
+		<string>Számítógép-hálózatok I.</string>
+	</dict>
+	<dict>
+		<key>elofeltetel2</key>
+		<string>Bevezetés a számítástechnikába</string>
+		<key>elofeltetel1</key>
+		<string>Programozás alapjai</string>
+		<key>nev</key>
+		<string>Operációs rendszerek</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Digitális technika I.</string>
+		<key>nev</key>
+		<string>Digitális rendszerek és számítógép architektúrák</string>
+	</dict>
+	<dict>
+		<key>elofeltetel2</key>
+		<string>Elektromosságtan</string>
+		<key>elofeltetel1</key>
+		<string>Matematikai analízis II.</string>
+		<key>nev</key>
+		<string>Irányításelmélet és technika I.</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Valószínűségszámítás és matematikai statisztika</string>
+		<key>nev</key>
+		<string>Méréselmélet</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Elektromosságtan</string>
+		<key>nev</key>
+		<string>Elektronikus elemek és áramkörök laborgyakorlat</string>
+	</dict>
+	<dict>
+		<key>elofeltetel2</key>
+		<string>Elektronikus elemek és áramkörök laborgyakorlat</string>
+		<key>elofeltetel1</key>
+		<string>Elektromosságtan</string>
+		<key>nev</key>
+		<string>Elektronikus elemek és áramkörök</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Adatstruktúrák és algoritmusok</string>
+		<key>nev</key>
+		<string>Adatbáziskezelő rendszerek elmélete (angol nyelven)</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Digitális technika I.</string>
+		<key>nev</key>
+		<string>Digitális technika II.</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Programozás I.</string>
+		<key>nev</key>
+		<string>Szoftvertechnológia</string>
+	</dict>
+	<dict>
+		<key>elofeltetel2</key>
+		<string>Programozás I.</string>
+		<key>elofeltetel1</key>
+		<string>Programozás alapjai</string>
+		<key>nev</key>
+		<string>Java programozás</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Programozás II.</string>
+		<key>nev</key>
+		<string>Korszerű programozási technikák</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Vállalati gazdaságtan</string>
+		<key>nev</key>
+		<string>Vállalkozói ismeretek</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Matematikai analízis I.</string>
+		<key>nev</key>
+		<string>Valószínűségszámítás és matematikai statisztika</string>
+	</dict>
+	<dict>
+		<key>elofeltetel2</key>
+		<string>Programozás alapjai</string>
+		<key>elofeltetel1</key>
+		<string>Programozás I.</string>
+		<key>nev</key>
+		<string>Programozás II.</string>
+	</dict>
+	<dict>
+		<key>elofeltetel2</key>
+		<string>Fizika I.</string>
+		<key>elofeltetel1</key>
+		<string>Matamatikai analízis I.</string>
+		<key>nev</key>
+		<string>Elektromosságtan</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Fizika I.</string>
+		<key>nev</key>
+		<string>Fizika II.</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Az informatika logikai algebrai alapjai</string>
+		<key>nev</key>
+		<string>A digitális számítás elmélete</string>
+	</dict>
+	<dict>
+		<key>elofeltetel3</key>
+		<string>Diszkrét matematika</string>
+		<key>elofeltetel2</key>
+		<string>Programozás I.</string>
+		<key>elofeltetel1</key>
+		<string>Matematikai analízis I.</string>
+		<key>nev</key>
+		<string>Adatstruktúrák és algoritmusok</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Az informatika logikai és algebrai alapjai</string>
+		<key>nev</key>
+		<string>Diszkrét matematika</string>
+	</dict>
+	<dict>
+		<key>elofeltetel1</key>
+		<string>Matematikai analízis I.</string>
+		<key>nev</key>
+		<string>Matematikai analízis II.</string>
+	</dict>
+</array>
+</plist>

@@ -39,10 +39,10 @@ class launchScreen: UIViewController {
     var teacherResults = [NSManagedObject]()
     var periodResults = [NSManagedObject]()
     var searchResults = [NSManagedObject]()
-    let IDs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
-    let Names = ["Teiermayer Attila","Medvegy Tibor","Görbe Péter","Dr. Pituk Mihály","Dr. Simon Gyula","Dr. Heckl István","Dr. Leitold Adrien Ilona","Dr. Hartung Ferenc","Székelyné Kovács Katalin","Hegyháti Máté","Dr. Pituk Mihály","Harmat István","Dr. Hartung Ferenc","Dr. Vassányi István","Piglerné dr. Lakner Rozália","Dr. Mihálykóné dr. Orbán Éva","Dr. Vassányi István","Dulai Tibor","Katonáné dr. Tömördi Katalin","Dr. Süle Zoltán","Dr. Simon Gyula","Dr. Vörösházi Zsolt","Dr. Bertók Ákos Botond"]
+    let IDs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50]
+    let Names = ["Teiermayer Attila","Dr. Szalai István","Görbe Péter","Dr. Pituk Mihály","Dr. Simon Gyula","Dr. Heckl István","Dr. Leitold Adrien Ilona","Dr. Hartung Ferenc","Székelyné Kovács Katalin","Hegyháti Máté","Dr. Pituk Mihály","Harmat István","Dr. Hartung Ferenc","Dr. Vassányi István","Piglerné dr. Lakner Rozália","Dr. Mihálykóné dr. Orbán Éva","Dr. Vassányi István","Dulai Tibor","Katonáné dr. Tömördi Katalin","Dr. Süle Zoltán","Dr. Simon Gyula","Dr. Vörösházi Zsolt","Dr. Bertók Ákos Botond","Dr. Gaál Zoltán","Pozsgai Tamás","Dániel Zoltán András","Dr. Bertók Ákos Botond","Dr. Juhász Zoltán","Dr. Simon Gyula","Dr. Vassányi István","Kiss Krisztián Attila","Rosta Imre","Dulai Tibor","Dr. Fogarassyné dr. Vathy Ágnes","Dr. Gerzson Miklós","Dr. Süle Zoltán","Dr. Magyar Attila","Egyéni tanár","Katonáné dr. Tömördi Katalin","Dr. Vassányi István","Katonáné dr. Tömördi Katalin","Dr. Bertók Ákos Botond","Dr. Gerzson Miklós","Egyéni tanár"]
     let review = 0
-    let subjects = ["Fizika I.","Fizika I.","Bevezetés a számítástechnikába","Matematikai analízis I.","Programozás alapjai","Programozás I.","Lineáris algebra","Az informatika logikai és algebrai alapjai","Közgazdaságtan","A digitális számítás elmélete","Matematikai analízis II.","Számítógépes perifériák","Diszkrét matematika","Digitális technika I.","Mesterséges intelligencia","Valószínűségszámítás és matematikai statisztika","Digitális technika II.","Számítógép-hálózatok I.","Elektromosságtan","Adatstruktúrák és algoritmusok","Operációs rendszerek","Digitális rendszerek és számítógép architektúrák","Korszerű programozási technikák"]
+    let subjects = ["Fizika I.","Fizika II.","Bevezetés a számítástechnikába","Matematikai analízis I.","Programozás alapjai","Programozás I.","Lineáris algebra","Az informatika logikai és algebrai alapjai","Közgazdaságtan","A digitális számítás elmélete","Matematikai analízis II.","Számítógépes perifériák","Diszkrét matematika","Digitális technika I.","Mesterséges intelligencia","Valószínűségszámítás és matematikai statisztika","Digitális technika II.","Számítógép-hálózatok I.","Elektromosságtan","Adatstruktúrák és algoritmusok","Operációs rendszerek","Digitális rendszerek és számítógép architektúrák","Korszerű programozási technikák","Menedzsment","Matematikai programcsomagok","Vállalati gazdaságtan","Programozás II.","Java programozás","Szoftvertechnológia","Információ és hírközléselmélet","Informatikai rendszer konfigurálása és üzemeltetése","Informatikai biztonság","Számítógép hálózatok II.","Adatbáziskezelő rendszerek elmélete (angol nyelven)","Méréselmélet","Kutatás-fejlesztés","Projekt labor","Mérnöki tervezés","Elektronikus elemek és áramkörök laborgyakorlat","Adatbázis kezelő rendszerek alkalmazása","Elektronikus elemek és áramkörök","A rendszerfejlesztés korszerű módszerei","Irányításelmélet és technika I.","Szakdolgozat"]
     
     let idoszakDesc = ["Előzetes tárgyjelentkezés", "Kurzusjelentkezési időszak", "Végleges tárgyjelentkezés", "Jegybeírási időszak", "Bejelentkezési időszak", "Szorgalmi Időszak", "Megajánlott jegy beírási időszak", "Vizsgaidőszak"]
     let idoszakStart = ["2016.06.20", "2016.06.20", "2016.09.05", "2016.09.05", "2016.09.06", "2016.09.12", "2016.12.05", "2016.12.19"]
@@ -55,7 +55,7 @@ class launchScreen: UIViewController {
         let periodcount = getPeriods()
         if (tanarcount == 0 && periodcount == 0)
         {
-            for i in (0..<23)
+            for i in (0..<Names.count)
             {
                 saveTeacher(id: IDs, nev: Names, subject: subjects, review: review, index: i)
             }
