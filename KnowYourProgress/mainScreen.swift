@@ -50,6 +50,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var subjResults = [NSManagedObject]()
     var doneSubjRes = [NSManagedObject]()
     var loadSubjResults = [NSManagedObject]()
+    var lostSubjResults = [NSManagedObject]()
     
     func readPropertyList(szak: String)
     {
@@ -124,7 +125,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool)
     {
         tableView.deselectRow(at: self.index, animated: true)
-        self.someHandler(index: self.index)
     }
     
     // MARK: Gesture észlelők
@@ -192,6 +192,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         var felev: String = ""
         var nev: String = ""
         var elvegzett: Bool = false
+        var elbukott: Bool = false
         var felvett: Bool = false
         var rekord: Dictionary<String, AnyObject>
         
@@ -204,8 +205,9 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             nev = rekord["nev"] as! String
             elvegzett = self.getSubject(keresettTargy: nev)
             felvett = self.getLoadSubject(keresettTargy: nev)
+            elbukott = self.getLostSubject(keresettTargy: nev)
             
-            if ( (felev == String(felh.currSem) && elvegzett == false) || felvett == true)
+            if ( (felev == String(felh.currSem) && elvegzett == false && elbukott == false) || (felvett == true && elbukott == false ) )
             {
                 currentSubjects.append(nev)
                 //print(currentSubjects.last!)
@@ -387,7 +389,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 {
                     felh.currSem = Int16(felh.currSem+1)
                     felh.finiSem = Int16(felh.finiSem+1)
-                    print("megvan megvan")
                     users.setValue(felh.currSem, forKey: "currentSemester")
                     users.setValue(felh.finiSem, forKey: "finishedSemester")
                     break
@@ -458,7 +459,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let doneSubj = NSManagedObject(entity: entity!, insertInto: context)
         
         let keresettTargy = self.currentSubjects[index]
-        self.currentSubjects[index].removeAll()
+        //self.currentSubjects[index].removeAll()
         var targyString: String = ""
         var rekord: Dictionary<String, AnyObject>
         
@@ -528,7 +529,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let lostSubj = NSManagedObject(entity: entity!, insertInto: context)
         
         let keresettTargy = self.currentSubjects[index]
-        self.currentSubjects[index].removeAll()
+        //self.currentSubjects[index].removeAll()
         var targyString: String = ""
         var rekord: Dictionary<String, AnyObject>
         
@@ -693,6 +694,36 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    // MARK: CoreData elbukott tárgyakat ne írjuk ki, melyek az adott félévben még lennének
+    
+    func getLostSubject (keresettTargy: String) -> Bool {
+        
+        let fetchRequest: NSFetchRequest<LostSubj> = LostSubj.fetchRequest()
+        var elvegzett: Bool = false
+        var keres: String = ""
+        
+        do
+        {
+            lostSubjResults = try getContext().fetch(fetchRequest)
+            
+            for targy in lostSubjResults as [NSManagedObject]
+            {
+                keres = targy.value(forKey: "nev") as! String
+                
+                if (keres == keresettTargy)
+                {
+                    elvegzett = true
+                    break
+                }
+            }
+        }
+        catch
+        {
+            print("Error with request: \(error)")
+        }
+        return elvegzett
+    }
+    
     func alert(msg1: String){
         let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in self.someHandler(index: self.alertIndex) } ))
@@ -701,15 +732,19 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func alert2(msg1: String){
         let alert = UIAlertController(title: "", message: msg1, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in self.tableView.reloadData()
-            self.tableView.reloadRows(at: [self.alertIndex], with: UITableViewRowAnimation.left)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: { action in self.someHandler(index: self.alertIndex)
         }))
         self.present(alert, animated: true, completion: nil)
     }
     
     func someHandler (index: IndexPath)
     {
-        self.tableView.reloadRows(at: [index], with: UITableViewRowAnimation.left)
+        
+        self.currentSubjects.remove(at: index.row) // Check this out
+        self.semesterSubjCount -= 1
+        self.tableView.deleteRows(at: [index], with: .left)
+        self.tableView.reloadData()
+        
         gombLetiltva = self.getDoneSubjects(email: felh.email)
         if (gombLetiltva == true)
         {
@@ -721,7 +756,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             beforeBtn.isEnabled = true
             beforeBtn.isHidden = false
         }
-        self.tableView.reloadData()
     }
     
 }

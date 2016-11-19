@@ -150,10 +150,14 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let favorite = UITableViewRowAction(style: .normal, title: "Törlés") { action, index in
             self.melyiket = indexPath.row
-            print(self.finishedSubjects[indexPath.row])
+            //print(self.finishedSubjects[indexPath.row])
             self.deleteDoneSubjData(targynev: self.finishedSubjects[indexPath.row])
-            self.tableView.deselectRow(at: indexPath, animated: true)
-            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.left)
+            self.finishedSubjects.remove(at: indexPath.row) // Check this out
+            self.finishedSubjCount -= 1
+            self.tableView.deleteRows(at: [indexPath], with: .left)
+            self.tableView.reloadData()
+            //self.tableView.deselectRow(at: indexPath, animated: true)
+            //self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.left)
             //let count = self.getDoneSubjData(email: self.felh.email)
             //print(count)
             self.visszavonta = true

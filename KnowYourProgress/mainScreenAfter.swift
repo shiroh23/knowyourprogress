@@ -551,7 +551,10 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func someHandler (index: IndexPath)
     {
-        self.tableView.reloadRows(at: [index], with: UITableViewRowAnimation.left)
+        self.allSubjects.remove(at: index.row) // Check this out
+        self.semesterSubjCount -= 1
+        self.tableView.deleteRows(at: [index], with: .left)
+        self.tableView.reloadData()
     }
     
 }
