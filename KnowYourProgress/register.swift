@@ -170,7 +170,26 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
             !(emailTest.evaluate(with: self.emailField.text) == false)) {
             if (jelszo2Field.text == jelszoField.text)
             {
+                let jelszocska: String = jelszoField.text!
+                var jelszoOK: Bool = false
+                let capitalLetterRegEx  = ".*[A-Z]+.*"
+                let texttest = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
+                let capitalresult = texttest.evaluate(with: jelszocska)
+                
+                let numberRegEx  = ".*[0-9]+.*"
+                let texttest1 = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+                let numberresult = texttest1.evaluate(with: jelszocska)
+             
+                if (numberresult == true && capitalresult == true)
+                {
+                    jelszoOK = true
+                }
+                
+                if (jelszoOK == true)
+                {
+                
                 var volt: Bool = false
+                
                 //mentés előtt ellenőrizni kell, volt-e már ugyanilyen regisztrálva
                 self.getUsers()
                 for felh in searchResults as [NSManagedObject]
@@ -181,7 +200,7 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
                         volt = true
                     }
                 }
-                if (volt == false)
+                if (volt == false && jelszoOK == true)
                 {
                     //adatmentés database-be
                     print("adatmentés")
@@ -194,6 +213,13 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
                     //más email címmel való regisztráció
                     alert(msg1: "Ezzel az e-mail címmel már regisztráltak!")
                     emailField.text = ""
+                }
+                }
+                else
+                {
+                    alert(msg1: "A jelszavak nem tartalmaznak legalább 8 karaktert, számot, kis és nagybetűket!!")
+                    jelszoField.text = ""
+                    jelszo2Field.text = ""
                 }
             }
             else
