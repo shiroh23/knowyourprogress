@@ -666,20 +666,6 @@
                                     <action selector="deleteUser:" destination="Qmb-wj-FOS" eventType="touchUpInside" id="Qqd-IJ-TR7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iN-XD-OIw">
-                                <rect key="frame" x="16" y="593" width="194" height="66"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="194" id="44U-GI-L1Y"/>
-                                    <constraint firstAttribute="height" constant="66" id="TNO-3m-xQ8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="27"/>
-                                <state key="normal" title="Kijelentkezés">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="logOut:" destination="Qmb-wj-FOS" eventType="touchUpInside" id="vK5-M5-Sr9"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lj-ox-HUT">
                                 <rect key="frame" x="16" y="476" width="329" height="21"/>
                                 <constraints>
@@ -705,6 +691,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="8N5-v0-squ">
+                                <rect key="frame" x="140" y="545" width="94" height="29"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="Qmb-wj-FOS" eventType="valueChanged" id="N3e-2q-Bh1"/>
+                                </connections>
+                            </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Szabadon választható kreditek:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDa-I8-Be4">
                                 <rect key="frame" x="16" y="505" width="218" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
@@ -717,13 +710,20 @@
                                 <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="8N5-v0-squ">
-                                <rect key="frame" x="140" y="545" width="94" height="29"/>
-                                <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iN-XD-OIw">
+                                <rect key="frame" x="16" y="602" width="142" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="142" id="44U-GI-L1Y"/>
+                                    <constraint firstAttribute="height" constant="48" id="TNO-3m-xQ8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <state key="normal" title="Kijelentkezés">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="stepperValueChanged:" destination="Qmb-wj-FOS" eventType="valueChanged" id="N3e-2q-Bh1"/>
+                                    <action selector="logOut:" destination="Qmb-wj-FOS" eventType="touchUpInside" id="vK5-M5-Sr9"/>
                                 </connections>
-                            </stepper>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -745,7 +745,7 @@
                             <constraint firstItem="3Mr-38-lOm" firstAttribute="top" secondItem="XJO-Ug-Rqg" secondAttribute="bottom" constant="5" id="CB6-n1-Rt9"/>
                             <constraint firstItem="BmF-ty-fUi" firstAttribute="leading" secondItem="XJO-Ug-Rqg" secondAttribute="trailing" constant="92" id="DVI-aE-GMf"/>
                             <constraint firstItem="9lj-ox-HUT" firstAttribute="centerX" secondItem="mLf-WZ-PjA" secondAttribute="centerX" constant="-7" id="E5S-HS-CQd"/>
-                            <constraint firstItem="0iN-XD-OIw" firstAttribute="top" secondItem="8N5-v0-squ" secondAttribute="bottom" constant="19" id="EGE-Cn-kFk"/>
+                            <constraint firstItem="0iN-XD-OIw" firstAttribute="top" secondItem="8N5-v0-squ" secondAttribute="bottom" constant="28" id="EGE-Cn-kFk"/>
                             <constraint firstItem="4MT-3b-iM7" firstAttribute="leading" secondItem="9lj-ox-HUT" secondAttribute="leading" id="FPt-hT-1t3"/>
                             <constraint firstItem="bFI-ap-Xei" firstAttribute="top" secondItem="FpN-Cr-0m3" secondAttribute="bottom" constant="26" id="GFL-dJ-AzJ"/>
                             <constraint firstItem="TNs-8A-hFM" firstAttribute="trailing" secondItem="sAi-XZ-hmK" secondAttribute="trailing" id="GeO-1c-yHi"/>
@@ -769,7 +769,7 @@
                             <constraint firstItem="ALJ-uz-ALW" firstAttribute="firstBaseline" secondItem="sAi-XZ-hmK" secondAttribute="baseline" id="WM2-J5-sZA"/>
                             <constraint firstItem="4MT-3b-iM7" firstAttribute="leading" secondItem="915-S8-Vtv" secondAttribute="leading" id="WXQ-m2-F2q"/>
                             <constraint firstItem="FpN-Cr-0m3" firstAttribute="centerY" secondItem="0iN-XD-OIw" secondAttribute="centerY" id="Xb2-Zp-RFb"/>
-                            <constraint firstItem="bFI-ap-Xei" firstAttribute="top" secondItem="0iN-XD-OIw" secondAttribute="bottom" constant="8" symbolic="YES" id="Y1O-00-WQc"/>
+                            <constraint firstItem="bFI-ap-Xei" firstAttribute="top" secondItem="0iN-XD-OIw" secondAttribute="bottom" constant="17" id="Y1O-00-WQc"/>
                             <constraint firstItem="wPb-av-TrM" firstAttribute="leading" secondItem="xDa-I8-Be4" secondAttribute="trailing" constant="54" id="Z6N-GI-7jk"/>
                             <constraint firstItem="wPb-av-TrM" firstAttribute="top" secondItem="4K9-f8-QtL" secondAttribute="bottom" constant="8" symbolic="YES" id="ZxW-KD-iiq"/>
                             <constraint firstItem="9lj-ox-HUT" firstAttribute="bottom" secondItem="4K9-f8-QtL" secondAttribute="bottom" id="ajG-MW-6HV"/>
@@ -777,7 +777,7 @@
                             <constraint firstItem="TNs-8A-hFM" firstAttribute="leading" secondItem="sAi-XZ-hmK" secondAttribute="leading" id="buO-d4-hnr"/>
                             <constraint firstItem="xDa-I8-Be4" firstAttribute="leading" secondItem="0iN-XD-OIw" secondAttribute="leading" id="c8b-iK-yAV"/>
                             <constraint firstItem="4MT-3b-iM7" firstAttribute="top" secondItem="915-S8-Vtv" secondAttribute="top" id="cth-jX-CDM"/>
-                            <constraint firstItem="FpN-Cr-0m3" firstAttribute="leading" secondItem="0iN-XD-OIw" secondAttribute="trailing" constant="21" id="cu5-1I-RuW"/>
+                            <constraint firstItem="FpN-Cr-0m3" firstAttribute="leading" secondItem="0iN-XD-OIw" secondAttribute="trailing" constant="73" id="cu5-1I-RuW"/>
                             <constraint firstItem="iGp-BZ-kIp" firstAttribute="leading" secondItem="sAi-XZ-hmK" secondAttribute="leading" id="eek-oT-Hv6"/>
                             <constraint firstItem="RPE-Df-TBX" firstAttribute="top" secondItem="3Mr-38-lOm" secondAttribute="bottom" constant="79" id="fO5-8z-ma9"/>
                             <constraint firstItem="RPE-Df-TBX" firstAttribute="trailing" secondItem="uMe-eg-hzc" secondAttribute="trailingMargin" id="gAm-gx-7HE"/>

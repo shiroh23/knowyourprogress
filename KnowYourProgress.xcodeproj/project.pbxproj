@@ -27,6 +27,8 @@
 		5B72F7C11DDB693900BD4AC9 /* detailviewbeforeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72F7C01DDB693900BD4AC9 /* detailviewbeforeScreen.swift */; };
 		5B72F7C31DDB694A00BD4AC9 /* detailviewafterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72F7C21DDB694A00BD4AC9 /* detailviewafterScreen.swift */; };
 		5B72F7C51DDF0D2600BD4AC9 /* mernokinfoPreCons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B72F7C41DDF0D2600BD4AC9 /* mernokinfoPreCons.plist */; };
+		5B72F7C71DE0C38800BD4AC9 /* proginfoPreCons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B72F7C61DE0C38800BD4AC9 /* proginfoPreCons.plist */; };
+		5B72F7C91DE0C39700BD4AC9 /* gazdinfoPreCons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B72F7C81DE0C39700BD4AC9 /* gazdinfoPreCons.plist */; };
 		5BC2B0961DD4AB5D004562C2 /* mainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC2B0951DD4AB5D004562C2 /* mainScreen.swift */; };
 		5BC2B0981DD4ABD6004562C2 /* mernokinfoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC2B0971DD4ABD6004562C2 /* mernokinfoData.plist */; };
 		5BC2B09B1DD4BA49004562C2 /* proginfoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC2B09A1DD4BA49004562C2 /* proginfoData.plist */; };
@@ -90,6 +92,8 @@
 		5B72F7C01DDB693900BD4AC9 /* detailviewbeforeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailviewbeforeScreen.swift; sourceTree = "<group>"; };
 		5B72F7C21DDB694A00BD4AC9 /* detailviewafterScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailviewafterScreen.swift; sourceTree = "<group>"; };
 		5B72F7C41DDF0D2600BD4AC9 /* mernokinfoPreCons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = mernokinfoPreCons.plist; path = KnowYourProgress/mernokinfoPreCons.plist; sourceTree = "<group>"; };
+		5B72F7C61DE0C38800BD4AC9 /* proginfoPreCons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = proginfoPreCons.plist; path = KnowYourProgress/proginfoPreCons.plist; sourceTree = "<group>"; };
+		5B72F7C81DE0C39700BD4AC9 /* gazdinfoPreCons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = gazdinfoPreCons.plist; path = KnowYourProgress/gazdinfoPreCons.plist; sourceTree = "<group>"; };
 		5BC2B0951DD4AB5D004562C2 /* mainScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainScreen.swift; sourceTree = "<group>"; };
 		5BC2B0971DD4ABD6004562C2 /* mernokinfoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = mernokinfoData.plist; path = KnowYourProgress/mernokinfoData.plist; sourceTree = "<group>"; };
 		5BC2B09A1DD4BA49004562C2 /* proginfoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = proginfoData.plist; path = KnowYourProgress/proginfoData.plist; sourceTree = "<group>"; };
@@ -199,7 +203,9 @@
 			children = (
 				5B72F7C41DDF0D2600BD4AC9 /* mernokinfoPreCons.plist */,
 				5BC2B0971DD4ABD6004562C2 /* mernokinfoData.plist */,
+				5B72F7C81DE0C39700BD4AC9 /* gazdinfoPreCons.plist */,
 				5BC2B09C1DD4BA58004562C2 /* gazdinfoData.plist */,
+				5B72F7C61DE0C38800BD4AC9 /* proginfoPreCons.plist */,
 				5BC2B09A1DD4BA49004562C2 /* proginfoData.plist */,
 			);
 			name = datasource;
@@ -318,7 +324,9 @@
 				5B0AEF661DD6A09900018F09 /* Main.storyboard in Resources */,
 				5B4463C21DA2EACE00685365 /* LaunchScreen.storyboard in Resources */,
 				5BC2B09D1DD4BA58004562C2 /* gazdinfoData.plist in Resources */,
+				5B72F7C71DE0C38800BD4AC9 /* proginfoPreCons.plist in Resources */,
 				5B72F7C51DDF0D2600BD4AC9 /* mernokinfoPreCons.plist in Resources */,
+				5B72F7C91DE0C39700BD4AC9 /* gazdinfoPreCons.plist in Resources */,
 				5B4463E61DA2EFB000685365 /* 489812_Pannonia.jpg in Resources */,
 				5B4463BF1DA2EACE00685365 /* Assets.xcassets in Resources */,
 				5BC2B0981DD4ABD6004562C2 /* mernokinfoData.plist in Resources */,

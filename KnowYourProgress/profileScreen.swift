@@ -37,6 +37,8 @@ class profileScreen: UIViewController {
     var finalResults = [NSManagedObject]()
     var subjectResults = [NSManagedObject]()
     var doneSubjResults = [NSManagedObject]()
+    var loadSubjResults = [NSManagedObject]()
+    var lostSubjResults = [NSManagedObject]()
     var doneSubjCredit: Int = 0
     var maxSubjCredit: Int = 0
     var useableCreditinfo: Float = 0.0
@@ -226,17 +228,36 @@ class profileScreen: UIViewController {
     func deleteSubjects (email: String) {
         
         let fetchRequest: NSFetchRequest<DoneSubj> = DoneSubj.fetchRequest()
+        let fetchRequest2: NSFetchRequest<LoadSubj> = LoadSubj.fetchRequest()
+        let fetchRequest3: NSFetchRequest<LostSubj> = LostSubj.fetchRequest()
         let context = getContext()
         
         do
         {
             subjectResults = try getContext().fetch(fetchRequest)
+            loadSubjResults = try getContext().fetch(fetchRequest2)
+            lostSubjResults = try getContext().fetch(fetchRequest3)
             
             for subject in subjectResults as [NSManagedObject]
             {
                 if (subject.value(forKey: "userEmail") as! String == email)
                 {
-                    print("töröl")
+                    context.delete(subject)
+                }
+            }
+            
+            for subject in loadSubjResults as [NSManagedObject]
+            {
+                if (subject.value(forKey: "userEmail") as! String == email)
+                {
+                    context.delete(subject)
+                }
+            }
+            
+            for subject in lostSubjResults as [NSManagedObject]
+            {
+                if (subject.value(forKey: "userEmail") as! String == email)
+                {
                     context.delete(subject)
                 }
             }
