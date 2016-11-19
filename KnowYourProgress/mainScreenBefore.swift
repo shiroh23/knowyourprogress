@@ -66,7 +66,6 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         readPropertyList(szak: felh.szak)
         self.finishedSubjCount = self.getDoneSubjData(email: felh.email)
-        //semesterSubjCount = self.targyCounter()
         
         felevLbl.text = "Az elvegzett felevek: \(felh.finiSem)"
         felevLbl.adjustsFontSizeToFitWidth = true
@@ -90,9 +89,7 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
         let row = indexPath.row
         cell.backgroundColor = .clear
-        //cell.textLabel?.text = getNev(pId: row)
         cell.textLabel?.text = finishedSubjects[row]
-        //cell.textLabel?.text = elvegzettek[row].name
         return cell
     }
     
@@ -127,7 +124,6 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
             var randomBool: Bool
             let destination = segue.destination as! main
             
-            print("kapott maradtTargyCount: \(self.maradtTargyCount) visszavonta: \(self.visszavonta)")
             if (self.visszavonta == true)
             {
                 randomBool = false
@@ -139,9 +135,7 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
             if (self.maradtTargyCount == 0 && randomBool == true)
             {
                 self.felevValtas = true
-                print("ennyike maradt 0 gondolom: \(self.felevValtas)")
             }
-            print("küldöm \(self.felevValtas)")
             destination.felevValtas = self.felevValtas
         }
     }

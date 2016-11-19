@@ -29,6 +29,7 @@ struct Oktato
 
 class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var afterBtn: UIButton!
     @IBOutlet weak var beforeBtn: UIButton!
     @IBOutlet weak var felevLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -96,12 +97,22 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             readPropertyList(szak: felh.szak)
         
             semesterSubjCount = self.targyCounter()
-        
-            
-            
-            felevLbl.text = "\(felh.currSem). félév"
-            felevLbl.adjustsFontSizeToFitWidth = true
-            felevLbl.minimumScaleFactor = 0.5
+            if (semesterSubjCount == 0)
+            {
+                beforeBtn.isHidden = true
+                beforeBtn.isEnabled = false
+                afterBtn.isHidden = true
+                afterBtn.isEnabled = false
+                felevLbl.text = "Minden tárgy teljesítve!"
+                felevLbl.adjustsFontSizeToFitWidth = true
+                felevLbl.minimumScaleFactor = 0.5
+            }
+            else
+            {
+                felevLbl.text = "\(felh.currSem). félév"
+                felevLbl.adjustsFontSizeToFitWidth = true
+                felevLbl.minimumScaleFactor = 0.5
+            }
         
             //profil adatlap megtekintése
             let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))

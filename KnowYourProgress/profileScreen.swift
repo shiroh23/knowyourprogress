@@ -79,6 +79,7 @@ class profileScreen: UIViewController {
         readPropertyList(szak: useableszak)
         
         self.doneSubjCredit = self.doneSubjects(email: felh.email)
+        self.doneSubjCredit += Int(felh.szabVal)
         self.maxSubjCredit = self.getMaximumCredit()
         self.useableCreditinfo = Float(doneSubjCredit)/Float(maxSubjCredit)
         self.useableCreditinfo *= 100
