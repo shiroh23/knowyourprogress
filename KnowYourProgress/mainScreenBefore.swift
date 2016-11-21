@@ -62,12 +62,11 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.tableView.backgroundView = imageView
         
         self.getUserData()
-        print(felh)
         
         readPropertyList(szak: felh.szak)
         self.finishedSubjCount = self.getDoneSubjData(email: felh.email)
         
-        felevLbl.text = "Az elvegzett felevek: \(felh.finiSem)"
+        felevLbl.text = "Az elvégzett félévek: \(felh.finiSem)"
         felevLbl.adjustsFontSizeToFitWidth = true
         felevLbl.minimumScaleFactor = 0.5
         
@@ -144,18 +143,12 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let favorite = UITableViewRowAction(style: .normal, title: "Törlés") { action, index in
             self.melyiket = indexPath.row
-            //print(self.finishedSubjects[indexPath.row])
             self.deleteDoneSubjData(targynev: self.finishedSubjects[indexPath.row])
-            self.finishedSubjects.remove(at: indexPath.row) // Check this out
+            self.finishedSubjects.remove(at: indexPath.row)
             self.finishedSubjCount -= 1
             self.tableView.deleteRows(at: [indexPath], with: .left)
             self.tableView.reloadData()
-            //self.tableView.deselectRow(at: indexPath, animated: true)
-            //self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.left)
-            //let count = self.getDoneSubjData(email: self.felh.email)
-            //print(count)
             self.visszavonta = true
-            print("visszavontam")
             self.alert(msg1: "Tárgy visszakerült a teljesítendők közé")
         }
         favorite.backgroundColor = UIColor.orange
@@ -191,13 +184,10 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         {
             searchResults = try getContext().fetch(fetchRequest)
             
-            //print ("találatok száma = \(searchResults.count)")
-            
             for users in searchResults as [NSManagedObject]
             {
                 if (users.value(forKey: "logged") as! Bool == true)
                 {
-                    //print("megtalalta")
                     felh.email = users.value(forKey: "email") as! String
                     felh.currSem = users.value(forKey: "currentSemester") as! Int16
                     felh.finiSem = users.value(forKey: "finishedSemester") as! Int16
@@ -285,32 +275,22 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
         var useableEmail: String = ""
         var nev: String = ""
         var isDone: Bool = false
-        //var doneSubj = Elvegzett()
         var counter: Int = 0
         
         do
         {
             doneSubjResults = try getContext().fetch(fetchRequest)
             
-            print ("elvégzett tárgyak száma = \(doneSubjResults.count)")
             
             for targy in doneSubjResults as [NSManagedObject]
             {
                 useableEmail = targy.value(forKey: "userEmail") as! String
                 isDone = targy.value(forKey: "elvegzett") as! Bool
-                print ("\(isDone) = true és az email: \(useableEmail)")
+                
                 if (useableEmail == email && isDone == true)
                 {
-                    print("megtalalta")
                     nev = targy.value(forKey: "nev") as! String
                     finishedSubjects.append(nev)
-                    /*
-                     doneSubj.felev = targy.value(forKey: "felev") as! String
-                     doneSubj.kredit = targy.value(forKey: "kredit") as! String
-                     doneSubj.name = targy.value(forKey: "nev") as! String
-                     doneSubj.targykod = targy.value(forKey: "targykod") as! String
-                     doneSubj.elvegzett = true
-                     self.elvegzettek.append(doneSubj)*/
                     counter+=1
                 }
             }
@@ -343,7 +323,6 @@ class mainBefore: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 if (useableTargy == targynev && isDone == true)
                 {
                     context.delete(targy)
-                    print("targy törölve")
                     break
                 }
             }

@@ -123,7 +123,7 @@ class profileScreen: UIViewController {
         {
             searchResults = try getContext().fetch(fetchRequest)
             
-            print ("találatok száma = \(searchResults.count)")
+            
             
             for users in searchResults as [NSManagedObject]
             {
@@ -147,25 +147,19 @@ class profileScreen: UIViewController {
         }
 
     }
-    /*
-    @IBAction func emailChange(_ sender: Any)
-    {
-        print("emailchange")
-        self.emailAlert(msg1: "Add meg az új e-mail címed!")
-    }*/
+    
     @IBAction func semesterChange(_ sender: Any)
     {
-        print("semesterChange")
+        
         self.semesterAlert(msg1: "Add meg hol tartasz most!")
     }
     @IBAction func passwordChange(_ sender: Any)
     {
-        print("passwordChange")
-        self.passwordAlert(msg1: "Add meg az új jelszavad!")
+                self.passwordAlert(msg1: "Add meg az új jelszavad!")
     }
     @IBAction func majorChange(_ sender: Any)
     {
-        print("majorChange")
+        
         self.majorAlert(msg1: "Add meg az új szakodat!\n1 - mérnökinformatikus\n2 - programtervező informatikus\n3 - gazdasági informatikus")
     }
     
@@ -176,7 +170,7 @@ class profileScreen: UIViewController {
         {
             //adatok mentése
             self.finalAlert(msg1: "Biztosan meg szeretnéd változtatni az adataidat? A választás végleges és kijelentkeztetést von majd maga után!!")
-            //self.finalafterAlert(msg1: "Sikeres módosítás")
+            
         }
         else
         {
@@ -185,7 +179,7 @@ class profileScreen: UIViewController {
     }
     @IBAction func logOut(_ sender: Any)
     {
-        //logged változó értékét visszalőni false-ra
+       
         self.logoutAlert(msg1: "Biztos ki szeretnél jelentkezni?")
     }
     
@@ -216,7 +210,7 @@ class profileScreen: UIViewController {
             }
             
             try context.save()
-            print("updated!")
+            
         }
         catch
         {
@@ -264,7 +258,7 @@ class profileScreen: UIViewController {
             }
             
             try context.save()
-            print("deleted all subject from user!")
+            
         }
         catch
         {
@@ -288,13 +282,13 @@ class profileScreen: UIViewController {
                 if (felhasznalo.value(forKey: "email") as! String == email)
                 {
                     felhasznalo.setValue(false, forKey: "logged")
-                    print("felhasznalo megtalalva")
+                    
                     break
                 }
             }
             
             try context.save()
-            print("updated!")
+            
         }
         catch
         {
@@ -357,7 +351,7 @@ class profileScreen: UIViewController {
             }
             
             try context.save()
-            print("user updated sucessfully!")
+            
         }
         catch
         {
@@ -393,7 +387,7 @@ class profileScreen: UIViewController {
                 doneSubj.setValue(newSubject["targykod"] as! String, forKey: "targykod")
                 doneSubj.setValue(true, forKey: "elvegzett")
                 doneSubj.setValue(email, forKey: "userEmail")
-                print("\(rekord["nev"]) tárgy mentve az emailhez: \(email)")
+                
                 break
             }
         }
@@ -401,7 +395,7 @@ class profileScreen: UIViewController {
         do
         {
             try context.save()
-            print("\(targyString) hozzáadva a CoreDatahoz!")
+            
         } catch let error as NSError
         {
             print("Could not save \(error), \(error.userInfo)")
@@ -413,7 +407,7 @@ class profileScreen: UIViewController {
         }
         else
         {
-            print("mar szerepel nem adom hozza")
+            
         }
     }
     
@@ -501,7 +495,7 @@ class profileScreen: UIViewController {
             {
                 kredit = Int(kreditString)!
             }
-            print("konvertálás után a kredit \(kredit)")
+            
             osszKredit += kredit
             
         }

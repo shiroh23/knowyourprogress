@@ -58,7 +58,6 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.tableView.backgroundView = imageView
         
         self.getUserData()
-        print(felh)
         
         readPropertyList(szak: felh.szak)
         
@@ -161,10 +160,6 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 }
             }
         }
-        if (segue.identifier == "segueAfter")
-        {
-            
-        }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -209,13 +204,10 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
         {
             searchResults = try getContext().fetch(fetchRequest)
             
-            //print ("találatok száma = \(searchResults.count)")
-            
             for users in searchResults as [NSManagedObject]
             {
                 if (users.value(forKey: "logged") as! Bool == true)
                 {
-                    //print("megtalalta")
                     felh.email = users.value(forKey: "email") as! String
                     felh.currSem = users.value(forKey: "currentSemester") as! Int16
                     felh.finiSem = users.value(forKey: "finishedSemester") as! Int16
@@ -401,9 +393,9 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
         {
             for i in (0..<talaltElofeltetelek.count)
             {
-                print("az elofeltetel: \(talaltElofeltetelek[i])")
+               
                 felveheto = self.getDoneSubjData(keresettTargy: self.talaltElofeltetelek[i])
-                print("felveheto: \(felveheto)")
+                
             }
         }
         else
@@ -439,7 +431,7 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 do
                 {
                     try context.save()
-                    print("\(rekord["nev"] as! String) hozzáadva a jelenlegi felevhez")
+                
                 } catch let error as NSError
                 {
                     print("Could not save \(error), \(error.userInfo)")
@@ -461,14 +453,14 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
             {
                 if (subject.value(forKey: "nev") as! String == keresettTargy)
                 {
-                    print("törölve")
+                   
                     context.delete(subject)
                     break
                 }
             }
             
             try context.save()
-            print("törölve a bukottaktól!")
+          
         }
         catch
         {
@@ -501,7 +493,7 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 
                 if (keresendo == keresettTargy)
                 {
-                    print("megtalalta")
+            
                     isDone = true
                     break
                 }
@@ -539,7 +531,6 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 }
             }
         }
-        print("elofeltetelek elemei \(lista)")
         return lista
     }
     
@@ -551,7 +542,7 @@ class mainAfter: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func someHandler (index: IndexPath)
     {
-        self.allSubjects.remove(at: index.row) // Check this out
+        self.allSubjects.remove(at: index.row)
         self.semesterSubjCount -= 1
         self.tableView.deleteRows(at: [index], with: .left)
         self.tableView.reloadData()

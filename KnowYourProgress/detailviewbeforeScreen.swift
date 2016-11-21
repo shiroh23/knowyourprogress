@@ -62,7 +62,6 @@ class detailviewbeforeScreen: UIViewController {
                 useableszak = ""
                 break
             }
-            print(useableszak)
             readPropertyList(szak: useableszak)
             
             tantargy.felev = subject["felev"] as! String
@@ -77,7 +76,7 @@ class detailviewbeforeScreen: UIViewController {
                 
                 for i in (0..<talaltElofeltetelek.count)
                 {
-                    print(talaltElofeltetelek[i])
+                
                     textView.insertText(talaltElofeltetelek[i])
                     textView.insertText("\n\n")
                 }
@@ -195,7 +194,6 @@ class detailviewbeforeScreen: UIViewController {
             }
             
             try context.save()
-            print("updated review!")
         }
         catch
         {
@@ -253,7 +251,6 @@ class detailviewbeforeScreen: UIViewController {
                 }
             }
         }
-        print(lista.count)
         return lista
     }
     

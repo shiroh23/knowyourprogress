@@ -122,7 +122,6 @@ class periodsScreen: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
         var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         if cell == nil {
             cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
@@ -151,11 +150,9 @@ class periodsScreen: UIViewController, UITableViewDataSource, UITableViewDelegat
         {
             periodResults = try getContext().fetch(fetchRequest)
             
-            print ("találatok száma = \(periodResults.count)")
             
             for period in periodResults as [NSManagedObject]
             {
-                print("\(period.value(forKey: "desc")!)")
                 currentPeriods.append(period.value(forKey: "desc") as! String)
             }
         }

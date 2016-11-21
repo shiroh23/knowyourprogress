@@ -93,8 +93,7 @@ class launchScreen: UIViewController {
         
         let tanar = NSManagedObject(entity: entity!, insertInto: context)
         
-        print("hozzaadom őtet:")
-        print("\(id[index]) \(nev[index]) \(subject[index]) \(review) index értéke: \(index)")
+        
         
         tanar.setValue(id[index], forKey: "id")
         tanar.setValue(nev[index], forKey: "name")
@@ -105,7 +104,7 @@ class launchScreen: UIViewController {
         do
         {
             try context.save()
-            print("saved!")
+            
         } catch let error as NSError
         {
             print("Could not save \(error), \(error.userInfo)")
@@ -125,13 +124,12 @@ class launchScreen: UIViewController {
         
         let period = NSManagedObject(entity: entity!, insertInto: context)
         
-        print("hozzaadom őtet:")
-        print("\(id[index]) \(desc[index]) \(start[index]) \(end[index]) index értéke: \(index)")
+   
         
         let sdate = start[index]
         let edate = end[index]
         
-        print("\(sdate)-tól -> \(edate)-ig")
+       
         
         period.setValue(id[index], forKey: "id")
         period.setValue(desc[index], forKey: "desc")
@@ -142,7 +140,7 @@ class launchScreen: UIViewController {
         do
         {
             try context.save()
-            print("saved!")
+            
         } catch let error as NSError
         {
             print("Could not save \(error), \(error.userInfo)")
@@ -170,7 +168,7 @@ class launchScreen: UIViewController {
             }
             
             try context.save()
-            print("updated!")
+            
         }
         catch
         {
@@ -188,12 +186,9 @@ class launchScreen: UIViewController {
         {
             teacherResults = try getContext().fetch(fetchRequest)
             
-            print ("találatok száma = \(teacherResults.count)")
             
-            for teacher in teacherResults as [NSManagedObject]
-            {
-                print("\(teacher.value(forKey: "id")!) - \(teacher.value(forKey: "name")!)")
-            }
+            
+           
             
             
         }
@@ -215,12 +210,9 @@ class launchScreen: UIViewController {
         {
             periodResults = try getContext().fetch(fetchRequest)
             
-            print ("találatok száma = \(periodResults.count)")
             
-            for period in periodResults as [NSManagedObject]
-            {
-                print("\(period.value(forKey: "desc")!)")
-            }
+            
+            
         }
         catch
         {

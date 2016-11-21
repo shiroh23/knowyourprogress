@@ -288,7 +288,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NKf-6P-EED" id="jLH-LS-v1g">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -341,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oV3-M4-4dO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1746" y="-171"/>
+            <point key="canvasLocation" x="1255" y="-24"/>
         </scene>
         <!--Main-->
         <scene sceneID="E8J-W1-gq0">
@@ -366,7 +366,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="TUP-cB-BhY" id="eS5-y0-Fyf">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -465,7 +465,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P1x-aG-PML" id="2Te-7K-EHd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -527,7 +527,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1745" y="1473"/>
+            <point key="canvasLocation" x="1254" y="1332"/>
         </scene>
         <!--Profile Screen-->
         <scene sceneID="APR-kY-qrA">
@@ -857,7 +857,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E7V-iE-B2X" id="aQ8-B4-3hD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1335,7 +1335,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEd-PL-67G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2508" y="-171.36431784107947"/>
+            <point key="canvasLocation" x="1964" y="-25"/>
         </scene>
         <!--Detailviewafter Screen-->
         <scene sceneID="ldF-5w-cHg">
@@ -1512,15 +1512,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="as7-iF-Sxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2508" y="1473"/>
+            <point key="canvasLocation" x="1964" y="1332"/>
         </scene>
     </scenes>
     <resources>
         <image name="489812_Pannonia.jpg" width="1500" height="1466"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="W8a-x9-YgI"/>
-        <segue reference="tda-oK-5Ea"/>
-        <segue reference="c05-b4-LRs"/>
+        <segue reference="0rJ-HV-nX0"/>
+        <segue reference="VJ0-bs-3ls"/>
+        <segue reference="pnZ-oh-Mai"/>
     </inferredMetricsTieBreakers>
 </document>

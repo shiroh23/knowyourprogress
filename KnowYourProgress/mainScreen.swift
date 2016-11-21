@@ -70,7 +70,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.tableView.backgroundView = imageView
         
         self.getUserData()
-        print(felh)
+        
         if (felh.email != "")
         {
             gombLetiltva = self.getDoneSubjects(email: felh.email)
@@ -88,10 +88,8 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             if (self.felevValtas == true)
             {
                 let count = self.targyCounter()
-                print(count)
                 self.updateUserData()
                 self.felevValtas = false
-                print("felev valtas megtörtént")
             }
             
             readPropertyList(szak: felh.szak)
@@ -160,11 +158,9 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func handlePress(sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizerState.began {
-            // handle start of pressing
             self.openNewPage(name: "periods")
         }
         else if sender.state == UIGestureRecognizerState.ended {
-            // handle end of pressing
         }
     }
     
@@ -211,7 +207,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         {
             rekord = productArray.object(at: i) as! Dictionary<String, AnyObject>
             felev = rekord["felev"] as! String
-            //itt keressük meg hogy el van e végezve a tárgy
             
             nev = rekord["nev"] as! String
             elvegzett = self.getSubject(keresettTargy: nev)
@@ -221,31 +216,12 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             if ( (felev == String(felh.currSem) && elvegzett == false && elbukott == false) || (felvett == true && elbukott == false ) )
             {
                 currentSubjects.append(nev)
-                //print(currentSubjects.last!)
                 count += 1
             }
         }
         
         return count
     }
-    
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-     {
-     self.melyiket = indexPath.row
-     print("\(self.melyiket) na melyik lesz")
-     let newSubject = self.productArray.object(at: self.melyiket) as! Dictionary<String, AnyObject>
-     let nev: String = newSubject["nev"] as! String
-     let targykod: String = newSubject["targykod"] as! String
-     let kredit: String = newSubject["kredit"] as! String
-     let felev: String = newSubject["felev"] as! String
-     print("\(nev) es \(targykod) es \(kredit) es \(felev)")
-     let destinationVC = detailviewScreen()
-     destinationVC.targykod = "gagyi"
-     destinationVC.kredit = "fos"
-     destinationVC.nev = "ez egy csalas"
-     destinationVC.felev = "utalom"
-     self.present(destinationVC, animated: true, completion: nil)
-     }*/
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -283,7 +259,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     maradtTargyCount += 1
                 }
             }
-            print("maradt targy counter küldés előtt: \(maradtTargyCount)")
+            
             let destination = segue.destination as! mainBefore
             destination.maradtTargyCount = maradtTargyCount
         }
@@ -344,13 +320,11 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         {
             searchResults = try getContext().fetch(fetchRequest)
             
-            //print ("találatok száma = \(searchResults.count)")
             
             for users in searchResults as [NSManagedObject]
             {
                 if (users.value(forKey: "logged") as! Bool == true)
                 {
-                    //print("megtalalta")
                     felh.email = users.value(forKey: "email") as! String
                     felh.currSem = users.value(forKey: "currentSemester") as! Int16
                     felh.finiSem = users.value(forKey: "finishedSemester") as! Int16
@@ -470,7 +444,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let doneSubj = NSManagedObject(entity: entity!, insertInto: context)
         
         let keresettTargy = self.currentSubjects[index]
-        //self.currentSubjects[index].removeAll()
         var targyString: String = ""
         var rekord: Dictionary<String, AnyObject>
         
@@ -487,7 +460,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 doneSubj.setValue(newSubject["targykod"] as! String, forKey: "targykod")
                 doneSubj.setValue(true, forKey: "elvegzett")
                 doneSubj.setValue(felh.email, forKey: "userEmail")
-                print("\(targyString) elvégezve!")
                 break
             }
         }
@@ -495,7 +467,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         do
         {
             try context.save()
-            print("targy elvegzese mentve!")
         } catch let error as NSError
         {
             print("Could not save \(error), \(error.userInfo)")
@@ -514,14 +485,12 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             {
                 if (subject.value(forKey: "nev") as! String == keresettTargy)
                 {
-                    print("törölve")
                     context.delete(subject)
                     break
                 }
             }
             
             try context.save()
-            print("törölve a loadedből!")
         }
         catch
         {
@@ -540,7 +509,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let lostSubj = NSManagedObject(entity: entity!, insertInto: context)
         
         let keresettTargy = self.currentSubjects[index]
-        //self.currentSubjects[index].removeAll()
         var targyString: String = ""
         var rekord: Dictionary<String, AnyObject>
         
@@ -557,7 +525,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 lostSubj.setValue(newSubject["targykod"] as! String, forKey: "targykod")
                 lostSubj.setValue(false, forKey: "elvegzett")
                 lostSubj.setValue(felh.email, forKey: "userEmail")
-                print("\(targyString) elbukva!")
                 break
             }
         }
@@ -565,7 +532,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
         do
         {
             try context.save()
-            print("targy elbukása mentve!")
         } catch let error as NSError
         {
             print("Could not save \(error), \(error.userInfo)")
@@ -584,14 +550,12 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
             {
                 if (subject.value(forKey: "nev") as! String == keresettTargy)
                 {
-                    print("törölve")
                     context.delete(subject)
                     break
                 }
             }
             
             try context.save()
-            print("törölve a loadedből!")
         }
         catch
         {
@@ -649,7 +613,6 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 let email = targy.value(forKey: "userEmail") as! String
                 if (keres == keresettTargy && self.felh.email == email)
                 {
-                    print("megvagy load subject")
                     felvett = true
                     break
                 }
@@ -751,7 +714,7 @@ class main: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func someHandler (index: IndexPath)
     {
         
-        self.currentSubjects.remove(at: index.row) // Check this out
+        self.currentSubjects.remove(at: index.row)
         self.semesterSubjCount -= 1
         self.tableView.deleteRows(at: [index], with: .left)
         self.tableView.reloadData()

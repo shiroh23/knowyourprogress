@@ -203,7 +203,7 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
                 if (volt == false && jelszoOK == true)
                 {
                     //adatmentés database-be
-                    print("adatmentés")
+                   
                     let intFelev = Int(felevField.text!)
                     self.saveUser(email: emailField.text!, jelszo: jelszoField.text!, felev: intFelev!, szak: szakvalasztoField.text!)
                     alert2(msg1: "Sikeres regisztráció!")
@@ -296,7 +296,7 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
         do
         {
             try context.save()
-            print("mentve baszki!!")
+            
         } catch let error as NSError
         {
             print("Could not save \(error), \(error.userInfo)")
@@ -337,7 +337,7 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
         do
         {
             try context.save()
-            print("\(targyString) hozzáadva a CoreDatahoz!")
+            
         } catch let error as NSError
         {
             print("Could not save \(error), \(error.userInfo)")
@@ -357,8 +357,7 @@ class register: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
         {
             searchResults = try getContext().fetch(fetchRequest)
             
-            print ("találatok száma = \(searchResults.count)")
-            
+                        
             for felhasznalo in searchResults as [NSManagedObject]
             {
                 print("\(felhasznalo.value(forKey: "email"))")

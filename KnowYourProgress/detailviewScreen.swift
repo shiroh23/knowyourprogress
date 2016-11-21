@@ -49,7 +49,6 @@ class detailviewScreen: UIViewController {
         super.viewDidLoad()
         
         let van: Bool = self.isthereaTeacher(nev: tutor.name)
-        print("Tanár értékelése: \(tutor.review)")
         if (van == true && tutor.review == 0)
         {
             completedBtn.isEnabled = true
@@ -68,7 +67,6 @@ class detailviewScreen: UIViewController {
                 useableszak = ""
                 break
             }
-            print(useableszak)
             readPropertyList(szak: useableszak)
             
             tantargy.felev = subject["felev"] as! String
@@ -83,7 +81,7 @@ class detailviewScreen: UIViewController {
             
                 for i in (0..<talaltElofeltetelek.count)
                 {
-                    print(talaltElofeltetelek[i])
+              
                     textView.insertText(talaltElofeltetelek[i])
                     textView.insertText("\n\n")
                 }
@@ -201,7 +199,6 @@ class detailviewScreen: UIViewController {
             }
             
             try context.save()
-            print("updated review!")
         }
         catch
         {
@@ -259,7 +256,6 @@ class detailviewScreen: UIViewController {
                 }
             }
         }
-        print(lista.count)
         return lista
     }
     

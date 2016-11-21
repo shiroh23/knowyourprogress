@@ -123,12 +123,6 @@ class welcome: UIViewController, UITextFieldDelegate{
         {
             searchResults = try getContext().fetch(fetchRequest)
             
-            //print ("találatok száma = \(searchResults.count)")
-            
-            for felhasznalo in searchResults as [NSManagedObject]
-            {
-                print("\(felhasznalo.value(forKey: "email"))")
-            }
         }
         catch
         {
@@ -145,20 +139,16 @@ class welcome: UIViewController, UITextFieldDelegate{
         {
             searchResults = try getContext().fetch(fetchRequest)
             
-            //print ("update találatok száma = \(searchResults.count)")
-            
             for felhasznalo in searchResults as [NSManagedObject]
             {
                 if (felhasznalo.value(forKey: "email") as! String == email)
                 {
                     felhasznalo.setValue(true, forKey: "logged")
-                    //print("felhasznalo megtalalva")
                     break
                 }
             }
             
             try context.save()
-            //print("updated!")
         }
         catch
         {
