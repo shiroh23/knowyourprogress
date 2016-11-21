@@ -1,2 +1,2 @@
-# knowyourprogress
-szakdolgozat
+# knowyourprogress - PEGraph
+szakdolgozat - final thesis
